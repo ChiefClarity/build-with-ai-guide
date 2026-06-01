@@ -3,39 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Build Your Kid's First Business With AI</title>
-<meta name="description" content="A step-by-step guide for parents: how to use AI to help your kids build a real online business this summer.">
+<title>The Modern Day Lemonade Stand</title>
+<meta name="description" content="The lemonade stand for the AI era. A fun, hands-on project parents and kids build together with AI, no experience needed.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --pink: #FF5C93; --orange: #FF6B2B; --lime: #B8E62E; --green: #44D94A;
-    --teal: #1EC9C9; --blue: #3B8BF5; --grape: #4D7CF5; --bubblegum: #FF69B4;
-    --gold: #E8B84B; --cocoa: #3D2B1F; --tan: #9B7D5A; --cream: #FFFAF2; --white: #FFFDF9;
+    --pink: #f2853c; --orange: #f2a52e; --lime: #c3cc4b; --green: #52bb8e;
+    --teal: #36ae9e; --blue: #4fa6ce; --grape: #e5507a; --bubblegum: #ee6f92;
+    --gold: #f5b82b; --cocoa: #382a1d; --tan: #9a8063; --cream: #fcf6e9; --white: #fffdf6;
     --radius: 16px;
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--cocoa); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-  h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--cocoa); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5 { font-family: 'Fraunces', serif; font-weight: 700; line-height: 1.2; }
 
   /* ─── HERO ─── */
   .hero {
     min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 2rem 1.5rem; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--cream) 0%, #fff5e6 50%, #fce8f0 100%);
+    background: linear-gradient(135deg, var(--cream) 0%, #fdeccb 50%, #fbe6cf 100%);
   }
   .hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(circle at 15% 20%, rgba(255,92,147,0.12) 0%, transparent 40%),
-      radial-gradient(circle at 85% 30%, rgba(77,124,245,0.10) 0%, transparent 40%),
-      radial-gradient(circle at 50% 80%, rgba(184,230,46,0.10) 0%, transparent 40%);
+    background: radial-gradient(circle at 15% 20%, rgba(242,133,60,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(229,80,122,0.10) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(195,204,75,0.10) 0%, transparent 40%);
   }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,92,147,0.2); padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(242,133,60,0.2); padding: 0.5rem 1.25rem;
     border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--pink);
     margin-bottom: 1.5rem; letter-spacing: 0.02em;
   }
@@ -48,22 +48,22 @@
   .hero-cta {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: linear-gradient(135deg, var(--pink), var(--grape)); color: white;
-    padding: 1rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif;
+    padding: 1rem 2rem; border-radius: 100px; font-family: 'DM Sans', sans-serif;
     font-weight: 700; font-size: 1.1rem; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,92,147,0.3);
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(242,133,60,0.3);
   }
-  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255,92,147,0.4); }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(242,133,60,0.4); }
   .scroll-hint { position: absolute; bottom: 2rem; animation: bounce 2s infinite; color: var(--tan); opacity: 0.6; font-size: 0.85rem; }
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 
   /* ─── SECTIONS ─── */
   .section { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem; }
-  .section-label { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grape); margin-bottom: 0.75rem; }
+  .section-label { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grape); margin-bottom: 0.75rem; }
   .section h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin-bottom: 1rem; }
   .section-intro { font-size: 1.1rem; color: var(--tan); margin-bottom: 1.5rem; max-width: 600px; }
 
   /* ─── COLLAPSIBLE SECTIONS ─── */
-  .section.sec-collapse { padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(61,43,31,0.08); }
+  .section.sec-collapse { padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(56,42,29,0.08); }
   .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .sec-head-main { flex: 1; }
   .sec-head .section-label { margin-bottom: 0.35rem; }
@@ -75,16 +75,19 @@
   .sec-body > .sec-inner { overflow: hidden; min-height: 0; }
   .sec-pad { padding-top: 1.25rem; }
   .divider { width: 60px; height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--pink), var(--grape)); margin: 0 0 1.5rem; }
-  .signature { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--cocoa); font-size: 1.15rem; margin-top: 1.5rem; }
-  .signature span { display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--tan); margin-top: 0.15rem; }
-  .signature a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(255,92,147,0.3); }
-  .signature a:hover { border-bottom-color: var(--pink); }
+  .signature { font-family: 'Fraunces', serif; font-weight: 600; color: var(--cocoa); font-size: 1.35rem; margin-top: 1.5rem; }
+  .signature span { display: block; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--tan); margin-top: 0.25rem; }
+  .signature a { color: var(--grape); text-decoration: none; border-bottom: 1px solid rgba(229,80,122,0.3); }
+  .signature a:hover { border-bottom-color: var(--grape); }
+  .signature-note { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--tan); margin-top: 0.75rem; max-width: 520px; line-height: 1.6; }
+  .signature-note a { color: var(--grape); text-decoration: none; border-bottom: 1px solid rgba(229,80,122,0.3); font-weight: 600; }
+  .signature-note a:hover { border-bottom-color: var(--grape); }
 
   /* ─── CARDS ─── */
   .card-grid { display: grid; gap: 1rem; }
   .card {
     background: var(--white); border-radius: var(--radius); padding: 1.5rem;
-    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+    border: 1px solid rgba(56,42,29,0.06); box-shadow: 0 2px 12px rgba(56,42,29,0.04);
     transition: transform 0.2s;
   }
   .card:hover { transform: translateY(-2px); }
@@ -94,10 +97,10 @@
   .card .sub { font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
 
   /* ─── TECH TERMS ─── */
-  .tt { cursor: pointer; color: var(--grape); font-weight: 600; border-bottom: 2px dotted rgba(77,124,245,0.4); transition: background 0.15s; }
-  .tt:hover, .tt:active { background: rgba(77,124,245,0.08); border-radius: 3px; }
+  .tt { cursor: pointer; color: var(--grape); font-weight: 600; border-bottom: 2px dotted rgba(229,80,122,0.4); transition: background 0.15s; }
+  .tt:hover, .tt:active { background: rgba(229,80,122,0.08); border-radius: 3px; }
   .tech-overlay {
-    position: fixed; inset: 0; background: rgba(61,43,31,0.4); z-index: 1000;
+    position: fixed; inset: 0; background: rgba(56,42,29,0.4); z-index: 1000;
     display: flex; align-items: flex-end; justify-content: center;
     opacity: 0; pointer-events: none; transition: opacity 0.3s;
   }
@@ -105,7 +108,7 @@
   .tech-sheet {
     background: var(--white); border-radius: 20px 20px 0 0; padding: 1.5rem 1.5rem 2rem;
     max-width: 720px; width: 100%; transform: translateY(100%); transition: transform 0.3s ease;
-    box-shadow: 0 -4px 32px rgba(61,43,31,0.15);
+    box-shadow: 0 -4px 32px rgba(56,42,29,0.15);
   }
   .tech-overlay.active .tech-sheet { transform: translateY(0); }
   .tech-sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
@@ -122,22 +125,22 @@
   .needs-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
   .needs-list li {
     background: var(--white); border-radius: 12px; padding: 1rem 1.25rem;
-    border: 1px solid rgba(61,43,31,0.06); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem;
+    border: 1px solid rgba(56,42,29,0.06); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem;
   }
   .needs-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
   .needs-list strong { display: block; margin-bottom: 0.15rem; }
   .needs-list .subtext { color: var(--tan); font-size: 0.85rem; }
   .cost-note {
-    margin-top: 1.5rem; background: linear-gradient(135deg, rgba(184,230,46,0.12), rgba(68,217,74,0.08));
+    margin-top: 1.5rem; background: linear-gradient(135deg, rgba(195,204,75,0.12), rgba(82,187,142,0.08));
     border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.9rem;
-    display: flex; align-items: flex-start; gap: 0.75rem; border: 1px solid rgba(68,217,74,0.15);
+    display: flex; align-items: flex-start; gap: 0.75rem; border: 1px solid rgba(82,187,142,0.15);
   }
 
   /* ─── PRODUCT IDEAS ─── */
   .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
   .product-idea {
     background: var(--white); border-radius: 12px; padding: 1rem; text-align: center;
-    border: 1px solid rgba(61,43,31,0.06); transition: transform 0.2s;
+    border: 1px solid rgba(56,42,29,0.06); transition: transform 0.2s;
   }
   .product-idea:hover { transform: translateY(-2px); }
   .idea-emoji { font-size: 2rem; margin-bottom: 0.35rem; }
@@ -146,13 +149,13 @@
 
   /* ─── JOURNEY ─── */
   .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
-  .timeline-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(61,43,31,0.06); text-align: center; }
-  .timeline-card .number { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.75rem; background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .timeline-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(56,42,29,0.06); text-align: center; }
+  .timeline-card .number { font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.75rem; background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .timeline-card .label { font-size: 0.8rem; color: var(--tan); font-weight: 600; }
 
   .prompt-note {
-    background: rgba(77,124,245,0.06); border-radius: 10px; padding: 1rem 1.25rem;
-    margin-bottom: 2rem; border: 1px solid rgba(77,124,245,0.1); font-size: 0.9rem;
+    background: rgba(229,80,122,0.06); border-radius: 10px; padding: 1rem 1.25rem;
+    margin-bottom: 2rem; border: 1px solid rgba(229,80,122,0.1); font-size: 0.9rem;
     color: var(--tan); display: flex; align-items: flex-start; gap: 0.75rem;
   }
 
@@ -166,11 +169,11 @@
   .step-number {
     position: absolute; left: 8px; top: 0; width: 36px; height: 36px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.9rem; color: white; z-index: 1;
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.9rem; color: white; z-index: 1;
   }
   .step-card {
     background: var(--white); border-radius: var(--radius);
-    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+    border: 1px solid rgba(56,42,29,0.06); box-shadow: 0 2px 12px rgba(56,42,29,0.04);
     overflow: hidden; transition: transform 0.2s;
   }
   .step-card:hover { transform: translateY(-2px); }
@@ -184,36 +187,36 @@
   .step.open .step-toggle { transform: rotate(180deg); }
   .step-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
   .step.open .step-body { max-height: 5000px; }
-  .step-content { padding: 0 1.5rem 1.5rem; border-top: 1px solid rgba(61,43,31,0.06); }
+  .step-content { padding: 0 1.5rem 1.5rem; border-top: 1px solid rgba(56,42,29,0.06); }
   .step-content p { margin-top: 1rem; font-size: 0.95rem; color: var(--tan); }
   .step-content p strong { color: var(--cocoa); }
 
   /* Prompt boxes */
   .prompt-box {
-    margin-top: 1rem; background: var(--cocoa); color: #e8ddd0; border-radius: 10px;
+    margin-top: 1rem; background: var(--cocoa); color: #ece2d2; border-radius: 10px;
     padding: 1rem 1.25rem; font-size: 0.9rem; line-height: 1.6; position: relative;
   }
   .prompt-box .prompt-label {
-    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
     display: flex; justify-content: space-between; align-items: center;
   }
   .copy-btn {
-    background: rgba(232,184,75,0.2); border: none; color: var(--gold);
+    background: rgba(245,184,43,0.2); border: none; color: var(--gold);
     padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.7rem;
-    font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif;
+    font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif;
     letter-spacing: 0.05em; transition: background 0.2s;
   }
-  .copy-btn:hover { background: rgba(232,184,75,0.35); }
+  .copy-btn:hover { background: rgba(245,184,43,0.35); }
 
   /* Result boxes */
   .what-happens {
-    margin-top: 1rem; background: rgba(77,124,245,0.06); border-radius: 10px;
-    padding: 1rem 1.25rem; border: 1px solid rgba(77,124,245,0.1);
+    margin-top: 1rem; background: rgba(229,80,122,0.06); border-radius: 10px;
+    padding: 1rem 1.25rem; border: 1px solid rgba(229,80,122,0.1);
   }
   .what-happens::before {
     content: 'What Claude builds for you'; display: block;
-    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--grape); margin-bottom: 0.5rem;
   }
   .what-happens ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
@@ -222,12 +225,12 @@
 
   /* Learn together box */
   .learn-together {
-    margin-top: 1rem; background: linear-gradient(135deg, rgba(232,184,75,0.08), rgba(255,92,147,0.05));
-    border-radius: 10px; padding: 1rem 1.25rem; border: 1px solid rgba(232,184,75,0.15);
+    margin-top: 1rem; background: linear-gradient(135deg, rgba(245,184,43,0.08), rgba(242,133,60,0.05));
+    border-radius: 10px; padding: 1rem 1.25rem; border: 1px solid rgba(245,184,43,0.15);
   }
   .learn-together::before {
     content: "What You'll Learn"; display: block;
-    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
   }
   .learn-together ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
@@ -238,7 +241,7 @@
   .showcase-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
   .showcase-card {
     background: var(--white); border-radius: var(--radius); padding: 1.5rem;
-    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+    border: 1px solid rgba(56,42,29,0.06); box-shadow: 0 2px 12px rgba(56,42,29,0.04);
   }
   .showcase-card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
   .showcase-card .showcase-sub { font-size: 0.85rem; color: var(--tan); margin-bottom: 0.75rem; }
@@ -247,13 +250,13 @@
   .showcase-features li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
   .showcase-link {
     display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;
-    font-family: 'Poppins', sans-serif; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;
+    font-family: 'DM Sans', sans-serif; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;
   }
   .showcase-link:hover { transform: translateX(4px); }
 
   /* ─── SKILLS ─── */
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
-  .skill-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(61,43,31,0.06); text-align: center; }
+  .skill-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(56,42,29,0.06); text-align: center; }
   .skill-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
   .skill-card h4 { font-size: 0.9rem; margin-bottom: 0.25rem; }
   .skill-card p { font-size: 0.8rem; color: var(--tan); }
@@ -262,7 +265,7 @@
   .stack-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1rem; }
   .stack-card {
     background: var(--white); border-radius: 12px; padding: 1rem 1.25rem;
-    border: 1px solid rgba(61,43,31,0.06); display: flex; align-items: flex-start; gap: 0.75rem;
+    border: 1px solid rgba(56,42,29,0.06); display: flex; align-items: flex-start; gap: 0.75rem;
     cursor: pointer; transition: transform 0.2s;
   }
   .stack-card:hover { transform: translateY(-2px); }
@@ -275,37 +278,37 @@
   .coming-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
   .coming-item {
     background: var(--white); border-radius: 10px; padding: 0.75rem 1rem;
-    border: 1px solid rgba(61,43,31,0.06); font-size: 0.9rem;
+    border: 1px solid rgba(56,42,29,0.06); font-size: 0.9rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
   .coming-badge {
     font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(77,124,245,0.1);
+    padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(229,80,122,0.1);
     color: var(--grape); white-space: nowrap;
   }
 
   /* ─── CTA ─── */
-  .cta-section { background: linear-gradient(135deg, #fff5e6, #fce8f0, #e6efff); padding: 4rem 1.5rem; text-align: center; }
+  .cta-section { background: linear-gradient(135deg, #fdeccb, #fbe6cf, #fef3d4); padding: 4rem 1.5rem; text-align: center; }
   .cta-section h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin-bottom: 0.75rem; }
   .cta-section p { max-width: 500px; margin: 0 auto 2rem; color: var(--tan); font-size: 1.05rem; }
   .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
   .cta-primary {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: linear-gradient(135deg, var(--pink), var(--grape)); color: white;
-    padding: 1rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif;
+    padding: 1rem 2rem; border-radius: 100px; font-family: 'DM Sans', sans-serif;
     font-weight: 700; font-size: 1.1rem; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,92,147,0.3);
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(242,133,60,0.3);
   }
-  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255,92,147,0.4); }
+  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(242,133,60,0.4); }
   .cta-secondary { font-size: 0.9rem; color: var(--tan); text-decoration: none; font-weight: 600; }
   .cta-secondary:hover { color: var(--cocoa); }
 
   /* ─── DONATE ─── */
-  .donate-card { background: linear-gradient(135deg, rgba(232,184,75,0.1), rgba(255,92,147,0.06)); border: 1px solid rgba(232,184,75,0.2); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
+  .donate-card { background: linear-gradient(135deg, rgba(245,184,43,0.1), rgba(242,133,60,0.06)); border: 1px solid rgba(245,184,43,0.2); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
   .donate-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
   .donate-card p { color: var(--tan); max-width: 460px; margin: 0 auto 1.5rem; font-size: 0.98rem; }
-  .donate-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--cocoa); padding: 0.9rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(232,184,75,0.3); }
-  .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(232,184,75,0.4); }
+  .donate-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--cocoa); padding: 0.9rem 2rem; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(245,184,43,0.3); }
+  .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(245,184,43,0.4); }
 
   /* ─── FOOTER ─── */
   footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--tan); }
@@ -350,9 +353,9 @@
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="hero-badge">Built by a Dad &amp; his daughter and nieces + AI</div>
-  <h1>Build Your Kid's First Business Website/Dashboard With AI</h1>
-  <p class="hero-sub">A parent's guide to learning AI with your kids, by building something real together.</p>
+  <div class="hero-badge">&#x1F34B; The Modern Day Lemonade Stand</div>
+  <h1>The Lemonade Stand for the AI Era</h1>
+  <p class="hero-sub">AI can feel intimidating, especially as a parent. It doesn't have to be. This is a fun project you build together with your kids, no experience needed, that turns AI from something scary into something your whole family can create with.</p>
   <a href="#story" class="hero-cta" onclick="var s=document.getElementById('story'); if(s) s.classList.add('open');">See How We Did It &darr;</a>
   <div class="scroll-hint"><span>&darr;</span></div>
 </section>
@@ -377,7 +380,8 @@
 
     <p class="section-intro" style="margin-bottom: 0;">Your kid has something like this too. Maybe it's bracelets, 3D-printed figurines, stickers, or baked goods. <strong>Whatever they make, this guide shows you how to turn it into a real business you build together.</strong></p>
 
-    <p class="signature">Pete<span>Dad &amp; Founder of Clarity (<a href="https://www.instagram.com/getclarityservices" target="_blank" rel="noopener">@getclarityservices</a>)</span></p>
+    <p class="signature">Pete Cabrera<span>Dad and Founder of Clarity &middot; <a href="https://www.instagram.com/petecabrera" target="_blank" rel="noopener">@petecabrera</a></span></p>
+    <p class="signature-note">Pete is also the founder of <a href="https://getclarity.services" target="_blank" rel="noopener">Clarity</a>, an AI startup for the home services industry.</p>
   </div>
 </section>
 
@@ -391,37 +395,37 @@
     <p class="section-intro">I believe we'll each land in one of two camps: <strong>hyper consumers</strong>, who let technology happen to them, or <strong>hyper creators</strong>, who use it to build the things other people need and want. I want my kids to be creators. A project like this is where it starts. Here's what it teaches them:</p>
     <div class="card-grid">
       <div class="card">
-        <div class="card-icon" style="background: rgba(255,92,147,0.1);">&#x1F4B0;</div>
+        <div class="card-icon" style="background: rgba(242,133,60,0.1);">&#x1F4B0;</div>
         <h3>Business &amp; Finance</h3>
         <p>Pricing, profit margins, expenses, supply costs, revenue tracking. Not hypothetical, with real money and real customers.</p>
         <div class="sub">Your kid learns: "We made $45 but supplies cost $8, so profit is $37."</div>
       </div>
       <div class="card">
-        <div class="card-icon" style="background: rgba(77,124,245,0.1);">&#x1F916;</div>
+        <div class="card-icon" style="background: rgba(229,80,122,0.1);">&#x1F916;</div>
         <h3>AI Fluency</h3>
         <p>How to communicate with AI, write effective prompts, iterate on results, and know when to push back. This is the #1 skill of the next decade.</p>
         <div class="sub">Your kid learns: "If I describe it better, AI builds it better."</div>
       </div>
       <div class="card">
-        <div class="card-icon" style="background: rgba(30,201,201,0.1);">&#x1F3A8;</div>
+        <div class="card-icon" style="background: rgba(54,174,158,0.1);">&#x1F3A8;</div>
         <h3>Design &amp; Branding</h3>
         <p>Color theory, typography, logo design, user experience. Your kid picks the colors. They own the aesthetic. That's real design thinking.</p>
         <div class="sub">Your kid learns: Why brands look the way they do.</div>
       </div>
       <div class="card">
-        <div class="card-icon" style="background: rgba(232,184,75,0.1);">&#x1F4BB;</div>
+        <div class="card-icon" style="background: rgba(245,184,43,0.1);">&#x1F4BB;</div>
         <h3>Technology &amp; the Web</h3>
         <p>How websites actually work, what a <span class="tt" onclick="showTech('database')">database</span> is, what an <span class="tt" onclick="showTech('api')">API</span> does. Demystified through building, not studying.</p>
         <div class="sub">Your kid learns: "Our website reads from a database!"</div>
       </div>
       <div class="card">
-        <div class="card-icon" style="background: rgba(68,217,74,0.1);">&#x1F4E6;</div>
+        <div class="card-icon" style="background: rgba(82,187,142,0.1);">&#x1F4E6;</div>
         <h3>Operations &amp; Logistics</h3>
         <p>Inventory management, order fulfillment, shipping, customer communication. Running a business end-to-end.</p>
         <div class="sub">Your kid learns: The full journey from "order placed" to "package delivered."</div>
       </div>
       <div class="card">
-        <div class="card-icon" style="background: rgba(59,139,245,0.1);">&#x1F91D;</div>
+        <div class="card-icon" style="background: rgba(79,166,206,0.1);">&#x1F91D;</div>
         <h3>Confidence &amp; Ownership</h3>
         <p>This isn't a school assignment someone grades. They own the product, the brand, and the decisions. When it works, <em>they</em> did that.</p>
         <div class="sub">Your kid learns: "I built this and people want to buy it."</div>
@@ -499,42 +503,42 @@
     <p class="section-intro">No coding experience required. Seriously. <strong>Claude Code does the technical work for you</strong>, and any time you need to do something yourself, it walks you through it step by step, in plain English. Here's your toolkit. Tap the <span class="tt" onclick="showTech('claude-code')" style="font-size: 0.9rem;">highlighted terms</span> to learn what each one does:</p>
     <ul class="needs-list">
       <li>
-        <div class="needs-icon" style="background: rgba(77,124,245,0.1);">&#x1F4BB;</div>
+        <div class="needs-icon" style="background: rgba(229,80,122,0.1);">&#x1F4BB;</div>
         <div>
           <strong>A computer (Mac or PC)</strong>
           <span class="subtext">That's the only hardware you need. Everything happens inside <span class="tt" onclick="showTech('claude-code')">Claude Code</span>, which you talk to in plain English, like texting a friend who happens to be an expert builder.</span>
         </div>
       </li>
       <li>
-        <div class="needs-icon" style="background: rgba(255,92,147,0.1);">&#x2728;</div>
+        <div class="needs-icon" style="background: rgba(242,133,60,0.1);">&#x2728;</div>
         <div>
           <strong>Claude Code (by Anthropic)</strong>
           <span class="subtext">The AI that builds everything for you. You describe what you want in plain words, and it writes the code, creates the files, and handles the technical setup. It's a desktop app you download and sign into, no terminal or command line. Whenever something needs your input, it tells you exactly what to do. <strong>One thing to know: using Claude Code requires at least a Claude Pro plan ($20/month).</strong></span>
         </div>
       </li>
       <li>
-        <div class="needs-icon" style="background: rgba(30,201,201,0.1);">&#x1F5C4;</div>
+        <div class="needs-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;</div>
         <div>
           <strong><span class="tt" onclick="showTech('supabase')">Supabase</span> (free tier)</strong>
           <span class="subtext">Your database, where products, orders, customer info, and financial records are stored. Think of it as your business's filing cabinet, but one that your website can automatically read from and write to.</span>
         </div>
       </li>
       <li>
-        <div class="needs-icon" style="background: rgba(61,43,31,0.08);">&#x1F4BE;</div>
+        <div class="needs-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
         <div>
           <strong><span class="tt" onclick="showTech('github')">GitHub</span> (free)</strong>
           <span class="subtext">A free account where your project is safely saved online. Claude Code saves a new version every time you make a change, so nothing ever gets lost, and Vercel reads from it to keep your live site updated. You don't have to learn it, Claude Code does the saving for you.</span>
         </div>
       </li>
       <li>
-        <div class="needs-icon" style="background: rgba(59,139,245,0.1);">&#x1F680;</div>
+        <div class="needs-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
         <div>
           <strong><span class="tt" onclick="showTech('vercel')">Vercel</span> (free tier)</strong>
           <span class="subtext">This is what puts your site on the actual internet. You build it on your computer; Vercel makes it so anyone with the link can visit it, like uploading a video to YouTube, but for websites.</span>
         </div>
       </li>
       <li>
-        <div class="needs-icon" style="background: rgba(232,184,75,0.1);">&#x1F4F8;</div>
+        <div class="needs-icon" style="background: rgba(245,184,43,0.1);">&#x1F4F8;</div>
         <div>
           <strong>Photos of your kid's product</strong>
           <span class="subtext">Snap some photos on your phone and use them as they are. If you want a more polished look later, there's an optional (paid) tool that removes the backgrounds for you. Let your kid arrange the products, it's their first product photography shoot.</span>
@@ -567,7 +571,7 @@
 
     <div class="prompt-note">
       <span style="font-size: 1.2rem; flex-shrink:0;">&#x1F4A1;</span>
-      <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">blue highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
+      <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
     </div>
 
     <div class="journey">
@@ -577,7 +581,7 @@
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Set Up Your Workspace</h3>
-            <div class="step-tag" style="background: rgba(61,43,31,0.08); color: var(--cocoa);">1&ndash;2 hours</div>
+            <div class="step-tag" style="background: rgba(56,42,29,0.08); color: var(--cocoa);">1&ndash;2 hours</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -647,7 +651,7 @@ Finally, set up version control: initialize git, add a .gitignore so my secrets 
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Start With Your Kid's Idea</h3>
-            <div class="step-tag" style="background: rgba(255,92,147,0.1); color: var(--pink);">30 min</div>
+            <div class="step-tag" style="background: rgba(242,133,60,0.1); color: var(--pink);">30 min</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -674,7 +678,7 @@ Finally, set up version control: initialize git, add a .gitignore so my secrets 
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Create Your Brand Kit</h3>
-            <div class="step-tag" style="background: rgba(255,107,43,0.1); color: var(--orange);">1 hour</div>
+            <div class="step-tag" style="background: rgba(242,165,46,0.1); color: var(--orange);">1 hour</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -719,7 +723,7 @@ Build everything as an interactive HTML page I can preview in my browser, show t
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Set Up Your Database</h3>
-            <div class="step-tag" style="background: rgba(232,184,75,0.1); color: var(--gold);">1 hour</div>
+            <div class="step-tag" style="background: rgba(245,184,43,0.1); color: var(--gold);">1 hour</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -778,7 +782,7 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Build the Storefront</h3>
-            <div class="step-tag" style="background: rgba(68,217,74,0.1); color: var(--green);">2&ndash;3 hours</div>
+            <div class="step-tag" style="background: rgba(82,187,142,0.1); color: var(--green);">2&ndash;3 hours</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -830,7 +834,7 @@ Technical requirements:
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Build the Business Dashboard</h3>
-            <div class="step-tag" style="background: rgba(30,201,201,0.1); color: var(--teal);">2&ndash;3 hours</div>
+            <div class="step-tag" style="background: rgba(54,174,158,0.1); color: var(--teal);">2&ndash;3 hours</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -887,7 +891,7 @@ Technical:
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Connect Email &amp; Upload Photos</h3>
-            <div class="step-tag" style="background: rgba(59,139,245,0.1); color: var(--blue);">1&ndash;2 hours</div>
+            <div class="step-tag" style="background: rgba(79,166,206,0.1); color: var(--blue);">1&ndash;2 hours</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -946,7 +950,7 @@ Product photos must upload and display fine on their own, with their original ba
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Go Live!</h3>
-            <div class="step-tag" style="background: rgba(77,124,245,0.1); color: var(--grape);">1 hour</div>
+            <div class="step-tag" style="background: rgba(229,80,122,0.1); color: var(--grape);">1 hour</div>
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
@@ -1065,35 +1069,35 @@ Product photos must upload and display fine on their own, with their original ba
     <p class="section-intro">You don't need to master these, Claude Code handles all of it. But understanding what they are will make you more confident in every project after this one. Tap any card to learn more.</p>
     <div class="stack-grid">
       <div class="stack-card" onclick="showTech('claude-code')">
-        <div class="stack-icon" style="background: rgba(77,124,245,0.1);">&#x2728;</div>
+        <div class="stack-icon" style="background: rgba(229,80,122,0.1);">&#x2728;</div>
         <div><strong>Claude Code</strong><div class="stack-role">Your AI programmer</div><div class="stack-analogy">Like a translator between your ideas and code</div></div>
       </div>
       <div class="stack-card" onclick="showTech('nextjs')">
-        <div class="stack-icon" style="background: rgba(61,43,31,0.08);">&#x25B2;</div>
+        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x25B2;</div>
         <div><strong>Next.js</strong><div class="stack-role">Website framework</div><div class="stack-analogy">The blueprint system for your site</div></div>
       </div>
       <div class="stack-card" onclick="showTech('supabase')">
-        <div class="stack-icon" style="background: rgba(30,201,201,0.1);">&#x1F5C4;</div>
+        <div class="stack-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;</div>
         <div><strong>Supabase</strong><div class="stack-role">Database, auth &amp; storage</div><div class="stack-analogy">A smart spreadsheet on the internet</div></div>
       </div>
       <div class="stack-card" onclick="showTech('vercel')">
-        <div class="stack-icon" style="background: rgba(59,139,245,0.1);">&#x1F680;</div>
+        <div class="stack-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
         <div><strong>Vercel</strong><div class="stack-role">Hosting &amp; deployment</div><div class="stack-analogy">Your website's address on the internet</div></div>
       </div>
       <div class="stack-card" onclick="showTech('resend')">
-        <div class="stack-icon" style="background: rgba(255,92,147,0.1);">&#x2709;</div>
+        <div class="stack-icon" style="background: rgba(242,133,60,0.1);">&#x2709;</div>
         <div><strong>Resend</strong><div class="stack-role">Email delivery service</div><div class="stack-analogy">A digital post office that delivers your emails</div></div>
       </div>
       <div class="stack-card" onclick="showTech('removebg')">
-        <div class="stack-icon" style="background: rgba(232,184,75,0.1);">&#x1F5BC;</div>
+        <div class="stack-icon" style="background: rgba(245,184,43,0.1);">&#x1F5BC;</div>
         <div><strong>remove.bg</strong><div class="stack-role">Optional photo cleanup</div><div class="stack-analogy">Automatic Photoshop for product photos</div></div>
       </div>
       <div class="stack-card" onclick="showTech('tailwind')">
-        <div class="stack-icon" style="background: rgba(68,217,74,0.1);">&#x1F3A8;</div>
+        <div class="stack-icon" style="background: rgba(82,187,142,0.1);">&#x1F3A8;</div>
         <div><strong>Tailwind CSS</strong><div class="stack-role">Design &amp; styling</div><div class="stack-analogy">Design LEGO bricks Claude snaps together</div></div>
       </div>
       <div class="stack-card" onclick="showTech('github')">
-        <div class="stack-icon" style="background: rgba(61,43,31,0.08);">&#x1F4BE;</div>
+        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
         <div><strong>GitHub</strong><div class="stack-role">Code storage &amp; version history</div><div class="stack-analogy">Google Docs "version history" for your project</div></div>
       </div>
     </div>
@@ -1251,8 +1255,8 @@ const terms = {
   },
   'what-are-terms': {
     name: 'Learning the Vocabulary',
-    analogy: 'Every blue word is a learning opportunity.',
-    body: 'Throughout this guide, technical terms are highlighted in blue. Tap any of them to see a plain-English explanation with an analogy to help it stick. You don\'t need to memorize these, Claude Code handles the technical details. But over time, as you hear these words in prompts and see them in action, they\'ll start to click. That\'s the real magic of building something: you absorb the vocabulary by doing, not studying.'
+    analogy: 'Every highlighted word is a learning opportunity.',
+    body: 'Throughout this guide, technical terms are highlighted and underlined. Tap any of them to see a plain-English explanation with an analogy to help it stick. You don\'t need to memorize these, Claude Code handles the technical details. But over time, as you hear these words in prompts and see them in action, they\'ll start to click. That\'s the real magic of building something: you absorb the vocabulary by doing, not studying.'
   }
 };
 

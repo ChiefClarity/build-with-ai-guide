@@ -6,18 +6,18 @@
 <title>Golden Stems Dashboard, Demo Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --pink: #FF5C93; --orange: #FF6B2B; --lime: #B8E62E; --green: #44D94A;
-    --teal: #1EC9C9; --blue: #3B8BF5; --grape: #4D7CF5; --gold: #E8B84B;
-    --cocoa: #3D2B1F; --tan: #9B7D5A; --cream: #FFFAF2; --white: #FFFDF9;
+    --pink: #f2853c; --orange: #f2a52e; --lime: #c3cc4b; --green: #52bb8e;
+    --teal: #36ae9e; --blue: #4fa6ce; --grape: #e5507a; --gold: #f5b82b;
+    --cocoa: #382a1d; --tan: #9a8063; --cream: #fcf6e9; --white: #fffdf6;
     --sidebar-w: 220px;
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Poppins', sans-serif; background: #f5f0ea; color: var(--cocoa); line-height: 1.5; -webkit-font-smoothing: antialiased; }
-  h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+  body { font-family: 'DM Sans', sans-serif; background: #f4ede0; color: var(--cocoa); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5 { font-family: 'Fraunces', serif; font-weight: 700; line-height: 1.2; }
 
   /* Demo banner */
   .demo-banner {
@@ -48,7 +48,7 @@
   }
   .sidebar-logo {
     padding: 0 1.25rem 1.25rem;
-    border-bottom: 1px solid rgba(255,250,242,0.1);
+    border-bottom: 1px solid rgba(252,246,233,0.1);
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
@@ -64,7 +64,7 @@
     justify-content: center;
     font-size: 1rem;
   }
-  .sidebar-logo span { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; }
+  .sidebar-logo span { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; }
   .nav-item {
     display: flex;
     align-items: center;
@@ -73,7 +73,7 @@
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(255,250,242,0.6);
+    color: rgba(252,246,233,0.6);
     transition: all 0.2s;
     border: none;
     background: none;
@@ -81,10 +81,10 @@
     text-align: left;
     font-family: inherit;
   }
-  .nav-item:hover { color: var(--cream); background: rgba(255,250,242,0.05); }
-  .nav-item.active { color: var(--gold); background: rgba(232,184,75,0.1); border-right: 3px solid var(--gold); }
+  .nav-item:hover { color: var(--cream); background: rgba(252,246,233,0.05); }
+  .nav-item.active { color: var(--gold); background: rgba(245,184,43,0.1); border-right: 3px solid var(--gold); }
   .nav-icon { width: 18px; text-align: center; font-size: 0.95rem; }
-  .sidebar-footer { margin-top: auto; padding: 1rem 1.25rem; font-size: 0.75rem; color: rgba(255,250,242,0.3); }
+  .sidebar-footer { margin-top: auto; padding: 1rem 1.25rem; font-size: 0.75rem; color: rgba(252,246,233,0.3); }
 
   /* Main */
   .main { flex: 1; padding: 1.5rem 2rem; overflow-y: auto; max-height: calc(100svh - 40px); }
@@ -96,11 +96,11 @@
     background: var(--white);
     border-radius: 12px;
     padding: 1.25rem;
-    border: 1px solid rgba(61,43,31,0.06);
-    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+    border: 1px solid rgba(56,42,29,0.06);
+    box-shadow: 0 1px 4px rgba(56,42,29,0.04);
   }
   .stat-label { font-size: 0.75rem; font-weight: 600; color: var(--tan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
-  .stat-value { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.5rem; }
+  .stat-value { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.5rem; }
   .stat-change { font-size: 0.75rem; margin-top: 0.25rem; }
   .stat-change.up { color: var(--green); }
   .stat-change.down { color: var(--pink); }
@@ -110,9 +110,9 @@
     background: var(--white);
     border-radius: 12px;
     padding: 1.25rem;
-    border: 1px solid rgba(61,43,31,0.06);
+    border: 1px solid rgba(56,42,29,0.06);
     margin-bottom: 1.5rem;
-    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+    box-shadow: 0 1px 4px rgba(56,42,29,0.04);
   }
   .chart-card h3 { font-size: 1rem; margin-bottom: 1rem; }
   .chart-svg { width: 100%; height: 200px; }
@@ -122,18 +122,18 @@
   .table-card {
     background: var(--white);
     border-radius: 12px;
-    border: 1px solid rgba(61,43,31,0.06);
+    border: 1px solid rgba(56,42,29,0.06);
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+    box-shadow: 0 1px 4px rgba(56,42,29,0.04);
     margin-bottom: 1.5rem;
   }
-  .table-header { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(61,43,31,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .table-header { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(56,42,29,0.06); display: flex; justify-content: space-between; align-items: center; }
   .table-header h3 { font-size: 1rem; }
   table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  th { text-align: left; padding: 0.75rem 1rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tan); border-bottom: 1px solid rgba(61,43,31,0.06); }
-  td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(61,43,31,0.03); }
+  th { text-align: left; padding: 0.75rem 1rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tan); border-bottom: 1px solid rgba(56,42,29,0.06); }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(56,42,29,0.03); }
   tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,250,242,0.5); }
+  tr:hover td { background: rgba(252,246,233,0.5); }
 
   /* Badges */
   .badge {
@@ -145,23 +145,23 @@
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
-  .badge-paid { background: rgba(68,217,74,0.1); color: var(--green); }
-  .badge-packing { background: rgba(255,107,43,0.1); color: var(--orange); }
-  .badge-shipped { background: rgba(59,139,245,0.1); color: var(--blue); }
-  .badge-delivered { background: rgba(77,124,245,0.1); color: var(--grape); }
-  .badge-pending { background: rgba(232,184,75,0.1); color: var(--gold); }
-  .badge-available { background: rgba(68,217,74,0.1); color: var(--green); }
-  .badge-reserved { background: rgba(255,107,43,0.1); color: var(--orange); }
-  .badge-sold { background: rgba(77,124,245,0.1); color: var(--grape); }
+  .badge-paid { background: rgba(82,187,142,0.1); color: var(--green); }
+  .badge-packing { background: rgba(242,165,46,0.1); color: var(--orange); }
+  .badge-shipped { background: rgba(79,166,206,0.1); color: var(--blue); }
+  .badge-delivered { background: rgba(229,80,122,0.1); color: var(--grape); }
+  .badge-pending { background: rgba(245,184,43,0.1); color: var(--gold); }
+  .badge-available { background: rgba(82,187,142,0.1); color: var(--green); }
+  .badge-reserved { background: rgba(242,165,46,0.1); color: var(--orange); }
+  .badge-sold { background: rgba(229,80,122,0.1); color: var(--grape); }
 
   /* Inventory grid */
   .inventory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
   .pumpkin-card {
     background: var(--white);
     border-radius: 12px;
-    border: 1px solid rgba(61,43,31,0.06);
+    border: 1px solid rgba(56,42,29,0.06);
     overflow: hidden;
-    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+    box-shadow: 0 1px 4px rgba(56,42,29,0.04);
   }
   .pumpkin-photo {
     width: 100%;
@@ -182,14 +182,14 @@
     background: var(--white);
     border-radius: 12px;
     padding: 1.25rem;
-    border: 1px solid rgba(61,43,31,0.06);
+    border: 1px solid rgba(56,42,29,0.06);
     text-align: center;
   }
-  .finance-value { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.75rem; margin: 0.25rem 0; }
+  .finance-value { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.75rem; margin: 0.25rem 0; }
   .finance-label { font-size: 0.75rem; color: var(--tan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
   /* Payout table */
-  .payout-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(61,43,31,0.04); }
+  .payout-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(56,42,29,0.04); }
   .payout-row:last-child { border-bottom: none; }
   .payout-avatar {
     width: 32px; height: 32px; border-radius: 50%;
@@ -197,7 +197,7 @@
     font-size: 0.85rem; font-weight: 700; color: white;
   }
   .payout-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
-  .payout-amount { font-family: 'Poppins', sans-serif; font-weight: 700; }
+  .payout-amount { font-family: 'DM Sans', sans-serif; font-weight: 700; }
 
   /* Tab content */
   .tab-content { display: none; }
@@ -232,7 +232,7 @@
       padding: 0.75rem 1rem;
       background: none;
       border: none;
-      color: rgba(255,250,242,0.6);
+      color: rgba(252,246,233,0.6);
       font-family: inherit;
       font-size: 0.8rem;
       font-weight: 600;
@@ -334,30 +334,30 @@
       <div class="chart-card">
         <h3>Revenue This Month</h3>
         <svg class="chart-svg" viewBox="0 0 600 200">
-          <rect x="20" y="160" width="560" height="1" fill="rgba(61,43,31,0.08)"/>
-          <rect x="20" y="120" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
-          <rect x="20" y="80" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
-          <rect x="20" y="40" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
-          <text x="0" y="164" fill="#9B7D5A" font-size="10" font-family='Poppins'>$0</text>
-          <text x="0" y="124" fill="#9B7D5A" font-size="10" font-family='Poppins'>$50</text>
-          <text x="0" y="84" fill="#9B7D5A" font-size="10" font-family='Poppins'>$100</text>
-          <text x="0" y="44" fill="#9B7D5A" font-size="10" font-family='Poppins'>$150</text>
-          <rect class="chart-bar" x="40" y="130" width="50" height="30" fill="#FF5C93" opacity="0.7"/>
-          <rect class="chart-bar" x="110" y="100" width="50" height="60" fill="#FF6B2B" opacity="0.7"/>
-          <rect class="chart-bar" x="180" y="80" width="50" height="80" fill="#E8B84B" opacity="0.7"/>
-          <rect class="chart-bar" x="250" y="60" width="50" height="100" fill="#44D94A" opacity="0.7"/>
-          <rect class="chart-bar" x="320" y="90" width="50" height="70" fill="#1EC9C9" opacity="0.7"/>
-          <rect class="chart-bar" x="390" y="45" width="50" height="115" fill="#3B8BF5" opacity="0.7"/>
-          <rect class="chart-bar" x="460" y="35" width="50" height="125" fill="#4D7CF5" opacity="0.7"/>
-          <rect class="chart-bar" x="530" y="55" width="50" height="105" fill="#FF69B4" opacity="0.7"/>
-          <text x="52" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W1</text>
-          <text x="122" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W2</text>
-          <text x="192" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W3</text>
-          <text x="262" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W4</text>
-          <text x="332" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W5</text>
-          <text x="402" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W6</text>
-          <text x="472" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W7</text>
-          <text x="542" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W8</text>
+          <rect x="20" y="160" width="560" height="1" fill="rgba(56,42,29,0.08)"/>
+          <rect x="20" y="120" width="560" height="1" fill="rgba(56,42,29,0.04)"/>
+          <rect x="20" y="80" width="560" height="1" fill="rgba(56,42,29,0.04)"/>
+          <rect x="20" y="40" width="560" height="1" fill="rgba(56,42,29,0.04)"/>
+          <text x="0" y="164" fill="#9a8063" font-size="10" font-family='DM Sans'>$0</text>
+          <text x="0" y="124" fill="#9a8063" font-size="10" font-family='DM Sans'>$50</text>
+          <text x="0" y="84" fill="#9a8063" font-size="10" font-family='DM Sans'>$100</text>
+          <text x="0" y="44" fill="#9a8063" font-size="10" font-family='DM Sans'>$150</text>
+          <rect class="chart-bar" x="40" y="130" width="50" height="30" fill="#f2853c" opacity="0.7"/>
+          <rect class="chart-bar" x="110" y="100" width="50" height="60" fill="#f2a52e" opacity="0.7"/>
+          <rect class="chart-bar" x="180" y="80" width="50" height="80" fill="#f5b82b" opacity="0.7"/>
+          <rect class="chart-bar" x="250" y="60" width="50" height="100" fill="#52bb8e" opacity="0.7"/>
+          <rect class="chart-bar" x="320" y="90" width="50" height="70" fill="#36ae9e" opacity="0.7"/>
+          <rect class="chart-bar" x="390" y="45" width="50" height="115" fill="#4fa6ce" opacity="0.7"/>
+          <rect class="chart-bar" x="460" y="35" width="50" height="125" fill="#e5507a" opacity="0.7"/>
+          <rect class="chart-bar" x="530" y="55" width="50" height="105" fill="#ee6f92" opacity="0.7"/>
+          <text x="52" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W1</text>
+          <text x="122" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W2</text>
+          <text x="192" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W3</text>
+          <text x="262" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W4</text>
+          <text x="332" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W5</text>
+          <text x="402" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W6</text>
+          <text x="472" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W7</text>
+          <text x="542" y="175" fill="#9a8063" font-size="9" font-family='DM Sans' text-anchor="middle">W8</text>
         </svg>
       </div>
 
