@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Kid's First Business With AI</title>
+<meta name="description" content="A step-by-step guide for parents: how to use AI to help your kids build a real online business this summer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --pink: #FF5C93; --orange: #FF6B2B; --lime: #B8E62E; --green: #44D94A;
+    --teal: #1EC9C9; --blue: #3B8BF5; --grape: #4D7CF5; --bubblegum: #FF69B4;
+    --gold: #E8B84B; --cocoa: #3D2B1F; --tan: #9B7D5A; --cream: #FFFAF2; --white: #FFFDF9;
+    --radius: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--cocoa); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 2rem 1.5rem; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--cream) 0%, #fff5e6 50%, #fce8f0 100%);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(circle at 15% 20%, rgba(255,92,147,0.12) 0%, transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(77,124,245,0.10) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgba(184,230,46,0.10) 0%, transparent 40%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,92,147,0.2); padding: 0.5rem 1.25rem;
+    border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--pink);
+    margin-bottom: 1.5rem; letter-spacing: 0.02em;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 7vw, 3.5rem); max-width: 700px; margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--cocoa) 0%, var(--pink) 50%, var(--grape) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub { font-size: clamp(1rem, 3vw, 1.25rem); max-width: 540px; color: var(--tan); margin-bottom: 2rem; font-weight: 500; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, var(--pink), var(--grape)); color: white;
+    padding: 1rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif;
+    font-weight: 700; font-size: 1.1rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,92,147,0.3);
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255,92,147,0.4); }
+  .scroll-hint { position: absolute; bottom: 2rem; animation: bounce 2s infinite; color: var(--tan); opacity: 0.6; font-size: 0.85rem; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  /* ─── SECTIONS ─── */
+  .section { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem; }
+  .section-label { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grape); margin-bottom: 0.75rem; }
+  .section h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin-bottom: 1rem; }
+  .section-intro { font-size: 1.1rem; color: var(--tan); margin-bottom: 1.5rem; max-width: 600px; }
+
+  /* ─── COLLAPSIBLE SECTIONS ─── */
+  .section.sec-collapse { padding-top: 1.5rem; padding-bottom: 1.5rem; border-top: 1px solid rgba(61,43,31,0.08); }
+  .sec-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .sec-head-main { flex: 1; }
+  .sec-head .section-label { margin-bottom: 0.35rem; }
+  .sec-head h2 { margin-bottom: 0; }
+  .sec-chev { flex-shrink: 0; color: var(--grape); font-size: 1.4rem; line-height: 1; transition: transform 0.3s ease; }
+  .section.sec-collapse.open .sec-chev { transform: rotate(180deg); }
+  .sec-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+  .section.sec-collapse.open .sec-body { grid-template-rows: 1fr; }
+  .sec-body > .sec-inner { overflow: hidden; min-height: 0; }
+  .sec-pad { padding-top: 1.25rem; }
+  .divider { width: 60px; height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--pink), var(--grape)); margin: 0 0 1.5rem; }
+  .signature { font-family: 'Poppins', sans-serif; font-weight: 700; color: var(--cocoa); font-size: 1.15rem; margin-top: 1.5rem; }
+  .signature span { display: block; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.85rem; color: var(--tan); margin-top: 0.15rem; }
+  .signature a { color: var(--pink); text-decoration: none; border-bottom: 1px solid rgba(255,92,147,0.3); }
+  .signature a:hover { border-bottom-color: var(--pink); }
+
+  /* ─── CARDS ─── */
+  .card-grid { display: grid; gap: 1rem; }
+  .card {
+    background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+    transition: transform 0.2s;
+  }
+  .card:hover { transform: translateY(-2px); }
+  .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+  .card p, .card .sub { font-size: 0.95rem; color: var(--tan); }
+  .card .sub { font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
+
+  /* ─── TECH TERMS ─── */
+  .tt { cursor: pointer; color: var(--grape); font-weight: 600; border-bottom: 2px dotted rgba(77,124,245,0.4); transition: background 0.15s; }
+  .tt:hover, .tt:active { background: rgba(77,124,245,0.08); border-radius: 3px; }
+  .tech-overlay {
+    position: fixed; inset: 0; background: rgba(61,43,31,0.4); z-index: 1000;
+    display: flex; align-items: flex-end; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .tech-overlay.active { opacity: 1; pointer-events: all; }
+  .tech-sheet {
+    background: var(--white); border-radius: 20px 20px 0 0; padding: 1.5rem 1.5rem 2rem;
+    max-width: 720px; width: 100%; transform: translateY(100%); transition: transform 0.3s ease;
+    box-shadow: 0 -4px 32px rgba(61,43,31,0.15);
+  }
+  .tech-overlay.active .tech-sheet { transform: translateY(0); }
+  .tech-sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .tech-sheet h4 { font-size: 1.15rem; color: var(--grape); }
+  .tech-sheet-close {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--cream);
+    border: none; font-size: 1.2rem; cursor: pointer; display: flex;
+    align-items: center; justify-content: center; color: var(--tan);
+  }
+  .tech-analogy { color: var(--pink); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .tech-body { color: var(--tan); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ─── WHAT YOU NEED ─── */
+  .needs-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .needs-list li {
+    background: var(--white); border-radius: 12px; padding: 1rem 1.25rem;
+    border: 1px solid rgba(61,43,31,0.06); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem;
+  }
+  .needs-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .needs-list strong { display: block; margin-bottom: 0.15rem; }
+  .needs-list .subtext { color: var(--tan); font-size: 0.85rem; }
+  .cost-note {
+    margin-top: 1.5rem; background: linear-gradient(135deg, rgba(184,230,46,0.12), rgba(68,217,74,0.08));
+    border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.9rem;
+    display: flex; align-items: flex-start; gap: 0.75rem; border: 1px solid rgba(68,217,74,0.15);
+  }
+
+  /* ─── PRODUCT IDEAS ─── */
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin-top: 1rem; }
+  .product-idea {
+    background: var(--white); border-radius: 12px; padding: 1rem; text-align: center;
+    border: 1px solid rgba(61,43,31,0.06); transition: transform 0.2s;
+  }
+  .product-idea:hover { transform: translateY(-2px); }
+  .idea-emoji { font-size: 2rem; margin-bottom: 0.35rem; }
+  .product-idea h4 { font-size: 0.85rem; margin-bottom: 0.1rem; }
+  .product-idea p { font-size: 0.75rem; color: var(--tan); }
+
+  /* ─── JOURNEY ─── */
+  .timeline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+  .timeline-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(61,43,31,0.06); text-align: center; }
+  .timeline-card .number { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.75rem; background: linear-gradient(135deg, var(--blue), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .timeline-card .label { font-size: 0.8rem; color: var(--tan); font-weight: 600; }
+
+  .prompt-note {
+    background: rgba(77,124,245,0.06); border-radius: 10px; padding: 1rem 1.25rem;
+    margin-bottom: 2rem; border: 1px solid rgba(77,124,245,0.1); font-size: 0.9rem;
+    color: var(--tan); display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+
+  .journey { position: relative; }
+  .journey::before {
+    content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--pink), var(--orange), var(--gold), var(--lime), var(--green), var(--teal), var(--blue), var(--grape));
+    border-radius: 3px;
+  }
+  .step { position: relative; padding-left: 64px; margin-bottom: 2rem; }
+  .step-number {
+    position: absolute; left: 8px; top: 0; width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.9rem; color: white; z-index: 1;
+  }
+  .step-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+    overflow: hidden; transition: transform 0.2s;
+  }
+  .step-card:hover { transform: translateY(-2px); }
+  .step-header {
+    padding: 1.25rem 1.5rem; cursor: pointer; display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; user-select: none; -webkit-tap-highlight-color: transparent;
+  }
+  .step-header h3 { font-size: 1.05rem; flex: 1; }
+  .step-tag { flex-shrink: 0; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.3rem 0.6rem; border-radius: 6px; white-space: nowrap; }
+  .step-toggle { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; transition: transform 0.3s; font-size: 0.8rem; color: var(--tan); }
+  .step.open .step-toggle { transform: rotate(180deg); }
+  .step-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+  .step.open .step-body { max-height: 5000px; }
+  .step-content { padding: 0 1.5rem 1.5rem; border-top: 1px solid rgba(61,43,31,0.06); }
+  .step-content p { margin-top: 1rem; font-size: 0.95rem; color: var(--tan); }
+  .step-content p strong { color: var(--cocoa); }
+
+  /* Prompt boxes */
+  .prompt-box {
+    margin-top: 1rem; background: var(--cocoa); color: #e8ddd0; border-radius: 10px;
+    padding: 1rem 1.25rem; font-size: 0.9rem; line-height: 1.6; position: relative;
+  }
+  .prompt-box .prompt-label {
+    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .copy-btn {
+    background: rgba(232,184,75,0.2); border: none; color: var(--gold);
+    padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.7rem;
+    font-weight: 700; cursor: pointer; font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.05em; transition: background 0.2s;
+  }
+  .copy-btn:hover { background: rgba(232,184,75,0.35); }
+
+  /* Result boxes */
+  .what-happens {
+    margin-top: 1rem; background: rgba(77,124,245,0.06); border-radius: 10px;
+    padding: 1rem 1.25rem; border: 1px solid rgba(77,124,245,0.1);
+  }
+  .what-happens::before {
+    content: 'What Claude builds for you'; display: block;
+    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--grape); margin-bottom: 0.5rem;
+  }
+  .what-happens ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+  .what-happens li { font-size: 0.9rem; padding-left: 1.25rem; position: relative; color: var(--cocoa); }
+  .what-happens li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  /* Learn together box */
+  .learn-together {
+    margin-top: 1rem; background: linear-gradient(135deg, rgba(232,184,75,0.08), rgba(255,92,147,0.05));
+    border-radius: 10px; padding: 1rem 1.25rem; border: 1px solid rgba(232,184,75,0.15);
+  }
+  .learn-together::before {
+    content: "What You'll Learn"; display: block;
+    font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .learn-together ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .learn-together li { font-size: 0.9rem; padding-left: 1.5rem; position: relative; color: var(--cocoa); }
+  .learn-together li::before { content: '\2713'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+  /* ─── SHOWCASE ─── */
+  .showcase-grid { display: grid; gap: 1rem; margin-top: 1.5rem; }
+  .showcase-card {
+    background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+    border: 1px solid rgba(61,43,31,0.06); box-shadow: 0 2px 12px rgba(61,43,31,0.04);
+  }
+  .showcase-card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
+  .showcase-card .showcase-sub { font-size: 0.85rem; color: var(--tan); margin-bottom: 0.75rem; }
+  .showcase-features { list-style: none; margin-bottom: 1rem; }
+  .showcase-features li { font-size: 0.85rem; padding: 0.25rem 0 0.25rem 1.25rem; position: relative; color: var(--cocoa); }
+  .showcase-features li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .showcase-link {
+    display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;
+    font-family: 'Poppins', sans-serif; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;
+  }
+  .showcase-link:hover { transform: translateX(4px); }
+
+  /* ─── SKILLS ─── */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
+  .skill-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 1px solid rgba(61,43,31,0.06); text-align: center; }
+  .skill-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+  .skill-card h4 { font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .skill-card p { font-size: 0.8rem; color: var(--tan); }
+
+  /* ─── TECH STACK ─── */
+  .stack-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 1rem; }
+  .stack-card {
+    background: var(--white); border-radius: 12px; padding: 1rem 1.25rem;
+    border: 1px solid rgba(61,43,31,0.06); display: flex; align-items: flex-start; gap: 0.75rem;
+    cursor: pointer; transition: transform 0.2s;
+  }
+  .stack-card:hover { transform: translateY(-2px); }
+  .stack-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .stack-card strong { font-size: 0.9rem; display: block; }
+  .stack-card .stack-role { font-size: 0.8rem; color: var(--tan); }
+  .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
+
+  /* ─── COMING NEXT ─── */
+  .coming-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+  .coming-item {
+    background: var(--white); border-radius: 10px; padding: 0.75rem 1rem;
+    border: 1px solid rgba(61,43,31,0.06); font-size: 0.9rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .coming-badge {
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    padding: 0.2rem 0.5rem; border-radius: 4px; background: rgba(77,124,245,0.1);
+    color: var(--grape); white-space: nowrap;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section { background: linear-gradient(135deg, #fff5e6, #fce8f0, #e6efff); padding: 4rem 1.5rem; text-align: center; }
+  .cta-section h2 { font-size: clamp(1.5rem, 5vw, 2.25rem); margin-bottom: 0.75rem; }
+  .cta-section p { max-width: 500px; margin: 0 auto 2rem; color: var(--tan); font-size: 1.05rem; }
+  .cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .cta-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, var(--pink), var(--grape)); color: white;
+    padding: 1rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif;
+    font-weight: 700; font-size: 1.1rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(255,92,147,0.3);
+  }
+  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255,92,147,0.4); }
+  .cta-secondary { font-size: 0.9rem; color: var(--tan); text-decoration: none; font-weight: 600; }
+  .cta-secondary:hover { color: var(--cocoa); }
+
+  /* ─── DONATE ─── */
+  .donate-card { background: linear-gradient(135deg, rgba(232,184,75,0.1), rgba(255,92,147,0.06)); border: 1px solid rgba(232,184,75,0.2); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; }
+  .donate-card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+  .donate-card p { color: var(--tan); max-width: 460px; margin: 0 auto 1.5rem; font-size: 0.98rem; }
+  .donate-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--cocoa); padding: 0.9rem 2rem; border-radius: 100px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 18px rgba(232,184,75,0.3); }
+  .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(232,184,75,0.4); }
+
+  /* ─── FOOTER ─── */
+  footer { text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--tan); }
+  footer a { color: var(--pink); text-decoration: none; font-weight: 600; }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  /* Tablet */
+  @media (min-width: 600px) {
+    .card-grid { grid-template-columns: 1fr 1fr; }
+    .showcase-grid { grid-template-columns: 1fr 1fr; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
+    .journey::before { left: 28px; }
+    .step { padding-left: 76px; }
+    .step-number { left: 10px; width: 40px; height: 40px; font-size: 1rem; }
+  }
+  /* Desktop */
+  @media (min-width: 900px) {
+    .section { max-width: 860px; }
+    .hero h1 { font-size: 3.5rem; }
+    .prompt-box { font-size: 0.92rem; padding: 1.25rem 1.5rem; }
+    .step-content { padding: 0 2rem 2rem; }
+    .step-header { padding: 1.5rem 2rem; }
+    .card-grid { gap: 1.25rem; }
+    .skills-grid { grid-template-columns: repeat(4, 1fr); }
+    .product-grid { grid-template-columns: repeat(5, 1fr); }
+    .stack-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .timeline-grid { grid-template-columns: repeat(4, 1fr); }
+    .tech-sheet { max-width: 560px; border-radius: 16px; margin-bottom: 10vh; }
+  }
+  /* Small mobile */
+  @media (max-width: 450px) {
+    .timeline-grid, .skills-grid { grid-template-columns: 1fr; }
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-badge">Built by a dad &amp; his 3 girls + AI</div>
+  <h1>Build Your Kid's First Business Website With AI</h1>
+  <p class="hero-sub">A parent's guide to learning AI with your kids, by building something real together.</p>
+  <a href="#story" class="hero-cta">See How We Did It &darr;</a>
+  <div class="scroll-hint"><span>&darr;</span></div>
+</section>
+
+<!-- ═══════════ THE STORY ═══════════ -->
+<section class="section" id="story">
+  <div class="fade-in">
+    <div class="section-label">The Story</div>
+    <h2>It Started With Pipe Cleaners</h2>
+    <div class="divider"></div>
+    <p class="section-intro">My daughter Amilia (9) and her cousins Siena (10) and Ella (7) started making pumpkins out of pipe cleaners. One day I found them making little signs and trying to sell those pumpkins out of the front window of our house as people walked by. The opportunity just hit me: let's teach them to build something with AI to market and manage their little business the modern way. So we sat down together and built them a real business, website, dashboard, and all.</p>
+
+    <p class="section-intro">But let me back up. A few years ago I left the corporate world and bought a small Main Street business. To modernize it, I spent the next two and a half years learning everything I possibly could about AI, and that obsession eventually became <strong>Clarity</strong>, an AI-native startup I founded for the home services industry. I'm not an engineer. I'm just a dad who refused to let this technology pass him by.</p>
+
+    <p class="section-intro">That whole journey, learning to operate a business, learning to build with AI myself, then working alongside a professional dev team to build Clarity, completely changed how I see what's coming. AI is about to confront the world with a major paradigm shift, and I believe this journey has <em>prepared</em> me for it. But the part that means the most to me is this: I get to pass this knowledge and these skills on to my kids. They'll grow up with AI as a normal part of life, but they won't learn how to truly use it in school. I believe it's on us, as parents, to teach them, but we have to embrace it ourselves first. And it matters more than you might think.</p>
+
+    <p class="section-intro">So I made this for the parents who feel concerned, confused, or even a little afraid of AI. I want to show you it doesn't have to be intimidating, that there's so much more to it than the free version of ChatGPT, and that even if you've never written a line of code, you can learn to use it, and teach your kids to use it too.</p>
+
+    <p class="section-intro">Here's how we did it: I used <span class="tt" onclick="showTech('claude-code')">Claude Code</span>, an AI tool you talk to in plain English, and it wrote all the code. <strong>The girls were right next to me the whole time.</strong> They chose the colors, named the business, picked the fonts, came up with the "Mystery Pack" idea, gave feedback on every page ("make that button bigger, Dad"), and watched their ideas come to life in real time.</p>
+
+    <p class="section-intro">That's the real magic. It's not about the website. It's about sitting with your kid, building something they're proud of, and learning a skill together that will shape not just their generation, but more and more of how all of us live, work, and get things done from here on.</p>
+
+    <p class="section-intro" style="margin-bottom: 0;">Your kid has something like this too. Maybe it's bracelets, 3D-printed figurines, stickers, or baked goods. <strong>Whatever they make, this guide shows you how to turn it into a real business you build together.</strong></p>
+
+    <p class="signature">Pete<span>Dad &amp; Founder of Clarity (<a href="https://www.instagram.com/getclarityservices" target="_blank" rel="noopener">@getclarityservices</a>)</span></p>
+  </div>
+</section>
+
+<!-- ═══════════ WHAT YOU'LL LEARN TOGETHER ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">Why This Matters</div>
+    <h2>A Whole Education in One Project</h2>
+    <div class="divider"></div>
+    <p class="section-intro">AI has created an environment where it has never been easier to build things. But these are skills our kids won't get in school, at least not anytime soon, and someone has to teach them. Because by the time they graduate, the way people work is going to look vastly different than it does today.</p>
+    <p class="section-intro">I believe we'll each land in one of two camps: <strong>hyper consumers</strong>, who let technology happen to them, or <strong>hyper creators</strong>, who use it to build the things other people need and want. I want my kids to be creators. A project like this is where it starts. Here's what it teaches them:</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon" style="background: rgba(255,92,147,0.1);">&#x1F4B0;</div>
+        <h3>Business &amp; Finance</h3>
+        <p>Pricing, profit margins, expenses, supply costs, revenue tracking. Not hypothetical, with real money and real customers.</p>
+        <div class="sub">Your kid learns: "We made $45 but supplies cost $8, so profit is $37."</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background: rgba(77,124,245,0.1);">&#x1F916;</div>
+        <h3>AI Fluency</h3>
+        <p>How to communicate with AI, write effective prompts, iterate on results, and know when to push back. This is the #1 skill of the next decade.</p>
+        <div class="sub">Your kid learns: "If I describe it better, AI builds it better."</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background: rgba(30,201,201,0.1);">&#x1F3A8;</div>
+        <h3>Design &amp; Branding</h3>
+        <p>Color theory, typography, logo design, user experience. Your kid picks the colors. They own the aesthetic. That's real design thinking.</p>
+        <div class="sub">Your kid learns: Why brands look the way they do.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background: rgba(232,184,75,0.1);">&#x1F4BB;</div>
+        <h3>Technology &amp; the Web</h3>
+        <p>How websites actually work, what a <span class="tt" onclick="showTech('database')">database</span> is, what an <span class="tt" onclick="showTech('api')">API</span> does. Demystified through building, not studying.</p>
+        <div class="sub">Your kid learns: "Our website reads from a database!"</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background: rgba(68,217,74,0.1);">&#x1F4E6;</div>
+        <h3>Operations &amp; Logistics</h3>
+        <p>Inventory management, order fulfillment, shipping, customer communication. Running a business end-to-end.</p>
+        <div class="sub">Your kid learns: The full journey from "order placed" to "package delivered."</div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background: rgba(59,139,245,0.1);">&#x1F91D;</div>
+        <h3>Confidence &amp; Ownership</h3>
+        <p>This isn't a school assignment someone grades. They own the product, the brand, and the decisions. When it works, <em>they</em> did that.</p>
+        <div class="sub">Your kid learns: "I built this and people want to buy it."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHAT CAN YOUR KID SELL? ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">It's Not Just Pumpkins</div>
+    <h2>Your Kid Can Sell Anything</h2>
+    <div class="divider"></div>
+    <p class="section-intro">We built Golden Stems for pipe cleaner pumpkins, but this guide works for whatever your kid makes or creates. Here are some ideas:</p>
+    <div class="product-grid">
+      <div class="product-idea"><div class="idea-emoji">&#x1F4FF;</div><h4>Bracelets</h4><p>Friendship, beaded, woven</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1FAA8;</div><h4>Painted Rocks</h4><p>Garden art, pet rocks</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F3A8;</div><h4>Art Prints</h4><p>Drawings, paintings</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F9C1;</div><h4>Baked Goods</h4><p>Cookies, brownies, treats</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F529;</div><h4>3D Printed</h4><p>Figurines, keychains</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F9FC;</div><h4>Handmade Soap</h4><p>Bath bombs, candles</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F3AD;</div><h4>Stickers</h4><p>Custom designs, packs</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F516;</div><h4>Bookmarks</h4><p>Resin, pressed flower</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F48D;</div><h4>Jewelry</h4><p>Earrings, necklaces</p></div>
+      <div class="product-idea"><div class="idea-emoji">&#x1F455;</div><h4>Custom Merch</h4><p>Tie-dye, patches, pins</p></div>
+    </div>
+    <p class="section-intro" style="margin-top: 1.5rem; margin-bottom: 0;">The product doesn't matter as much as the process. Whatever your kid is into, that's the business. The prompts in this guide use <strong>[brackets]</strong> so you can fill in your own product, name, and prices.</p>
+  </div>
+</section>
+
+<!-- ═══════════ SEE IT IN ACTION ═══════════ -->
+<section class="section" id="showcase">
+  <div class="fade-in">
+    <div class="section-label">The Real Thing</div>
+    <h2>See What We Built</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Golden Stems is live and taking orders. The girls were part of every decision. Browse the storefront, and check out a preview of the dashboard the girls use to run their business.</p>
+    <div class="showcase-grid">
+      <div class="showcase-card">
+        <h3>&#x1F6CD; The Storefront</h3>
+        <p class="showcase-sub">The customer-facing website, browse, shop, and order</p>
+        <ul class="showcase-features">
+          <li>Custom brand with logo the girls helped design</li>
+          <li>"Pick Your Own" and "Mystery Pack" shopping</li>
+          <li>Bundle selector with live pricing</li>
+          <li>Mobile-first, built for Instagram traffic</li>
+          <li>Automatic order confirmation emails</li>
+        </ul>
+        <a href="https://goldenstems.shop" target="_blank" rel="noopener" class="showcase-link" style="color: var(--pink);">Visit goldenstems.shop &rarr;</a>
+      </div>
+      <div class="showcase-card">
+        <h3>&#x1F4CA; The Dashboard (Demo)</h3>
+        <p class="showcase-sub">A preview of the command center your kids use to run their business, with you alongside them</p>
+        <ul class="showcase-features">
+          <li>Revenue charts and key business metrics</li>
+          <li>Order management with status tracking</li>
+          <li>Product inventory with color-coded statuses</li>
+          <li>Financial tracking, revenue, expenses, profit</li>
+          <li>Production session logs and payout history</li>
+        </ul>
+        <p style="font-size: 0.8rem; color: var(--tan); font-style: italic; margin-bottom: 1rem;">This demo shows the basics. Our real Golden Stems dashboard has more advanced features we added over time, and that's the fun part: as you and your kid get comfortable with Claude Code, you'll dream up and build your own.</p>
+        <a href="dashboard-demo.html" class="showcase-link" style="color: var(--grape);">Explore the dashboard demo &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHAT YOU'LL NEED ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">Before You Start</div>
+    <h2>What You'll Need</h2>
+    <div class="divider"></div>
+    <p class="section-intro">No coding experience required. Seriously. <strong>Claude Code does the technical work for you</strong>, and any time you need to do something yourself, it walks you through it step by step, in plain English. Here's your toolkit. Tap the <span class="tt" onclick="showTech('claude-code')" style="font-size: 0.9rem;">highlighted terms</span> to learn what each one does:</p>
+    <ul class="needs-list">
+      <li>
+        <div class="needs-icon" style="background: rgba(77,124,245,0.1);">&#x1F4BB;</div>
+        <div>
+          <strong>A computer (Mac or PC)</strong>
+          <span class="subtext">That's the only hardware you need. Everything happens inside <span class="tt" onclick="showTech('claude-code')">Claude Code</span>, which you talk to in plain English, like texting a friend who happens to be an expert builder.</span>
+        </div>
+      </li>
+      <li>
+        <div class="needs-icon" style="background: rgba(255,92,147,0.1);">&#x2728;</div>
+        <div>
+          <strong>Claude Code (by Anthropic)</strong>
+          <span class="subtext">The AI that builds everything for you. You describe what you want in plain words, and it writes the code, creates the files, and handles the technical setup. It's a desktop app you download and sign into, no terminal or command line. Whenever something needs your input, it tells you exactly what to do. <strong>One thing to know: using Claude Code requires at least a Claude Pro plan ($20/month).</strong></span>
+        </div>
+      </li>
+      <li>
+        <div class="needs-icon" style="background: rgba(30,201,201,0.1);">&#x1F5C4;</div>
+        <div>
+          <strong><span class="tt" onclick="showTech('supabase')">Supabase</span> (free tier)</strong>
+          <span class="subtext">Your database, where products, orders, customer info, and financial records are stored. Think of it as your business's filing cabinet, but one that your website can automatically read from and write to.</span>
+        </div>
+      </li>
+      <li>
+        <div class="needs-icon" style="background: rgba(61,43,31,0.08);">&#x1F4BE;</div>
+        <div>
+          <strong><span class="tt" onclick="showTech('github')">GitHub</span> (free)</strong>
+          <span class="subtext">A free account where your project is safely saved online. Claude Code saves a new version every time you make a change, so nothing ever gets lost, and Vercel reads from it to keep your live site updated. You don't have to learn it, Claude Code does the saving for you.</span>
+        </div>
+      </li>
+      <li>
+        <div class="needs-icon" style="background: rgba(59,139,245,0.1);">&#x1F680;</div>
+        <div>
+          <strong><span class="tt" onclick="showTech('vercel')">Vercel</span> (free tier)</strong>
+          <span class="subtext">This is what puts your site on the actual internet. You build it on your computer; Vercel makes it so anyone with the link can visit it, like uploading a video to YouTube, but for websites.</span>
+        </div>
+      </li>
+      <li>
+        <div class="needs-icon" style="background: rgba(232,184,75,0.1);">&#x1F4F8;</div>
+        <div>
+          <strong>Photos of your kid's product</strong>
+          <span class="subtext">Snap some photos on your phone and use them as they are. If you want a more polished look later, there's an optional (paid) tool that removes the backgrounds for you. Let your kid arrange the products, it's their first product photography shoot.</span>
+        </div>
+      </li>
+    </ul>
+    <div class="cost-note">
+      <span style="font-size: 1.2rem;">&#x1F4B0;</span>
+      <div>
+        <strong>Total cost: about $20/month</strong> for a Claude Pro plan, the minimum needed to use Claude Code (the AI that does the building). Supabase, GitHub, Vercel, and the email service all have generous free tiers. A fun domain name (like goldenstems.shop) costs about $3&ndash;$10/year. Everything else is free.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ THE BUILD ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">The Build</div>
+    <h2>8 Steps From Idea to Live Website</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Each step took us about 1&ndash;2 hours. You talk to Claude Code in plain English. Below are the actual prompts we used, enhanced so the AI builds you something production-quality. Step 0 gets your workspace ready, then Steps 1&ndash;7 build everything.</p>
+
+    <div class="timeline-grid" style="margin-bottom: 1.5rem;">
+      <div class="timeline-card"><div class="number">8</div><div class="label">Steps Total</div></div>
+      <div class="timeline-card"><div class="number">~15h</div><div class="label">Across a Weekend</div></div>
+      <div class="timeline-card"><div class="number">0</div><div class="label">Lines of Code You Write</div></div>
+      <div class="timeline-card"><div class="number">1</div><div class="label">Live Business at the End</div></div>
+    </div>
+
+    <div class="prompt-note">
+      <span style="font-size: 1.2rem; flex-shrink:0;">&#x1F4A1;</span>
+      <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">purple highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
+    </div>
+
+    <div class="journey">
+      <!-- ──── STEP 0 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--cocoa);">0</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Set Up Your Workspace</h3>
+            <div class="step-tag" style="background: rgba(61,43,31,0.08); color: var(--cocoa);">1&ndash;2 hours</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>Before we build anything, let's get your tools ready. The good news: Claude Code does almost all of this for you, and walks you through anything it can't. <strong>You only do this once.</strong></p>
+
+            <p><strong>1. Download Claude Code</strong>: Go to <strong>claude.com/claude-code</strong> and download the desktop app. Install it like any other app and sign in with your account. No terminal, no command line, just an app you talk to. (Using Claude Code requires at least a Claude Pro plan, about $20/month.)<br><br>
+            <strong>2. Create a GitHub account</strong>: Go to <strong>github.com</strong> and sign up (free). This is where your project is saved online. From the very start, Claude Code saves a new version here every time you make a change, like an automatic backup with a full history you can always rewind to. You don't have to learn it, Claude Code does the saving for you.<br><br>
+            <strong>3. Sign up for Supabase</strong>: Go to <strong>supabase.com</strong>, create a free account, and click "New Project." Give it your business name. Once it's ready, open Settings &rarr; API and copy three things: your <strong>Project URL</strong>, your <strong>anon/public key</strong>, and your <strong>service_role key</strong> (keep that last one private, it has full access). Don't worry about what they are, you're just copying and pasting.<br><br>
+            <strong>4. Create your project</strong>: In Claude Code, start a new project for your business, then give it the prompt below. Claude Code builds the entire foundation, installs everything it needs, creates all the files, and connects your project to GitHub so every change is saved automatically. If your computer is missing a free tool it needs (like Node.js, the engine that runs your site), Claude Code will tell you and walk you through installing it.</p>
+
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">Create a new Next.js project for [Business Name] using the App Router, TypeScript, and Tailwind CSS. Set up the project structure with:
+- src/app for pages (using the App Router convention)
+- src/components for reusable UI pieces
+- src/lib for utilities, data fetching, and services
+- src/actions for server-side form handling
+
+Install these packages: @supabase/ssr @supabase/supabase-js resend @react-email/components react-dropzone recharts lucide-react zod class-variance-authority clsx tailwind-merge pg
+
+Create a .env.local file with these values (I'll fill in the keys):
+NEXT_PUBLIC_SUPABASE_URL=[paste your Supabase project URL here]
+NEXT_PUBLIC_SUPABASE_ANON_KEY=[paste your anon key here]
+SUPABASE_SERVICE_ROLE_KEY=[paste your service role key here]
+REMOVEBG_API_KEY=placeholder
+RESEND_API_KEY=placeholder
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+
+Also create a .env.local.example file with placeholder values (no real keys) so we can share the project on GitHub safely.
+
+Set up the Supabase client configuration:
+- A browser client (for the storefront pages customers see)
+- A server client (for admin dashboard operations)
+- An admin client using the service role key (for system operations like reserving products during checkout, which happens before the customer is logged in)
+- Middleware helper for managing auth sessions
+
+Finally, set up version control: initialize git, add a .gitignore so my secrets and node_modules are never shared, and push this project to a new private GitHub repository. As we keep building together, commit and push the changes after each step so everything is backed up with a full history.</span>
+            </div>
+
+            <p><strong>5. Add your keys</strong>: Claude Code will show you exactly where your Supabase keys go and help you drop them in. You'll add the Resend and remove.bg keys later, when we reach those steps.</p>
+
+            <div class="what-happens">
+              <ul>
+                <li>A fully structured <span class="tt" onclick="showTech('nextjs')">Next.js</span> project with all dependencies installed</li>
+                <li>Organized folder structure matching how professional projects are built</li>
+                <li><span class="tt" onclick="showTech('supabase')">Supabase</span> client configured for browser, server, and admin operations</li>
+                <li>Environment file with your API keys (kept secret from GitHub)</li>
+                <li>Your project saved to <span class="tt" onclick="showTech('github')">GitHub</span>, with a full version history from day one</li>
+                <li>A live preview Claude Code opens in your browser so you can watch your site come to life</li>
+              </ul>
+            </div>
+
+            <div class="learn-together">
+              <ul>
+                <li>What a software "project" really is: all the files that make up an app, organized into folders</li>
+                <li>How professional projects are structured: apps, components, libraries, and configuration</li>
+                <li>How to set up a real development environment from scratch</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 1 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--pink);">1</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Start With Your Kid's Idea</h3>
+            <div class="step-tag" style="background: rgba(255,92,147,0.1); color: var(--pink);">30 min</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>No computer yet. Sit down with your kid and ask: <strong>"What do you make that people love?"</strong></p>
+            <p>Together, decide on:</p>
+            <p><strong>Business name</strong>: Let them pick it. Our girls chose "Golden Stems" because the pipe cleaners look like golden stems.<br>
+            <strong>What they sell</strong>: Bundles work great for handmade items (packs of 3, 5, or 10).<br>
+            <strong>Pricing</strong>: Help them think about costs. "If pipe cleaners cost us 50 cents per pumpkin, and we sell three for $9.99, how much do we make?"<br>
+            <strong>Their vibe</strong>: What colors do they love? What feeling should customers get? Ella said "colorful and happy", that became our whole brand direction.</p>
+            <div class="learn-together">
+              <ul>
+                <li>Business basics: what makes a product, how to name a brand, and what to charge</li>
+                <li>Pricing fundamentals: the difference between cost, price, and profit</li>
+                <li>How to turn a spark of creativity into an actual plan</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 2 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--orange);">2</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Create Your Brand Kit</h3>
+            <div class="step-tag" style="background: rgba(255,107,43,0.1); color: var(--orange);">1 hour</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>This is where your kid's personality becomes a brand. Sit together, they pick the colors, the feeling, the vibe. You type the prompt. <strong>Our girls literally pointed at the screen and said "more pink! And that green is too dark!"</strong> That feedback is real design direction.</p>
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">I'm helping my [age]-year-old build a professional website for their handmade [product] business called [Name]. They sell them in bundles of 3, 5, and 10.
+
+Create a complete brand kit including:
+- A custom SVG logo, I need an actual illustrated icon that represents their product (not just text), plus a clean wordmark next to it. Make it detailed enough to look professional but simple enough to work as a small favicon.
+- A full color palette with at least 6 colors: a primary, a secondary, 2-3 fun accent colors, and neutral tones for backgrounds and text. Include exact hex codes for every color.
+- Font pairings from Google Fonts, a fun display font for headings and a clean readable font for body text
+- Brand voice guidelines, 3 adjectives that capture the feeling
+- A standalone product icon as an SVG I can use as a favicon
+
+Build everything as an interactive HTML page I can preview in my browser, show the color swatches with hex codes, font samples at different sizes, the logo at different sizes, and example usage. She wants it to feel [fun/colorful/cozy/bold]. Her favorite colors are [colors].</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>A custom illustrated SVG logo (not just a text logo, an actual icon)</li>
+                <li>Full color palette with 8+ colors and exact hex codes</li>
+                <li>Matched Google Font pairings (heading + body)</li>
+                <li>Brand voice guidelines and personality</li>
+                <li>An interactive HTML preview page you open in your browser</li>
+                <li>A standalone icon for your browser tab (favicon)</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>Design thinking: why brands look the way they do, and how color creates feeling</li>
+                <li>AI prompting: how to describe what you want and refine the result</li>
+                <li>How to give creative feedback ("make it more pink" is a real design decision)</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 3 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--gold);">3</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Set Up Your Database</h3>
+            <div class="step-tag" style="background: rgba(232,184,75,0.1); color: var(--gold);">1 hour</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>Every real business needs a way to keep track of things. <span class="tt" onclick="showTech('supabase')">Supabase</span> is your free <span class="tt" onclick="showTech('database')">database</span>, it stores your products, orders, customer info, and finances. We already created our Supabase project in Step 0. Now we'll tell Claude to build the entire database structure inside it:</p>
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">In our existing project, set up a production-ready Supabase database for [Business Name]. I need proper relational database design with:
+
+Tables:
+- Profiles: linked to Supabase Auth, with roles (admin vs. girl/creator). Auto-create a profile when a new user signs up.
+- Products: image URLs (original photo + background-removed version), color, status (available/reserved/sold), linked to production sessions and orders
+- Orders: auto-incrementing order numbers (like GS-001), full customer info (name, email, phone, shipping address), bundle size, unit and total pricing, optional bonus donation amount, delivery method (shipping or local pickup), order status workflow (pending_payment &rarr; paid &rarr; packing &rarr; shipped or ready_for_pickup &rarr; delivered), timestamps for each status change, tracking number field
+- Order items: junction table linking individual products to orders
+- Expenses: categorized (pipe cleaners, envelopes, stamps, packaging, other), with amounts, descriptions, and dates
+- Production sessions: date, duration in minutes, number of products made, which kids participated (as an array of user IDs), notes field
+- Labor logs: linked to production sessions, tracks each kid's time and calculated earnings per session
+- Supply stock: tracks inventory of shipping supplies (envelopes, stamps, pipe cleaners, packaging) with current quantities that auto-decrement when orders ship
+- Payouts: records when kids get paid their earnings, with amounts, dates, and notes
+- Waitlist: customer emails for out-of-stock notifications, with signup date
+- Settings: key-value store for configurable pricing, cost-per-item estimates, and low-inventory thresholds
+
+Requirements:
+- Proper foreign keys and database indexes for performance
+- Row Level Security (RLS) policies: public visitors can browse available products, place orders, and join the waitlist. Only authenticated admins can manage everything else.
+- Auto-updating timestamps on all tables
+- A trigger that auto-creates a profile when a new user signs up
+- Seed data for default bundle pricing (3 for $9.99, 5 for $14.99, 10 for $24.99), supply cost estimates (pipe cleaner cost per product, envelope cost per order, stamp cost per order), and low inventory threshold
+- Set up a public storage bucket called "product-photos" for uploaded images
+
+Generate the complete SQL setup file I can paste into the Supabase SQL Editor. Include clear comments so I can understand what each section does.</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>Complete database with 8+ tables, all properly connected</li>
+                <li>Auto-generated order numbers (GS-001, GS-002...)</li>
+                <li><span class="tt" onclick="showTech('rls')">Row Level Security</span>, customers can browse products but can't see admin data</li>
+                <li>Photo storage bucket for product images</li>
+                <li>Default pricing and settings, ready to customize</li>
+                <li>A single SQL file you paste into Supabase, one click and it's done</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>What a <span class="tt" onclick="showTech('database')">database</span> is and why every business needs one</li>
+                <li>Data organization: every order gets a number, every product has a status</li>
+                <li>How to decide what information a business actually needs to track</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 4 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--green);">4</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Build the Storefront</h3>
+            <div class="step-tag" style="background: rgba(68,217,74,0.1); color: var(--green);">2&ndash;3 hours</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>This is the fun part, building the website customers will see. You describe each page, and Claude Code builds it using the brand kit and database we already set up. <strong>Have your kid sit with you for this one.</strong> When the homepage appears with their logo and colors, the look on their face is priceless. Siena literally said "wait, that's OUR website?!"</p>
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">In our existing Next.js project, build the customer-facing storefront for [Business Name]. Use the brand kit we created in Step 2 (exact hex colors, Google Fonts, and SVG logo) and read all data from the Supabase database we set up in Step 3.
+
+Pages needed:
+- Homepage: hero section with our SVG logo and a catchy tagline, a grid of featured product photos pulled from our database, an "About the Founders" section with the kids' names and ages, and a prominent "Shop Now" button
+- Shop page: gallery of all available products with photos from Supabase Storage. Two shopping modes: "Pick Your Own" (customer taps to select specific items) and "Mystery Pack" (we choose for them, they pick a bundle size and their preferred colors). Bundle size selector (3/5/10) that updates pricing in real-time using prices from the settings table.
+- Cart page: show selected items with photos, order summary with pricing breakdown. Include a delivery method choice (Shipping with a flat fee, or Local Pickup for free). Add an optional charity/tip donation field with preset amounts ($1, $3, $5) and a custom option. Full checkout form with validation using Zod (name, email, phone, shipping address). Use React Context to manage cart state across pages. Reserve selected products for 15 minutes so they don't get bought by someone else during checkout.
+- Order confirmation page: show order number, items ordered, total paid, and a friendly thank-you message from the founders
+
+When an order is submitted, create it in our orders table with status "pending_payment", link the selected products via order_items, and mark those products as "sold" in the pumpkins table.
+
+Technical requirements:
+- Mobile-first responsive design, most traffic comes from Instagram on phones
+- Loading skeleton states while data fetches from Supabase
+- Proper SEO meta tags and Open Graph image for link previews on Instagram and iMessage
+- Use Supabase browser client for reading data, admin client for write operations during checkout (since customers aren't logged in)
+- Accessible, proper alt tags, semantic HTML, keyboard navigation</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>A beautiful, professional homepage with their brand</li>
+                <li>Product gallery with real photos from the database</li>
+                <li>"Pick Your Own" + "Mystery Pack" shopping modes</li>
+                <li>Bundle selector with live pricing updates</li>
+                <li>Full checkout with form validation, catches typos in emails and phone numbers</li>
+                <li><span class="tt" onclick="showTech('responsive')">Responsive design</span>, looks perfect on phones, tablets, and computers</li>
+                <li>Smart cart that reserves items so two people can't buy the same product</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>How modern websites are built: <span class="tt" onclick="showTech('nextjs')">frameworks</span>, <span class="tt" onclick="showTech('components')">components</span>, and data fetching</li>
+                <li>Customer experience: what actually makes someone want to buy</li>
+                <li>How an idea (like the "Mystery Pack") becomes a real feature</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 5 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--teal);">5</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Build the Business Dashboard</h3>
+            <div class="step-tag" style="background: rgba(30,201,201,0.1); color: var(--teal);">2&ndash;3 hours</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>The dashboard is the command center for running the business, and this is where your kids really become owners. It's password-protected so only your family can get in, and it connects to the same <span class="tt" onclick="showTech('database')">database</span> as the storefront, so every order placed on the website shows up here instantly. <strong>This is the kids' tool as much as yours.</strong> Sit down together and let them run it: check new orders, mark them packed and shipped, log their crafting sessions, and watch the revenue climb. When Amilia saw the revenue chart go up after the first order, she understood what "profit" means better than any math class could teach her.</p>
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">In our existing project, build a password-protected business dashboard at /admin using Supabase Auth with email/password login. Use Next.js middleware to protect all /admin routes, redirect to a login page if not authenticated. The dashboard reads and writes to the same Supabase database that the storefront uses, so orders placed by customers appear here automatically.
+
+This dashboard is for the kids to run their business (with a parent alongside them). Use the two roles from our profiles table: a parent "admin" with full access, and a "creator" login for each kid so they can sign in themselves to view and update orders, log their crafting sessions, and see their own earnings. Keep sensitive actions (changing prices, deleting products, editing payouts) admin-only. Make the whole interface clear and friendly enough for a 9-year-old to navigate.
+
+Dashboard pages:
+- Overview: 4 metric cards (total revenue, orders this month, products in stock, profit margin percentage), a revenue-over-time line chart using Recharts, and a list of the 5 most recent orders with quick-action buttons
+- Orders (/admin/orders): sortable table of all orders with color-coded status badges. Click any order to see full details, customer info, ordered items with product photos, delivery method, donation amount. Status update buttons to move through the workflow (pending_payment &rarr; paid &rarr; packing &rarr; shipped or ready_for_pickup). Tracking number field for shipped orders. Button to resend the confirmation email.
+- Inventory (/admin/inventory): grid view of all products showing photos, colors, and status badges. Upload new products with drag-and-drop (react-dropzone). Optionally remove photo backgrounds using our remove.bg integration (uploads work fine without it). Edit product colors after upload. Delete products.
+- Batch Upload (/admin/batch-upload): upload 10+ photos at once, automatic background removal on each, assign a color to each product, preview all before saving to the database
+- Finances (/admin/finances): revenue breakdown with total revenue, total expenses, and net profit. Expense tracker with categories (pipe cleaners, envelopes, stamps, packaging, other), each with description, amount, and date. Payout section for logging when each kid gets paid their earnings, track amount, date, and a note (like "Great sales week!"). Show charity impact if the business donates a percentage.
+- Supply Stock: track shipping supply inventory (envelopes, stamps, packaging materials) with current quantities. When an order status is updated to "shipped" or "ready for pickup," automatically decrement the supply counts. Show a low-stock warning when supplies drop below the threshold.
+- Production Sessions: log crafting sessions with date, duration, number of products made, which kids participated (selectable from profiles), and notes. Show session history with stats (total sessions, total hours, products per session). Track each kid's labor hours and calculated earnings.
+- Settings: adjust bundle pricing for both "Pick Your Own" and "Mystery Pack," set supply cost estimates (pipe cleaner cost per product, envelope per order, stamp per order), low-inventory alert thresholds, profit margin target
+- Waitlist: when products are sold out, customers can sign up with their email to be notified. Dashboard shows the full waitlist with signup dates. "Notify All" button that sends a back-in-stock email to everyone on the list.
+
+Technical:
+- Sidebar navigation with brand colors, Lucide React icons, and active state highlighting
+- Use Server Actions for all data mutations with Zod validation on every form
+- Use the Supabase server client for reading data and the service role client for admin writes
+- Responsive layout, works on tablet and desktop
+- Loading states and error handling on all pages</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>Password-protected login for your family (a parent admin, plus a "creator" login for each kid)</li>
+                <li>Dashboard with revenue charts, order counts, profit metrics</li>
+                <li>Full order management with status workflow and email resending</li>
+                <li>Drag-and-drop photo uploads, with optional background removal</li>
+                <li>Financial tracking: revenue, expenses, profit, and kid payouts</li>
+                <li>Production session logging, track when and how much the kids make</li>
+                <li>Waitlist management for when you sell out</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>How dashboards, <span class="tt" onclick="showTech('server-actions')">server actions</span>, and <span class="tt" onclick="showTech('auth')">authentication</span> work</li>
+                <li>Business operations: tracking every order from "placed" to "delivered"</li>
+                <li>How to read real business data: revenue, expenses, and profit at a glance</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 6 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--blue);">6</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Connect Email &amp; Upload Photos</h3>
+            <div class="step-tag" style="background: rgba(59,139,245,0.1); color: var(--blue);">1&ndash;2 hours</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>This step adds the professional touches by connecting outside services through their <span class="tt" onclick="showTech('api')">APIs</span>. The main one is automatic order confirmation emails through <span class="tt" onclick="showTech('resend')">Resend</span>. The optional one is background removal for your product photos through <span class="tt" onclick="showTech('removebg')">remove.bg</span>. This is where you'll see how different services talk to each other through APIs, like hiring specialists for specific jobs. Let your kid write the thank-you message in the email, Amilia insisted on adding "Made with love!" to ours.</p>
+
+            <p><strong>A quick note on the photos:</strong> your product photos upload and display perfectly fine on their own, with whatever background they were shot on. Removing the background just makes them look a little more polished. It's a nice-to-have, not a requirement, and it's the one piece here that costs a bit of money, so it's your call.</p>
+
+            <p><strong>Get your API keys:</strong><br>
+            &bull; <strong>Resend (free):</strong> Go to resend.com, sign up, and copy your API key. You'll also verify your domain so emails come from orders@yourdomain.shop instead of a generic address.<br>
+            &bull; <strong>remove.bg (optional, has a cost):</strong> Only if you want auto background removal. Its free tier is limited (around 50 low-resolution previews a month; full-resolution product photos use paid credits), so plan for a small cost if you turn it on. You can skip it now and add it anytime later.<br>
+            Then just hand the keys to Claude Code, and it will put them in the right place for you.</p>
+
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">In our existing project, set up two service integrations. Both connect through their APIs, our site sends a request, the service does the work, and sends a result back.
+
+1. Email system using Resend:
+Build a complete email service with multiple branded HTML templates using React Email components. Every email should match our brand kit, use our colors, include our logo, and have a signature like "Made with love by [kids' names]."
+
+Email types to build:
+- Order confirmation: sent automatically when an order is created (wire this into the order creation action from Step 4). Include order number, order type, bundle size, total price, donation amount, items with thumbnail photos, and shipping/pickup details.
+- Order shipped: sent when admin updates status to "shipped." Include tracking number and product photos.
+- Ready for pickup: sent when admin updates status to "ready_for_pickup." Include pickup address and product photos.
+- Waitlist welcome: sent when a customer joins the waitlist.
+- Back in stock: sent to all waitlist members when new products are added. Triggered from the waitlist management page in the dashboard.
+
+All emails should send non-blocking (if the email fails, the order still goes through, don't break the customer experience). Add a "Resend Email" button on the admin order detail page. Set up the from address as orders@[yourdomain].
+
+2. Optional photo background removal using remove.bg:
+Product photos must upload and display fine on their own, with their original background and no API needed. As an optional enhancement, add background removal through the remove.bg API, and make it a setting I can turn on or off (since it costs credits). When it's on and a photo is uploaded (single or batch), send it to remove.bg, auto-crop the transparent pixels with a small padding so the product is centered, and store both the original AND the cleaned version in Supabase Storage. Let me choose which one shows on the storefront. If the setting is off, or remove.bg is down, out of credits, or the key isn't configured, just keep the original photo and never block an upload. Track remaining remove.bg credits in the supply stock table.</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>5 different branded email templates, confirmation, shipped, pickup, waitlist, back-in-stock</li>
+                <li>Emails send automatically at the right moment, zero manual work</li>
+                <li>Emails come from your own domain (orders@yoursite.shop)</li>
+                <li>Non-blocking, if email fails, the order still works</li>
+                <li>Optional: cleaner cut-out backgrounds on product photos (or upload them as-is, for free)</li>
+                <li>Original photos always saved, so you can change your mind anytime</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>How <span class="tt" onclick="showTech('api')">APIs</span> work: your site asks <span class="tt" onclick="showTech('resend')">Resend</span> to send an email and remove.bg to clean a photo</li>
+                <li>Marketing and customer communication: what to say, and when</li>
+                <li>Product photography basics and automatic photo editing</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ──── STEP 7 ──── -->
+      <div class="step">
+        <div class="step-number" style="background: var(--grape);">7</div>
+        <div class="step-card">
+          <div class="step-header" onclick="toggleStep(this)">
+            <h3>Go Live!</h3>
+            <div class="step-tag" style="background: rgba(77,124,245,0.1); color: var(--grape);">1 hour</div>
+            <div class="step-toggle">&darr;</div>
+          </div>
+          <div class="step-body"><div class="step-content">
+            <p>Time to put it on the internet. <strong>This is THE moment.</strong> The second your kid sends that link to family and someone actually places an order? Core memory. Our very first, order GS-001, came from Amilia's godfather, Nino.</p>
+
+            <p><strong>One free account first:</strong><br>
+            &bull; <strong><span class="tt" onclick="showTech('vercel')">Vercel</span>:</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account you created back in Step 0. Vercel reads your code from GitHub and publishes it to the internet, and because your project has been saved to GitHub all along, it's ready to go.<br>
+            That's all you do by hand. Claude Code connects everything and walks you through every click from there.</p>
+
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">Help me deploy [Business Name] to production. Walk me through each step:
+
+1. Make sure all our latest code is committed and pushed to the GitHub repository we set up in Step 0.
+2. Connect to Vercel for automatic deployments:
+   - Import the GitHub repo into Vercel
+   - Set up ALL environment variables on Vercel (every key from our .env.local: Supabase URL, anon key, service role key, Resend API key, remove.bg key). Set NEXT_PUBLIC_SITE_URL to our production domain.
+   - Configure the build settings for Next.js
+3. Buy and connect a custom domain [yourdomain.shop]:
+   - Walk me through the exact DNS records to add at my domain registrar (Namecheap/GoDaddy/etc.)
+   - Set up both the root domain and www subdomain
+   - Verify SSL is working (the padlock icon in the browser)
+4. Set up my admin account:
+   - Create a user in Supabase Auth with my email and a password
+   - Make sure that user has the "admin" role in the profiles table
+   - Test logging into the admin dashboard on the live site
+5. Test the FULL end-to-end flow on the live site:
+   - Browse products on the storefront &rarr; add to cart &rarr; go through checkout with a test order &rarr; verify the order confirmation page shows up
+   - Check that the confirmation email arrives in my inbox
+   - Log into the admin dashboard and verify the order appears
+   - Update the order status to "shipped" and verify the shipped email arrives
+   - Check that supply stock decremented correctly
+6. Set up the Open Graph meta image so the site previews beautifully when shared on Instagram, iMessage, and Facebook</span>
+            </div>
+            <div class="what-happens">
+              <ul>
+                <li>Your site is live on the internet with a custom domain</li>
+                <li>Free SSL, the secure padlock in the browser</li>
+                <li>Automatic deployments, changes you make go live instantly</li>
+                <li>Code safely stored on <span class="tt" onclick="showTech('github')">GitHub</span>, like Google Docs version history for your project</li>
+                <li>Beautiful social media previews when the link is shared</li>
+              </ul>
+            </div>
+            <div class="learn-together">
+              <ul>
+                <li>How deployment, hosting, and <span class="tt" onclick="showTech('dns')">DNS</span> work: the concepts behind every live website</li>
+                <li>How to ship a project to the real internet with a custom domain</li>
+                <li>What it takes to put something you built out into the world</li>
+              </ul>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">The Bigger Picture</div>
+    <h2>Skills You'll Build Together</h2>
+    <div class="divider"></div>
+    <p class="section-intro">This isn't just a summer project. These are real skills that compound, and you're both learning them at the same time.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4B0;</div>
+        <h4>Financial Literacy</h4>
+        <p>Revenue, expenses, profit margins, pricing strategy, paying employees</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F916;</div>
+        <h4>AI Prompting</h4>
+        <p>Communicating with AI, iterating, knowing when to push back on results</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F3A8;</div>
+        <h4>Design Thinking</h4>
+        <p>Branding, color, typography, user experience, visual feedback</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4BB;</div>
+        <h4>Tech Fluency</h4>
+        <p>Databases, APIs, websites, deployment, demystified</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4E6;</div>
+        <h4>Operations</h4>
+        <p>Inventory, order fulfillment, shipping, customer communication</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4AC;</div>
+        <h4>Communication</h4>
+        <p>Customer emails, product descriptions, presenting their work</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4AA;</div>
+        <h4>Confidence</h4>
+        <p>"I built this and people want to buy it." No substitute.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F9E9;</div>
+        <h4>Problem Solving</h4>
+        <p>Debugging, troubleshooting, figuring it out together</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TECH STACK ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">Under the Hood</div>
+    <h2>The Tools That Power It</h2>
+    <div class="divider"></div>
+    <p class="section-intro">You don't need to master these, Claude Code handles all of it. But understanding what they are will make you more confident in every project after this one. Tap any card to learn more.</p>
+    <div class="stack-grid">
+      <div class="stack-card" onclick="showTech('claude-code')">
+        <div class="stack-icon" style="background: rgba(77,124,245,0.1);">&#x2728;</div>
+        <div><strong>Claude Code</strong><div class="stack-role">Your AI programmer</div><div class="stack-analogy">Like a translator between your ideas and code</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('nextjs')">
+        <div class="stack-icon" style="background: rgba(61,43,31,0.08);">&#x25B2;</div>
+        <div><strong>Next.js</strong><div class="stack-role">Website framework</div><div class="stack-analogy">The blueprint system for your site</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('supabase')">
+        <div class="stack-icon" style="background: rgba(30,201,201,0.1);">&#x1F5C4;</div>
+        <div><strong>Supabase</strong><div class="stack-role">Database, auth &amp; storage</div><div class="stack-analogy">A smart spreadsheet on the internet</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('vercel')">
+        <div class="stack-icon" style="background: rgba(59,139,245,0.1);">&#x1F680;</div>
+        <div><strong>Vercel</strong><div class="stack-role">Hosting &amp; deployment</div><div class="stack-analogy">Your website's address on the internet</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('resend')">
+        <div class="stack-icon" style="background: rgba(255,92,147,0.1);">&#x2709;</div>
+        <div><strong>Resend</strong><div class="stack-role">Email delivery service</div><div class="stack-analogy">A digital post office that delivers your emails</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('removebg')">
+        <div class="stack-icon" style="background: rgba(232,184,75,0.1);">&#x1F5BC;</div>
+        <div><strong>remove.bg</strong><div class="stack-role">Optional photo cleanup</div><div class="stack-analogy">Automatic Photoshop for product photos</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('tailwind')">
+        <div class="stack-icon" style="background: rgba(68,217,74,0.1);">&#x1F3A8;</div>
+        <div><strong>Tailwind CSS</strong><div class="stack-role">Design &amp; styling</div><div class="stack-analogy">Design LEGO bricks Claude snaps together</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('github')">
+        <div class="stack-icon" style="background: rgba(61,43,31,0.08);">&#x1F4BE;</div>
+        <div><strong>GitHub</strong><div class="stack-role">Code storage &amp; version history</div><div class="stack-analogy">Google Docs "version history" for your project</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMING NEXT ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">Keep Learning</div>
+    <h2>What's Coming Next</h2>
+    <div class="divider"></div>
+    <p class="section-intro">This guide is just the beginning. I'm planning more guides for other projects I want to build with my own kids this summer, and I'll share them the same way:</p>
+    <div class="coming-list">
+      <div class="coming-item"><span class="coming-badge">Soon</span> A Homework Assistant that takes the parent out of the loop and makes homework actually fun</div>
+      <div class="coming-item"><span class="coming-badge">Soon</span> Arcade games your kids dream up and build themselves</div>
+      <div class="coming-item"><span class="coming-badge">Soon</span> A voice-first Family Executive Assistant that briefs everyone each morning on schedules, to-dos, and what not to forget, drafts emails, helps plan vacations, and ties together the everyday apps your family already uses to make life run smoother</div>
+      <div class="coming-item"><span class="coming-badge">Soon</span> And more projects I have in mind for the kids this summer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="cta-section">
+  <div class="fade-in">
+    <h2>Ready to Build Something Together?</h2>
+    <p>The tools are mostly free. The AI does the hard part. All you need is a kid with an idea and a weekend.</p>
+    <div class="cta-buttons">
+      <a href="https://claude.ai/download" target="_blank" rel="noopener" class="cta-primary">Get Claude Code &rarr;</a>
+      <a href="https://goldenstems.shop" target="_blank" rel="noopener" class="cta-secondary">See the live example: goldenstems.shop</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SUPPORT / DONATE ═══════════ -->
+<section class="section" style="padding-top: 2rem;">
+  <div class="fade-in">
+    <div class="donate-card">
+      <h3>This Guide Is Free</h3>
+      <p>And it always will be. I made it to help parents and kids build with AI together. If it helped you, you're welcome to leave a tip, it goes straight toward creating the next free guide. No pressure at all, sharing it with another parent means just as much.</p>
+      <a href="https://ko-fi.com/petecabrera" target="_blank" rel="noopener" class="donate-btn">Leave a Tip</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <p>Made with love (and AI) by a dad who wanted to build something real with his kid.</p>
+  <p style="margin-top: 0.5rem;">Inspired by <a href="https://goldenstems.shop" target="_blank" rel="noopener">Golden Stems</a>, handmade pipe cleaner pumpkins by Amilia, Siena &amp; Ella.</p>
+</footer>
+
+<!-- ═══════════ TECH TERM BOTTOM SHEET ═══════════ -->
+<div id="tech-overlay" class="tech-overlay" onclick="hideTech()">
+  <div class="tech-sheet" onclick="event.stopPropagation()">
+    <div class="tech-sheet-header">
+      <h4 id="tech-name"></h4>
+      <button class="tech-sheet-close" onclick="hideTech()">&times;</button>
+    </div>
+    <div class="tech-analogy" id="tech-analogy"></div>
+    <div class="tech-body" id="tech-body"></div>
+  </div>
+</div>
+
+<script>
+/* ─── STEP TOGGLE ─── */
+function toggleStep(header) {
+  header.closest('.step').classList.toggle('open');
+}
+
+/* ─── COPY PROMPT ─── */
+function copyPrompt(btn) {
+  const text = btn.closest('.prompt-box').querySelector('.prompt-text').textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+
+/* ─── TECH TERMS ─── */
+const terms = {
+  'claude-code': {
+    name: 'Claude Code',
+    analogy: 'Like a skilled programmer who speaks English.',
+    body: 'Claude Code is an AI tool made by Anthropic. You type what you want in regular words, "build me a homepage with a pink logo", and it writes all the code. It\'s like having a professional developer sitting next to you who never gets tired, never judges your questions, and works really fast. You don\'t need to learn any programming language. You just need to describe what you want clearly.'
+  },
+  'supabase': {
+    name: 'Supabase',
+    analogy: 'A smart spreadsheet that lives on the internet.',
+    body: 'Imagine a Google Sheet, but one that your website can automatically read from and write to. When a customer places an order, the details go into Supabase. When your kids check their dashboard, it reads from Supabase. It also handles logins (so only your family can access the dashboard) and stores your product photos. It\'s free for small projects like this.'
+  },
+  'vercel': {
+    name: 'Vercel',
+    analogy: 'The internet parking spot for your website.',
+    body: 'When Claude Code builds your site, it only exists on your computer. Vercel takes it and puts it on the internet so anyone with the link can visit it. Think of it like the difference between recording a video (local) and uploading it to YouTube (deployed). Vercel also gives you free HTTPS (that padlock icon) and automatically updates your site whenever you make changes.'
+  },
+  'database': {
+    name: 'Database',
+    analogy: 'A structured filing cabinet for your business.',
+    body: 'Unlike a messy folder of documents, a database organizes information into tables, like spreadsheets, with rows and columns. You\'d have a "products" table (every product with its photo, color, and status), an "orders" table (every order with customer info), and an "expenses" table (every supply purchase). When your website needs to show available products, it asks the database. When someone places an order, it writes to the database.'
+  },
+  'api': {
+    name: 'API (Application Programming Interface)',
+    analogy: 'A universal language that lets apps talk to each other.',
+    body: 'Think of an API like a waiter at a restaurant. You (your website) don\'t go into the kitchen yourself, you tell the waiter what you want, the waiter takes it to the kitchen, and brings back the result. An API is that waiter. Every service your site uses has an API: you send a request ("send this email" or "remove this background"), and the service sends back a result. APIs are the #1 way modern software is built: thousands of specialized services, all talking to each other through APIs. Once you understand this concept, you\'ll see it everywhere.'
+  },
+  'resend': {
+    name: 'Resend',
+    analogy: 'A digital post office that delivers emails for your business.',
+    body: 'Resend is an email delivery service. It\'s a company that specializes in one thing: reliably sending emails. Your website talks to Resend through its API, when a customer places an order, your site sends Resend a message saying "deliver this confirmation email to sarah@gmail.com with this content." Resend handles all the complex stuff: making sure it doesn\'t land in spam, formatting it for different email apps, and tracking delivery. The free tier sends 3,000 emails/month, way more than a kid\'s business needs.'
+  },
+  'removebg': {
+    name: 'remove.bg',
+    analogy: 'An automatic photo editor that cuts out backgrounds.',
+    body: 'remove.bg is an optional service that removes the background from a photo. Your site sends it a product photo through its API and gets back the same image on a clean white background. It looks more polished, but it is not required, your photos work perfectly well with their original backgrounds. It also is not really free: the free tier only covers a small number of low-resolution previews each month, and full-resolution images cost paid credits. Treat it as a nice-to-have you can switch on or off anytime. Either way, your site keeps the original photo, so you always have a backup.'
+  },
+  'nextjs': {
+    name: 'Next.js',
+    analogy: 'The blueprint system for your website.',
+    body: 'Just like a house needs a floor plan before you start building, a website needs a framework. Next.js is one of the most popular ones, used by companies like Nike, TikTok, and Netflix. It decides how pages are organized, how they load quickly, and how they talk to your database. Claude Code knows Next.js extremely well, so when you describe a page, it knows exactly how to build it. You never touch Next.js directly.'
+  },
+  'tailwind': {
+    name: 'Tailwind CSS',
+    analogy: 'A box of design LEGO pieces.',
+    body: 'Instead of writing custom design code from scratch, Tailwind gives you pre-made building blocks: "make this pink," "round these corners," "add a shadow," "make it bigger on phones." Claude Code snaps these pieces together to make your site look polished. It\'s why AI-built sites can look so professional, Tailwind provides all the design primitives, and Claude assembles them based on your brand kit.'
+  },
+  'github': {
+    name: 'GitHub',
+    analogy: 'Google Docs version history, but for code.',
+    body: 'Every time Claude Code makes a change to your project, it gets saved in Git, a system that tracks every edit. GitHub is where that history lives online. If something ever breaks, you can go back to a working version. It\'s also how Vercel knows about your project, you push code to GitHub, Vercel sees the change, and automatically updates your live site. Think of it as your project\'s permanent backup.'
+  },
+  'rls': {
+    name: 'Row Level Security',
+    analogy: 'Different keys for different rooms.',
+    body: 'Imagine your database is a building. Row Level Security means different people can only open certain doors. A random visitor to your website can see which products are available (the showroom), but they can\'t see other customers\' orders or your financial data (the office). Only you, logged in as an admin, can see everything. This is critical for any real business, customer data must be protected.'
+  },
+  'responsive': {
+    name: 'Responsive Design',
+    analogy: 'One website that shape-shifts to fit any screen.',
+    body: 'Instead of building separate websites for phones, tablets, and computers, responsive design makes one site that automatically rearranges itself. On a phone, products might stack in a single column. On a desktop, they spread into a grid. Most of your customers will be on phones (since you\'re sharing the link on Instagram), so your site is built "mobile-first", designed for phones first, then expanded for bigger screens.'
+  },
+  'components': {
+    name: 'Components (React)',
+    analogy: 'Smart, reusable LEGO blocks for web pages.',
+    body: 'Each part of your website, the header, a product card, the checkout form, is a "component." Think of them like LEGO blocks: build a product card once, and it can be used 50 times on the shop page, each showing different data. Change how the card looks in one place, and it updates everywhere. Claude Code thinks in components naturally, which is why it can build complex pages so quickly.'
+  },
+  'server-actions': {
+    name: 'Server Actions',
+    analogy: 'Secure behind-the-scenes operations.',
+    body: 'When someone submits an order form, you don\'t want that data handled in the customer\'s browser (where it could be tampered with). Server Actions run on a protected server that you control. The customer clicks "Submit," the data goes to the server, gets validated (is this a real email? is the zip code valid?), and then gets written to the database. It\'s like having a trusted employee handle the paperwork instead of leaving it on the counter.'
+  },
+  'auth': {
+    name: 'Authentication',
+    analogy: 'The lock on your front door.',
+    body: 'Authentication is how your site knows who\'s logged in and what they\'re allowed to do. For Golden Stems, it means the dashboard is password-protected. Your family logs in to see orders, manage inventory, and run the business, the parent as an admin and each kid as a "creator," while customers just browse and order without logging in. Supabase handles all of this for free, including secure password storage.'
+  },
+  'dns': {
+    name: 'DNS (Domain Name System)',
+    analogy: 'The internet\'s phone book.',
+    body: 'When someone types "goldenstems.shop" into their browser, DNS is what translates that into the actual server address where your site lives. You buy a domain name (like getting a phone number), then point it at Vercel (like telling the phone book where to route calls). Claude Code walks you through the exact settings to change, it takes about 5 minutes and you only do it once.'
+  },
+  'what-are-terms': {
+    name: 'Learning the Vocabulary',
+    analogy: 'Every purple word is a learning opportunity.',
+    body: 'Throughout this guide, technical terms are highlighted in purple. Tap any of them to see a plain-English explanation with an analogy to help it stick. You don\'t need to memorize these, Claude Code handles the technical details. But over time, as you hear these words in prompts and see them in action, they\'ll start to click. That\'s the real magic of building something: you absorb the vocabulary by doing, not studying.'
+  }
+};
+
+function showTech(key) {
+  const t = terms[key];
+  if (!t) return;
+  document.getElementById('tech-name').textContent = t.name;
+  document.getElementById('tech-analogy').textContent = t.analogy;
+  document.getElementById('tech-body').textContent = t.body;
+  document.getElementById('tech-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function hideTech() {
+  document.getElementById('tech-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ─── COLLAPSIBLE SECTIONS ─── */
+document.querySelectorAll('section.section').forEach(sec => {
+  const wrap = sec.querySelector('.fade-in');
+  if (!wrap) return;
+  const label = wrap.querySelector('.section-label');
+  const h2 = wrap.querySelector('h2');
+  if (!label || !h2) return; // skip non-narrative cards (e.g. the donate box)
+  sec.classList.add('sec-collapse');
+  const head = document.createElement('div');
+  head.className = 'sec-head';
+  const main = document.createElement('div');
+  main.className = 'sec-head-main';
+  main.appendChild(label);
+  main.appendChild(h2);
+  const chev = document.createElement('span');
+  chev.className = 'sec-chev';
+  chev.innerHTML = '&#x25BE;';
+  head.appendChild(main);
+  head.appendChild(chev);
+  const body = document.createElement('div');
+  body.className = 'sec-body';
+  const inner = document.createElement('div');
+  inner.className = 'sec-inner';
+  const pad = document.createElement('div');
+  pad.className = 'sec-pad';
+  while (wrap.firstChild) pad.appendChild(wrap.firstChild);
+  inner.appendChild(pad);
+  body.appendChild(inner);
+  wrap.remove();
+  sec.appendChild(head);
+  sec.appendChild(body);
+  head.addEventListener('click', () => sec.classList.toggle('open'));
+  if (sec.id === 'story' || sec.id === 'showcase') sec.classList.add('open');
+});
+
+/* ─── FADE IN ─── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* ─── AUTO OPEN FIRST STEP ─── */
+setTimeout(() => {
+  const first = document.querySelector('.step');
+  if (first && !first.classList.contains('open')) first.classList.add('open');
+}, 1500);
+</script>
+</body>
+</html>

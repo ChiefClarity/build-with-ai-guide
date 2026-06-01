@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Stems Dashboard, Demo Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --pink: #FF5C93; --orange: #FF6B2B; --lime: #B8E62E; --green: #44D94A;
+    --teal: #1EC9C9; --blue: #3B8BF5; --grape: #4D7CF5; --gold: #E8B84B;
+    --cocoa: #3D2B1F; --tan: #9B7D5A; --cream: #FFFAF2; --white: #FFFDF9;
+    --sidebar-w: 220px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: #f5f0ea; color: var(--cocoa); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4,h5 { font-family: 'Poppins', sans-serif; font-weight: 700; line-height: 1.2; }
+
+  /* Demo banner */
+  .demo-banner {
+    background: linear-gradient(135deg, var(--grape), var(--pink));
+    color: white;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .demo-banner a { color: white; text-decoration: underline; margin-left: 0.5rem; }
+
+  /* Layout */
+  .app { display: flex; min-height: calc(100svh - 40px); }
+
+  /* Sidebar */
+  .sidebar {
+    width: var(--sidebar-w);
+    background: var(--cocoa);
+    color: var(--cream);
+    padding: 1.5rem 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-logo {
+    padding: 0 1.25rem 1.25rem;
+    border-bottom: 1px solid rgba(255,250,242,0.1);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sidebar-logo .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .sidebar-logo span { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255,250,242,0.6);
+    transition: all 0.2s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+  }
+  .nav-item:hover { color: var(--cream); background: rgba(255,250,242,0.05); }
+  .nav-item.active { color: var(--gold); background: rgba(232,184,75,0.1); border-right: 3px solid var(--gold); }
+  .nav-icon { width: 18px; text-align: center; font-size: 0.95rem; }
+  .sidebar-footer { margin-top: auto; padding: 1rem 1.25rem; font-size: 0.75rem; color: rgba(255,250,242,0.3); }
+
+  /* Main */
+  .main { flex: 1; padding: 1.5rem 2rem; overflow-y: auto; max-height: calc(100svh - 40px); }
+  .page-title { font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+  /* Stat cards */
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .stat-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid rgba(61,43,31,0.06);
+    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+  }
+  .stat-label { font-size: 0.75rem; font-weight: 600; color: var(--tan); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+  .stat-value { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.5rem; }
+  .stat-change { font-size: 0.75rem; margin-top: 0.25rem; }
+  .stat-change.up { color: var(--green); }
+  .stat-change.down { color: var(--pink); }
+
+  /* Chart placeholder */
+  .chart-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid rgba(61,43,31,0.06);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+  }
+  .chart-card h3 { font-size: 1rem; margin-bottom: 1rem; }
+  .chart-svg { width: 100%; height: 200px; }
+  .chart-bar { rx: 4; }
+
+  /* Table */
+  .table-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(61,43,31,0.06);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+    margin-bottom: 1.5rem;
+  }
+  .table-header { padding: 1rem 1.25rem; border-bottom: 1px solid rgba(61,43,31,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .table-header h3 { font-size: 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { text-align: left; padding: 0.75rem 1rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tan); border-bottom: 1px solid rgba(61,43,31,0.06); }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(61,43,31,0.03); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,250,242,0.5); }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .badge-paid { background: rgba(68,217,74,0.1); color: var(--green); }
+  .badge-packing { background: rgba(255,107,43,0.1); color: var(--orange); }
+  .badge-shipped { background: rgba(59,139,245,0.1); color: var(--blue); }
+  .badge-delivered { background: rgba(77,124,245,0.1); color: var(--grape); }
+  .badge-pending { background: rgba(232,184,75,0.1); color: var(--gold); }
+  .badge-available { background: rgba(68,217,74,0.1); color: var(--green); }
+  .badge-reserved { background: rgba(255,107,43,0.1); color: var(--orange); }
+  .badge-sold { background: rgba(77,124,245,0.1); color: var(--grape); }
+
+  /* Inventory grid */
+  .inventory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; }
+  .pumpkin-card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid rgba(61,43,31,0.06);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(61,43,31,0.04);
+  }
+  .pumpkin-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    position: relative;
+  }
+  .pumpkin-info { padding: 0.75rem; }
+  .pumpkin-info .color-label { font-size: 0.8rem; font-weight: 600; }
+  .pumpkin-info .badge { margin-top: 0.25rem; }
+
+  /* Finance cards */
+  .finance-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .finance-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem;
+    border: 1px solid rgba(61,43,31,0.06);
+    text-align: center;
+  }
+  .finance-value { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.75rem; margin: 0.25rem 0; }
+  .finance-label { font-size: 0.75rem; color: var(--tan); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Payout table */
+  .payout-row { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(61,43,31,0.04); }
+  .payout-row:last-child { border-bottom: none; }
+  .payout-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; color: white;
+  }
+  .payout-name { flex: 1; font-weight: 600; font-size: 0.9rem; }
+  .payout-amount { font-family: 'Poppins', sans-serif; font-weight: 700; }
+
+  /* Tab content */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Back to guide link */
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--grape);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  /* Mobile */
+  .mobile-nav { display: none; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .mobile-nav {
+      display: flex;
+      gap: 0;
+      background: var(--cocoa);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .mobile-nav button {
+      flex-shrink: 0;
+      padding: 0.75rem 1rem;
+      background: none;
+      border: none;
+      color: rgba(255,250,242,0.6);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+    }
+    .mobile-nav button.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .main { padding: 1rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .finance-row { grid-template-columns: 1fr; }
+    .stat-value { font-size: 1.25rem; }
+  }
+
+  @media (max-width: 480px) {
+    .stats-row { grid-template-columns: 1fr; }
+    .inventory-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  This is a demo preview of the dashboard your kids use to run their business.
+  <a href="index.html">&larr; Back to Guide</a>
+</div>
+
+<div class="mobile-nav">
+  <button class="active" onclick="showTab('dashboard', this)">Dashboard</button>
+  <button onclick="showTab('orders', this)">Orders</button>
+  <button onclick="showTab('inventory', this)">Inventory</button>
+  <button onclick="showTab('finances', this)">Finances</button>
+  <button onclick="showTab('sessions', this)">Sessions</button>
+</div>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">&#x1F383;</div>
+      <span>Golden Stems</span>
+    </div>
+    <button class="nav-item active" onclick="showTab('dashboard', this)">
+      <span class="nav-icon">&#x1F4CA;</span> Dashboard
+    </button>
+    <button class="nav-item" onclick="showTab('orders', this)">
+      <span class="nav-icon">&#x1F4E6;</span> Orders
+    </button>
+    <button class="nav-item" onclick="showTab('inventory', this)">
+      <span class="nav-icon">&#x1F383;</span> Inventory
+    </button>
+    <button class="nav-item" onclick="showTab('finances', this)">
+      <span class="nav-icon">&#x1F4B0;</span> Finances
+    </button>
+    <button class="nav-item" onclick="showTab('sessions', this)">
+      <span class="nav-icon">&#x23F1;</span> Sessions
+    </button>
+    <button class="nav-item" style="opacity:0.4;cursor:default;">
+      <span class="nav-icon">&#x1F4F7;</span> Upload
+    </button>
+    <button class="nav-item" style="opacity:0.4;cursor:default;">
+      <span class="nav-icon">&#x1F514;</span> Waitlist
+    </button>
+    <button class="nav-item" style="opacity:0.4;cursor:default;">
+      <span class="nav-icon">&#x2699;</span> Settings
+    </button>
+    <div class="sidebar-footer">Demo Mode, Sample Data</div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- DASHBOARD TAB -->
+    <div id="tab-dashboard" class="tab-content active">
+      <h2 class="page-title">Dashboard</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value">$487.43</div>
+          <div class="stat-change up">+$124.95 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Orders</div>
+          <div class="stat-value">14</div>
+          <div class="stat-change up">+3 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">In Stock</div>
+          <div class="stat-value">23</div>
+          <div class="stat-change down">8 sold this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Profit Margin</div>
+          <div class="stat-value">67%</div>
+          <div class="stat-change up">+2% vs last month</div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Revenue This Month</h3>
+        <svg class="chart-svg" viewBox="0 0 600 200">
+          <rect x="20" y="160" width="560" height="1" fill="rgba(61,43,31,0.08)"/>
+          <rect x="20" y="120" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
+          <rect x="20" y="80" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
+          <rect x="20" y="40" width="560" height="1" fill="rgba(61,43,31,0.04)"/>
+          <text x="0" y="164" fill="#9B7D5A" font-size="10" font-family='Poppins'>$0</text>
+          <text x="0" y="124" fill="#9B7D5A" font-size="10" font-family='Poppins'>$50</text>
+          <text x="0" y="84" fill="#9B7D5A" font-size="10" font-family='Poppins'>$100</text>
+          <text x="0" y="44" fill="#9B7D5A" font-size="10" font-family='Poppins'>$150</text>
+          <rect class="chart-bar" x="40" y="130" width="50" height="30" fill="#FF5C93" opacity="0.7"/>
+          <rect class="chart-bar" x="110" y="100" width="50" height="60" fill="#FF6B2B" opacity="0.7"/>
+          <rect class="chart-bar" x="180" y="80" width="50" height="80" fill="#E8B84B" opacity="0.7"/>
+          <rect class="chart-bar" x="250" y="60" width="50" height="100" fill="#44D94A" opacity="0.7"/>
+          <rect class="chart-bar" x="320" y="90" width="50" height="70" fill="#1EC9C9" opacity="0.7"/>
+          <rect class="chart-bar" x="390" y="45" width="50" height="115" fill="#3B8BF5" opacity="0.7"/>
+          <rect class="chart-bar" x="460" y="35" width="50" height="125" fill="#4D7CF5" opacity="0.7"/>
+          <rect class="chart-bar" x="530" y="55" width="50" height="105" fill="#FF69B4" opacity="0.7"/>
+          <text x="52" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W1</text>
+          <text x="122" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W2</text>
+          <text x="192" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W3</text>
+          <text x="262" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W4</text>
+          <text x="332" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W5</text>
+          <text x="402" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W6</text>
+          <text x="472" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W7</text>
+          <text x="542" y="175" fill="#9B7D5A" font-size="9" font-family='Poppins' text-anchor="middle">W8</text>
+        </svg>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <h3>Recent Orders</h3>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Order</th><th>Customer</th><th>Bundle</th><th>Total</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>GS-014</strong></td><td>Sarah Mitchell</td><td>5 pack</td><td>$14.99</td><td><span class="badge badge-paid">Paid</span></td></tr>
+            <tr><td><strong>GS-013</strong></td><td>David Chen</td><td>10 pack</td><td>$24.99</td><td><span class="badge badge-packing">Packing</span></td></tr>
+            <tr><td><strong>GS-012</strong></td><td>Lisa Park</td><td>3 pack</td><td>$9.99</td><td><span class="badge badge-shipped">Shipped</span></td></tr>
+            <tr><td><strong>GS-011</strong></td><td>Mike Torres</td><td>5 pack</td><td>$14.99</td><td><span class="badge badge-delivered">Delivered</span></td></tr>
+            <tr><td><strong>GS-010</strong></td><td>Emma Rodriguez</td><td>10 pack</td><td>$24.99</td><td><span class="badge badge-delivered">Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ORDERS TAB -->
+    <div id="tab-orders" class="tab-content">
+      <h2 class="page-title">Orders</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value">14</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pending</div>
+          <div class="stat-value" style="color: var(--gold);">1</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">In Progress</div>
+          <div class="stat-value" style="color: var(--orange);">3</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value" style="color: var(--green);">10</div>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="table-header"><h3>All Orders</h3></div>
+        <table>
+          <thead>
+            <tr><th>Order</th><th>Customer</th><th>Type</th><th>Bundle</th><th>Total</th><th>Status</th><th>Date</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>GS-014</strong></td><td>Sarah Mitchell</td><td>Pick</td><td>5</td><td>$14.99</td><td><span class="badge badge-paid">Paid</span></td><td>May 30</td></tr>
+            <tr><td><strong>GS-013</strong></td><td>David Chen</td><td>Mystery</td><td>10</td><td>$24.99</td><td><span class="badge badge-packing">Packing</span></td><td>May 28</td></tr>
+            <tr><td><strong>GS-012</strong></td><td>Lisa Park</td><td>Pick</td><td>3</td><td>$9.99</td><td><span class="badge badge-shipped">Shipped</span></td><td>May 27</td></tr>
+            <tr><td><strong>GS-011</strong></td><td>Mike Torres</td><td>Pick</td><td>5</td><td>$14.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 25</td></tr>
+            <tr><td><strong>GS-010</strong></td><td>Emma Rodriguez</td><td>Mystery</td><td>10</td><td>$24.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 23</td></tr>
+            <tr><td><strong>GS-009</strong></td><td>James Wilson</td><td>Pick</td><td>3</td><td>$9.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 21</td></tr>
+            <tr><td><strong>GS-008</strong></td><td>Amy Nguyen</td><td>Pick</td><td>5</td><td>$14.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 19</td></tr>
+            <tr><td><strong>GS-007</strong></td><td>Grandma Cabrera</td><td>Mystery</td><td>10</td><td>$24.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 17</td></tr>
+            <tr><td><strong>GS-006</strong></td><td>Rachel Kim</td><td>Pick</td><td>3</td><td>$9.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 15</td></tr>
+            <tr><td><strong>GS-005</strong></td><td>Tom Baker</td><td>Pick</td><td>5</td><td>$14.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 12</td></tr>
+            <tr><td><strong>GS-004</strong></td><td>Maria Santos</td><td>Mystery</td><td>3</td><td>$9.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 10</td></tr>
+            <tr><td><strong>GS-003</strong></td><td>Chris Johnson</td><td>Pick</td><td>10</td><td>$24.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 8</td></tr>
+            <tr><td><strong>GS-002</strong></td><td>Aunt Jessica</td><td>Pick</td><td>5</td><td>$14.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 5</td></tr>
+            <tr><td><strong>GS-001</strong></td><td>Nino (Godfather)</td><td>Mystery</td><td>10</td><td>$24.99</td><td><span class="badge badge-delivered">Delivered</span></td><td>May 2</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- INVENTORY TAB -->
+    <div id="tab-inventory" class="tab-content">
+      <h2 class="page-title">Inventory</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Available</div>
+          <div class="stat-value" style="color: var(--green);">23</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Reserved</div>
+          <div class="stat-value" style="color: var(--orange);">2</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Sold</div>
+          <div class="stat-value" style="color: var(--grape);">58</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Made</div>
+          <div class="stat-value">83</div>
+        </div>
+      </div>
+      <div class="inventory-grid">
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFE0E8;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Hot Pink</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFF0E0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Orange</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#F0FFE0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Lime Green</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#E0F0FF;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Sky Blue</div><span class="badge badge-reserved">Reserved</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#F0E0FF;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Purple</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFFDE0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Gold</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#E0FFF5;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Teal</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFE0E8;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Bubblegum</div><span class="badge badge-reserved">Reserved</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFE8D0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Peach</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFE0E0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Red</div><span class="badge badge-sold">Sold</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#E0E8FF;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Navy</div><span class="badge badge-available">Available</span></div></div>
+        <div class="pumpkin-card"><div class="pumpkin-photo" style="background:#FFF0E0;">&#x1F383;</div><div class="pumpkin-info"><div class="color-label">Tangerine</div><span class="badge badge-available">Available</span></div></div>
+      </div>
+    </div>
+
+    <!-- FINANCES TAB -->
+    <div id="tab-finances" class="tab-content">
+      <h2 class="page-title">Finances</h2>
+      <div class="finance-row">
+        <div class="finance-card">
+          <div class="finance-label">Total Revenue</div>
+          <div class="finance-value" style="color: var(--green);">$487.43</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-label">Total Expenses</div>
+          <div class="finance-value" style="color: var(--pink);">$162.30</div>
+        </div>
+        <div class="finance-card">
+          <div class="finance-label">Net Profit</div>
+          <div class="finance-value" style="color: var(--blue);">$325.13</div>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header"><h3>Expenses</h3></div>
+        <table>
+          <thead><tr><th>Category</th><th>Description</th><th>Amount</th><th>Date</th></tr></thead>
+          <tbody>
+            <tr><td>Pipe Cleaners</td><td>Bulk pack (500ct) - Amazon</td><td>$24.99</td><td>May 28</td></tr>
+            <tr><td>Pipe Cleaners</td><td>Metallic variety pack (200ct)</td><td>$18.50</td><td>May 20</td></tr>
+            <tr><td>Packaging</td><td>Small kraft boxes (50ct)</td><td>$22.99</td><td>May 15</td></tr>
+            <tr><td>Envelopes</td><td>Padded mailers (25ct)</td><td>$15.99</td><td>May 15</td></tr>
+            <tr><td>Stamps</td><td>Forever stamps (20ct)</td><td>$13.60</td><td>May 10</td></tr>
+            <tr><td>Pipe Cleaners</td><td>Neon colors pack (300ct)</td><td>$16.99</td><td>May 5</td></tr>
+            <tr><td>Stamps</td><td>Forever stamps (20ct)</td><td>$13.60</td><td>May 2</td></tr>
+            <tr><td>Packaging</td><td>Tissue paper &amp; ribbon</td><td>$8.49</td><td>May 1</td></tr>
+            <tr><td>Pipe Cleaners</td><td>Starter bulk pack (500ct)</td><td>$24.99</td><td>Apr 28</td></tr>
+            <tr><td>Other</td><td>Domain name (goldenstems.shop)</td><td>$2.16</td><td>Apr 25</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header"><h3>Payouts to the Girls</h3></div>
+        <div style="padding: 1rem 1.25rem;">
+          <div class="payout-row">
+            <div class="payout-avatar" style="background: var(--pink);">A</div>
+            <div class="payout-name">Amilia<div style="font-size:0.75rem;color:var(--tan);font-weight:400;">May 25, &ldquo;For selling 8 pumpkins!&rdquo;</div></div>
+            <div class="payout-amount" style="color: var(--green);">$38.50</div>
+          </div>
+          <div class="payout-row">
+            <div class="payout-avatar" style="background: var(--teal);">S</div>
+            <div class="payout-name">Siena<div style="font-size:0.75rem;color:var(--tan);font-weight:400;">May 25, &ldquo;Great crafting session!&rdquo;</div></div>
+            <div class="payout-amount" style="color: var(--green);">$38.50</div>
+          </div>
+          <div class="payout-row">
+            <div class="payout-avatar" style="background: var(--grape);">E</div>
+            <div class="payout-name">Ella<div style="font-size:0.75rem;color:var(--tan);font-weight:400;">May 25, &ldquo;Best wrapper on the team!&rdquo;</div></div>
+            <div class="payout-amount" style="color: var(--green);">$38.50</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SESSIONS TAB -->
+    <div id="tab-sessions" class="tab-content">
+      <h2 class="page-title">Production Sessions</h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Total Sessions</div>
+          <div class="stat-value">8</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Time</div>
+          <div class="stat-value">12.5h</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Pumpkins Made</div>
+          <div class="stat-value">83</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Avg per Session</div>
+          <div class="stat-value">~10</div>
+        </div>
+      </div>
+      <div class="table-card">
+        <div class="table-header"><h3>Session History</h3></div>
+        <table>
+          <thead><tr><th>Date</th><th>Duration</th><th>Pumpkins</th><th>Participants</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>May 29</td><td>2h 15m</td><td>14</td><td>Amilia, Siena, Ella</td><td>New metallic colors! Ella made 6 by herself</td></tr>
+            <tr><td>May 24</td><td>1h 45m</td><td>12</td><td>Amilia, Siena</td><td>Practiced mini pumpkins for 3-packs</td></tr>
+            <tr><td>May 19</td><td>1h 30m</td><td>10</td><td>Amilia, Ella</td><td>Tried the new neon colors</td></tr>
+            <tr><td>May 14</td><td>2h 00m</td><td>15</td><td>Amilia, Siena, Ella</td><td>Big session, getting faster!</td></tr>
+            <tr><td>May 10</td><td>1h 30m</td><td>8</td><td>Amilia, Siena</td><td>Quality check, redid some stems</td></tr>
+            <tr><td>May 6</td><td>1h 15m</td><td>9</td><td>Amilia, Siena, Ella</td><td>First session after launch!</td></tr>
+            <tr><td>May 2</td><td>1h 00m</td><td>8</td><td>Amilia, Siena</td><td>Pre-launch inventory prep</td></tr>
+            <tr><td>Apr 28</td><td>1h 15m</td><td>7</td><td>Amilia, Siena, Ella</td><td>Product photos day! Took all the pics</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function showTab(tab, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item, .mobile-nav button').forEach(n => n.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  if (btn) btn.classList.add('active');
+  // sync mobile and sidebar
+  const label = btn ? btn.textContent.trim() : '';
+  document.querySelectorAll('.nav-item, .mobile-nav button').forEach(n => {
+    if (n.textContent.trim() === label) n.classList.add('active');
+  });
+}
+</script>
+</body>
+</html>
