@@ -350,10 +350,10 @@
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="hero-badge">Built by a dad &amp; his 3 girls + AI</div>
-  <h1>Build Your Kid's First Business Website With AI</h1>
+  <div class="hero-badge">Built by a Dad &amp; his daughter and nieces + AI</div>
+  <h1>Build Your Kid's First Business Website/Dashboard With AI</h1>
   <p class="hero-sub">A parent's guide to learning AI with your kids, by building something real together.</p>
-  <a href="#story" class="hero-cta">See How We Did It &darr;</a>
+  <a href="#story" class="hero-cta" onclick="var s=document.getElementById('story'); if(s) s.classList.add('open');">See How We Did It &darr;</a>
   <div class="scroll-hint"><span>&darr;</span></div>
 </section>
 
@@ -1308,7 +1308,7 @@ document.querySelectorAll('section.section').forEach(sec => {
   sec.appendChild(head);
   sec.appendChild(body);
   head.addEventListener('click', () => sec.classList.toggle('open'));
-  if (sec.id === 'story' || sec.id === 'showcase') sec.classList.add('open');
+  // all sections start collapsed so visitors see the full menu on arrival
 });
 
 /* ─── FADE IN ─── */
