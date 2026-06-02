@@ -593,27 +593,6 @@
       <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
     </div>
 
-    <div style="margin: 0 0 2.5rem;">
-      <h3 style="font-family: 'Fraunces', serif; font-size: 1.25rem; color: var(--cocoa); margin-bottom: 0.5rem;">First, set the quality bar</h3>
-      <p style="font-size: 0.98rem; color: var(--tan); margin-bottom: 1rem; max-width: 600px;">Paste this one message into Claude Code before you start Step 1. It tells the AI to build everything to a professional standard, the same standards behind Golden Stems, so you get production-grade software, not a rough draft. You only send it once; it sets the tone for the whole project.</p>
-      <div class="prompt-box">
-        <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
-        <span class="prompt-text">Before we build anything else, set the engineering standards for this whole project, and hold to them in every step:
-
-- Use TypeScript in strict mode. Once our database exists, generate TypeScript types from the Supabase schema and use them everywhere, so the app is type-safe from the database all the way to the screen.
-- Validate every user input with Zod, using the same schema on the client and the server. Never trust data coming from the browser.
-- Keep concerns separated: read-only data fetching in src/lib/data, all data writes in Server Actions (src/actions), outside integrations in src/lib/services, and Zod schemas in src/lib/validations.
-- Use React Server Components to fetch data (queries run on the server, fetched in parallel when possible) and Client Components only for interactive parts like the cart and forms.
-- Server Actions should validate their input, return a clear { success, error } result instead of throwing, and refresh (revalidate) the affected pages after a change so the screen always matches the data.
-- Security first: keep all secret keys server-side (only NEXT_PUBLIC_ variables may reach the browser), rely on Supabase Row Level Security, and only use the service-role admin client for true system operations (like reserving a product during an unauthenticated checkout).
-- Make it reliable: handle loading and error states everywhere, and make outside services (email, image processing) non-blocking, so if one of them fails it never breaks a customer's order.
-- Make it accessible and mobile-first: semantic HTML, alt text on images, keyboard navigation, and strong color contrast.
-- After each step, run the TypeScript type checker and the linter, and fix any errors before we move on.
-
-Acknowledge these standards, then apply them to everything we build from here.</span>
-      </div>
-    </div>
-
     <div class="journey">
       <!-- ──── STEP 0 ──── -->
       <div class="step">
@@ -666,6 +645,25 @@ Finally, set up version control: initialize git, add a .gitignore so my secrets 
             </div>
 
             <p><strong>5. Add your keys</strong>: Claude Code will show you exactly where your Supabase keys go and help you drop them in. You'll add the Resend and remove.bg keys later, when we reach those steps.</p>
+
+            <p><strong>6. Set the quality bar</strong>: Before we start building features, send Claude Code one more message. It sets the engineering standards for the whole project, the same standards behind Golden Stems, so everything we build is production-grade, not a rough draft. You only send this once.</p>
+
+            <div class="prompt-box">
+              <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+              <span class="prompt-text">Before we build anything else, set the engineering standards for this whole project, and hold to them in every step:
+
+- Use TypeScript in strict mode. Once our database exists, generate TypeScript types from the Supabase schema and use them everywhere, so the app is type-safe from the database all the way to the screen.
+- Validate every user input with Zod, using the same schema on the client and the server. Never trust data coming from the browser.
+- Keep concerns separated: read-only data fetching in src/lib/data, all data writes in Server Actions (src/actions), outside integrations in src/lib/services, and Zod schemas in src/lib/validations.
+- Use React Server Components to fetch data (queries run on the server, fetched in parallel when possible) and Client Components only for interactive parts like the cart and forms.
+- Server Actions should validate their input, return a clear { success, error } result instead of throwing, and refresh (revalidate) the affected pages after a change so the screen always matches the data.
+- Security first: keep all secret keys server-side (only NEXT_PUBLIC_ variables may reach the browser), rely on Supabase Row Level Security, and only use the service-role admin client for true system operations (like reserving a product during an unauthenticated checkout).
+- Make it reliable: handle loading and error states everywhere, and make outside services (email, image processing) non-blocking, so if one of them fails it never breaks a customer's order.
+- Make it accessible and mobile-first: semantic HTML, alt text on images, keyboard navigation, and strong color contrast.
+- After each step, run the TypeScript type checker and the linter, and fix any errors before we move on.
+
+Acknowledge these standards, then apply them to everything we build from here.</span>
+            </div>
 
             <div class="what-happens">
               <ul>
@@ -1160,7 +1158,7 @@ Product photos must upload and display fine on their own, with their original ba
     <div class="coming-list">
       <div class="coming-item"><span class="coming-badge">Soon</span> A Homework Assistant that takes the parent out of the loop and makes homework actually fun</div>
       <div class="coming-item"><span class="coming-badge">Soon</span> Arcade games your kids dream up and build themselves</div>
-      <div class="coming-item"><span class="coming-badge">Soon</span> A voice-first Family Executive Assistant that briefs everyone each morning on schedules, to-dos, and what not to forget, drafts emails, helps plan vacations, and ties together the everyday apps your family already uses to make life run smoother</div>
+      <div class="coming-item"><span class="coming-badge">Soon</span> A voice-first Family Executive Assistant that briefs everyone each morning on schedules, to-dos, and what not to forget, and ties together the everyday apps your family already uses to make life run smoother</div>
       <div class="coming-item"><span class="coming-badge">Soon</span> And more projects I have in mind for the kids this summer</div>
     </div>
   </div>
