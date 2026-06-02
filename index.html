@@ -214,6 +214,7 @@
     margin-top: 1rem; background: var(--cocoa); color: #ece2d2; border-radius: 10px;
     padding: 1rem 1.25rem; font-size: 0.9rem; line-height: 1.6; position: relative;
   }
+  .prompt-text { display: block; white-space: pre-wrap; }
   .prompt-box .prompt-label {
     font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem;
@@ -592,6 +593,27 @@
       <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
     </div>
 
+    <div style="margin: 0 0 2.5rem;">
+      <h3 style="font-family: 'Fraunces', serif; font-size: 1.25rem; color: var(--cocoa); margin-bottom: 0.5rem;">First, set the quality bar</h3>
+      <p style="font-size: 0.98rem; color: var(--tan); margin-bottom: 1rem; max-width: 600px;">Paste this one message into Claude Code before you start Step 1. It tells the AI to build everything to a professional standard, the same standards behind Golden Stems, so you get production-grade software, not a rough draft. You only send it once; it sets the tone for the whole project.</p>
+      <div class="prompt-box">
+        <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
+        <span class="prompt-text">Before we build anything else, set the engineering standards for this whole project, and hold to them in every step:
+
+- Use TypeScript in strict mode. Once our database exists, generate TypeScript types from the Supabase schema and use them everywhere, so the app is type-safe from the database all the way to the screen.
+- Validate every user input with Zod, using the same schema on the client and the server. Never trust data coming from the browser.
+- Keep concerns separated: read-only data fetching in src/lib/data, all data writes in Server Actions (src/actions), outside integrations in src/lib/services, and Zod schemas in src/lib/validations.
+- Use React Server Components to fetch data (queries run on the server, fetched in parallel when possible) and Client Components only for interactive parts like the cart and forms.
+- Server Actions should validate their input, return a clear { success, error } result instead of throwing, and refresh (revalidate) the affected pages after a change so the screen always matches the data.
+- Security first: keep all secret keys server-side (only NEXT_PUBLIC_ variables may reach the browser), rely on Supabase Row Level Security, and only use the service-role admin client for true system operations (like reserving a product during an unauthenticated checkout).
+- Make it reliable: handle loading and error states everywhere, and make outside services (email, image processing) non-blocking, so if one of them fails it never breaks a customer's order.
+- Make it accessible and mobile-first: semantic HTML, alt text on images, keyboard navigation, and strong color contrast.
+- After each step, run the TypeScript type checker and the linter, and fix any errors before we move on.
+
+Acknowledge these standards, then apply them to everything we build from here.</span>
+      </div>
+    </div>
+
     <div class="journey">
       <!-- ──── STEP 0 ──── -->
       <div class="step">
@@ -612,13 +634,17 @@
 
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
-              <span class="prompt-text">Create a new Next.js project for [Business Name] using the App Router, TypeScript, and Tailwind CSS. Set up the project structure with:
-- src/app for pages (using the App Router convention)
+              <span class="prompt-text">Create a new Next.js project for [Business Name] using the App Router, TypeScript in strict mode, and Tailwind CSS. Set up a clean, professional project structure:
+- src/app for pages (App Router convention)
 - src/components for reusable UI pieces
-- src/lib for utilities, data fetching, and services
-- src/actions for server-side form handling
+- src/lib/data for read-only database queries
+- src/lib/services for outside integrations (email, image processing)
+- src/lib/validations for Zod schemas
+- src/lib/supabase for the database clients (below)
+- src/actions for Server Actions (all data writes go here)
+- src/types for shared TypeScript types
 
-Install these packages: @supabase/ssr @supabase/supabase-js resend @react-email/components react-dropzone recharts lucide-react zod class-variance-authority clsx tailwind-merge pg
+Install these packages: @supabase/ssr @supabase/supabase-js resend @react-email/components react-dropzone recharts lucide-react zod class-variance-authority clsx tailwind-merge sharp pg
 
 Create a .env.local file with these values (I'll fill in the keys):
 NEXT_PUBLIC_SUPABASE_URL=[paste your Supabase project URL here]
@@ -771,7 +797,7 @@ Requirements:
 - Seed data for default bundle pricing (3 for $9.99, 5 for $14.99, 10 for $24.99), supply cost estimates (pipe cleaner cost per product, envelope cost per order, stamp cost per order), and low inventory threshold
 - Set up a public storage bucket called "product-photos" for uploaded images
 
-Generate the complete SQL setup file I can paste into the Supabase SQL Editor. Include clear comments so I can understand what each section does.</span>
+Generate the complete SQL setup file I can paste into the Supabase SQL Editor. Include clear comments so I can understand what each section does. Add helpful indexes for the queries we'll run most (filtering products by status, finding expired reservations, listing orders by date). Once I've run the SQL, generate TypeScript types from the database schema and wire them into our Supabase clients, so the whole app is type-safe end to end.</span>
             </div>
             <div class="what-happens">
               <ul>
@@ -812,12 +838,13 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
 Pages needed:
 - Homepage: hero section with our SVG logo and a catchy tagline, a grid of featured product photos pulled from our database, an "About the Founders" section with the kids' names and ages, and a prominent "Shop Now" button
 - Shop page: gallery of all available products with photos from Supabase Storage. Two shopping modes: "Pick Your Own" (customer taps to select specific items) and "Mystery Pack" (we choose for them, they pick a bundle size and their preferred colors). Bundle size selector (3/5/10) that updates pricing in real-time using prices from the settings table.
-- Cart page: show selected items with photos, order summary with pricing breakdown. Include a delivery method choice (Shipping with a flat fee, or Local Pickup for free). Add an optional charity/tip donation field with preset amounts ($1, $3, $5) and a custom option. Full checkout form with validation using Zod (name, email, phone, shipping address). Use React Context to manage cart state across pages. Reserve selected products for 15 minutes so they don't get bought by someone else during checkout.
+- Cart page: show selected items with photos, order summary with pricing breakdown. Include a delivery method choice (Shipping with a flat fee, or Local Pickup for free). Add an optional charity/tip donation field with preset amounts ($1, $3, $5) and a custom option. Full checkout form with validation using Zod (name, email, phone, shipping address). Use React Context to manage cart state across pages. Reserve selected products for 15 minutes so two people can't buy the same one, only reserving items that are still available (an atomic check so there's no race condition), and automatically release reservations that expire so abandoned carts free the inventory back up.
 - Order confirmation page: show order number, items ordered, total paid, and a friendly thank-you message from the founders
 
-When an order is submitted, create it in our orders table with status "pending_payment", link the selected products via order_items, and mark those products as "sold" in the pumpkins table.
+When an order is submitted, handle it with a Server Action that validates the input with Zod and returns a clear success or error result: create the order in our orders table with status "pending_payment", link the selected products via order_items, and mark those products as "sold" in the pumpkins table.
 
 Technical requirements:
+- Use Server Components to fetch data (database queries run on the server, fetched in parallel where possible); use Client Components only for interactive parts like the shop selector, cart, and checkout form
 - Mobile-first responsive design, most traffic comes from Instagram on phones
 - Loading skeleton states while data fetches from Supabase
 - Proper SEO meta tags and Open Graph image for link previews on Instagram and iMessage
@@ -876,8 +903,9 @@ Dashboard pages:
 
 Technical:
 - Sidebar navigation with brand colors, Lucide React icons, and active state highlighting
-- Use Server Actions for all data mutations with Zod validation on every form
-- Use the Supabase server client for reading data and the service role client for admin writes
+- Protect the dashboard in two places (defense in depth): the Next.js middleware that guards /admin routes, plus a check in the admin layout that also loads the signed-in user's role and shows role-appropriate menus
+- Use Server Actions for all data mutations, with Zod validation on every form; each action should return a typed success/error result instead of throwing, and revalidate the affected page after a change so the screen stays in sync
+- Use the Supabase server client for reading data and the service role client only for true admin/system writes
 - Responsive layout, works on tablet and desktop
 - Loading states and error handling on all pages</span>
             </div>
@@ -980,7 +1008,7 @@ Product photos must upload and display fine on their own, with their original ba
 
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
-              <span class="prompt-text">Help me deploy [Business Name] to production. Walk me through each step:
+              <span class="prompt-text">Help me deploy [Business Name] to production. First, a quick pre-flight check: run the TypeScript type checker and the linter and fix any errors so we ship clean, and confirm no secret keys are exposed to the browser (only NEXT_PUBLIC_ variables should be public). Then walk me through each step:
 
 1. Make sure all our latest code is committed and pushed to the GitHub repository we set up in Step 0.
 2. Connect to Vercel for automatic deployments:
