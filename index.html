@@ -785,7 +785,7 @@ Tables:
 - Supply stock: tracks inventory of shipping supplies (envelopes, stamps, pipe cleaners, packaging) with current quantities that auto-decrement when orders ship
 - Payouts: records when kids get paid their earnings, with amounts, dates, and notes
 - Waitlist: customer emails for out-of-stock notifications, with signup date
-- Settings: key-value store for configurable pricing, cost-per-item estimates, and low-inventory thresholds
+- Settings: key-value store for configurable pricing, cost-per-item estimates, low-inventory thresholds, and the payment link customers use to pay
 
 Requirements:
 - Proper foreign keys and database indexes for performance
@@ -829,6 +829,8 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
           </div>
           <div class="step-body"><div class="step-content">
             <p>This is the fun part, building the website customers will see. You describe each page, and Claude Code builds it using the brand kit and database we already set up. <strong>Have your kid sit with you for this one.</strong> When the homepage appears with their logo and colors, the look on their face is priceless. Siena literally said "wait, that's OUR website?!"</p>
+
+            <p><strong>How you actually get paid:</strong> Every order comes in marked "awaiting payment." So customers can pay, the checkout page and the confirmation email both show a <strong>Pay Now</strong> button that points to a payment link you choose. We created a <strong>Greenlight</strong> account for the girls (the kids' debit card and family-banking app) and used its payment link, so the money landed straight in their own account, which made earning it feel real to them. Any payment link works though, Greenlight, Venmo, PayPal, Cash App, whatever you already use. Since kids can't hold these accounts, a parent sets it up and pastes the link into the dashboard. When the money arrives, you tap one button to mark the order "Paid." (This keeps things simple and fee-free; you can always add automatic card checkout later as you grow.)</p>
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
               <span class="prompt-text">In our existing Next.js project, build the customer-facing storefront for [Business Name]. Use the brand kit we created in Step 2 (exact hex colors, Google Fonts, and SVG logo) and read all data from the Supabase database we set up in Step 3.
@@ -837,7 +839,7 @@ Pages needed:
 - Homepage: hero section with our SVG logo and a catchy tagline, a grid of featured product photos pulled from our database, an "About the Founders" section with the kids' names and ages, and a prominent "Shop Now" button
 - Shop page: gallery of all available products with photos from Supabase Storage. Two shopping modes: "Pick Your Own" (customer taps to select specific items) and "Mystery Pack" (we choose for them, they pick a bundle size and their preferred colors). Bundle size selector (3/5/10) that updates pricing in real-time using prices from the settings table.
 - Cart page: show selected items with photos, order summary with pricing breakdown. Include a delivery method choice (Shipping with a flat fee, or Local Pickup for free). Add an optional charity/tip donation field with preset amounts ($1, $3, $5) and a custom option. Full checkout form with validation using Zod (name, email, phone, shipping address). Use React Context to manage cart state across pages. Reserve selected products for 15 minutes so two people can't buy the same one, only reserving items that are still available (an atomic check so there's no race condition), and automatically release reservations that expire so abandoned carts free the inventory back up.
-- Order confirmation page: show order number, items ordered, total paid, and a friendly thank-you message from the founders
+- Order confirmation page: show the order number, items ordered, the amount due, a prominent "Pay Now" button that links to our payment link (stored in the settings table so I can change it anytime), and a friendly thank-you message from the founders. The order stays "pending_payment" until we mark it paid.
 
 When an order is submitted, handle it with a Server Action that validates the input with Zod and returns a clear success or error result: create the order in our orders table with status "pending_payment", link the selected products via order_items, and mark those products as "sold" in the pumpkins table.
 
@@ -890,13 +892,13 @@ This dashboard is for the kids to run their business (with a parent alongside th
 
 Dashboard pages:
 - Overview: 4 metric cards (total revenue, orders this month, products in stock, profit margin percentage), a revenue-over-time line chart using Recharts, and a list of the 5 most recent orders with quick-action buttons
-- Orders (/admin/orders): sortable table of all orders with color-coded status badges. Click any order to see full details, customer info, ordered items with product photos, delivery method, donation amount. Status update buttons to move through the workflow (pending_payment &rarr; paid &rarr; packing &rarr; shipped or ready_for_pickup). Tracking number field for shipped orders. Button to resend the confirmation email.
+- Orders (/admin/orders): sortable table of all orders with color-coded status badges. Click any order to see full details, customer info, ordered items with product photos, delivery method, donation amount. Status update buttons to move through the workflow (pending_payment &rarr; paid &rarr; packing &rarr; shipped or ready_for_pickup); mark an order "paid" with one tap once the money lands in your account. Tracking number field for shipped orders. Button to resend the confirmation email.
 - Inventory (/admin/inventory): grid view of all products showing photos, colors, and status badges. Upload new products with drag-and-drop (react-dropzone). Optionally remove photo backgrounds using our remove.bg integration (uploads work fine without it). Edit product colors after upload. Delete products.
 - Batch Upload (/admin/batch-upload): upload 10+ photos at once, automatic background removal on each, assign a color to each product, preview all before saving to the database
 - Finances (/admin/finances): revenue breakdown with total revenue, total expenses, and net profit. Expense tracker with categories (pipe cleaners, envelopes, stamps, packaging, other), each with description, amount, and date. Payout section for logging when each kid gets paid their earnings, track amount, date, and a note (like "Great sales week!"). Show charity impact if the business donates a percentage.
 - Supply Stock: track shipping supply inventory (envelopes, stamps, packaging materials) with current quantities. When an order status is updated to "shipped" or "ready for pickup," automatically decrement the supply counts. Show a low-stock warning when supplies drop below the threshold.
 - Production Sessions: log crafting sessions with date, duration, number of products made, which kids participated (selectable from profiles), and notes. Show session history with stats (total sessions, total hours, products per session). Track each kid's labor hours and calculated earnings.
-- Settings: adjust bundle pricing for both "Pick Your Own" and "Mystery Pack," set supply cost estimates (pipe cleaner cost per product, envelope per order, stamp per order), low-inventory alert thresholds, profit margin target
+- Settings: adjust bundle pricing for both "Pick Your Own" and "Mystery Pack," set supply cost estimates (pipe cleaner cost per product, envelope per order, stamp per order), low-inventory alert thresholds, profit margin target, and a payment link field (paste the Greenlight, Venmo, PayPal, or other payment-link URL where customers send money)
 - Waitlist: when products are sold out, customers can sign up with their email to be notified. Dashboard shows the full waitlist with signup dates. "Notify All" button that sends a back-in-stock email to everyone on the list.
 
 Technical:
@@ -956,7 +958,7 @@ Technical:
 Build a complete email service with multiple branded HTML templates using React Email components. Every email should match our brand kit, use our colors, include our logo, and have a signature like "Made with love by [kids' names]."
 
 Email types to build:
-- Order confirmation: sent automatically when an order is created (wire this into the order creation action from Step 4). Include order number, order type, bundle size, total price, donation amount, items with thumbnail photos, and shipping/pickup details.
+- Order confirmation: sent automatically when an order is created (wire this into the order creation action from Step 4). Include order number, order type, bundle size, total price, donation amount, items with thumbnail photos, shipping/pickup details, and a prominent "Pay for your order" button linking to our payment link (from settings) so the customer can pay right from the email.
 - Order shipped: sent when admin updates status to "shipped." Include tracking number and product photos.
 - Ready for pickup: sent when admin updates status to "ready_for_pickup." Include pickup address and product photos.
 - Waitlist welcome: sent when a customer joins the waitlist.
