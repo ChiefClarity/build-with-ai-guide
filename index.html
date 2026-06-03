@@ -333,24 +333,25 @@
   @media (min-width: 600px) { .glossary-grid { grid-template-columns: 1fr 1fr; } }
 
   /* ─── REVIEWS ─── */
-  .reviews-list { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin-top: 1.25rem; }
-  .review-card { background: var(--white); border: 1px solid rgba(56,42,29,0.07); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .reviews-list { display: flex; gap: 0.9rem; margin-top: 1.25rem; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 0.6rem; -webkit-overflow-scrolling: touch; }
+  .reviews-list::-webkit-scrollbar { height: 8px; }
+  .reviews-list::-webkit-scrollbar-thumb { background: rgba(56,42,29,0.16); border-radius: 100px; }
+  .reviews-list::-webkit-scrollbar-track { background: transparent; }
+  .review-card { flex: 0 0 300px; scroll-snap-align: start; background: var(--white); border: 1px solid rgba(56,42,29,0.07); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.55rem; }
   .review-stars { display: flex; gap: 2px; color: var(--gold); }
-  .review-story { font-size: 0.95rem; line-height: 1.55; color: var(--cocoa); margin: 0; }
+  .review-story { font-size: 0.95rem; line-height: 1.55; color: var(--cocoa); margin: 0; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+  .review-card.expanded .review-story { -webkit-line-clamp: unset; }
+  .review-more-link { align-self: flex-start; background: none; border: none; padding: 0; color: var(--grape); font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; }
   .review-meta { font-size: 0.84rem; color: var(--tan); margin-top: auto; }
   .review-meta strong { color: var(--cocoa); font-weight: 700; }
   .review-sub { font-size: 0.78rem; color: var(--tan); margin-top: 0.15rem; }
-  .reviews-empty { grid-column: 1 / -1; text-align: center; color: var(--tan); padding: 1.75rem 1rem; font-size: 0.95rem; margin: 0; }
+  .reviews-empty { flex: 1 0 100%; text-align: center; color: var(--tan); padding: 1.75rem 1rem; font-size: 0.95rem; margin: 0; }
   .review-cta { display: flex; align-items: center; gap: 0.5rem; margin: 2.75rem auto 0; width: fit-content; background: linear-gradient(135deg, var(--pink), var(--grape)); border: none; color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; padding: 0.85rem 1.9rem; border-radius: 100px; cursor: pointer; box-shadow: 0 8px 20px rgba(229,80,122,0.28); transition: transform 0.15s ease, box-shadow 0.15s ease; }
   .review-cta:hover { transform: translateY(-2px); box-shadow: 0 11px 26px rgba(229,80,122,0.36); }
   .review-cta-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .review-cta.is-open { background: none; box-shadow: none; color: var(--tan); font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; }
   .review-cta.is-open:hover { transform: none; color: var(--cocoa); }
   .review-cta.is-open .review-cta-icon { display: none; }
-  .reviews-more { display: block; margin: 1rem auto 0; background: none; border: none; color: var(--grape); font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-  .reviews-more[hidden] { display: none; }
-  .review-card.extra { display: none; }
-  .reviews-list.show-all .review-card.extra { display: flex; }
   .review-form { margin-top: 1.1rem; background: var(--cream); border: 1px solid rgba(56,42,29,0.08); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; }
   .review-form[hidden] { display: none; }
   .review-form > label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-weight: 600; color: var(--cocoa); }
@@ -371,7 +372,7 @@
   .rf-msg.ok { color: var(--green); }
   .rf-msg.err { color: var(--grape); }
   .rf-note { font-size: 0.74rem; color: var(--tan); margin: 0; }
-  @media (min-width: 700px) { .reviews-list { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .review-card { flex-basis: 80vw; max-width: 320px; } }
   @media (min-width: 560px) { .rf-row { grid-template-columns: 1fr 1fr; } }
 
   /* ─── RESPONSIVE ─── */
@@ -1180,8 +1181,6 @@ Product photos must upload and display fine on their own, with their original ba
       <p class="reviews-empty">Loading stories...</p>
     </div>
 
-    <button type="button" id="reviews-more" class="reviews-more" hidden>See all stories</button>
-
     <button type="button" id="review-toggle" class="review-cta">
       <svg class="review-cta-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
       <span id="review-toggle-text">Share your story</span>
@@ -1462,6 +1461,7 @@ setTimeout(() => {
     }
     const story = document.createElement('p'); story.className = 'review-story';
     story.textContent = '“' + (r.story || '') + '”'; c.appendChild(story);
+    const more = document.createElement('button'); more.type = 'button'; more.className = 'review-more-link'; more.textContent = 'Read more'; c.appendChild(more);
     const meta = document.createElement('div'); meta.className = 'review-meta';
     const nm = document.createElement('strong'); nm.textContent = r.first_name || 'A parent'; meta.appendChild(nm);
     if (r.location) meta.appendChild(document.createTextNode(' · ' + r.location));
@@ -1470,7 +1470,7 @@ setTimeout(() => {
     c.appendChild(meta);
     return c;
   }
-  const empty = (t) => { const mb = document.getElementById('reviews-more'); if (mb) mb.hidden = true; list.innerHTML = ''; const p = document.createElement('p'); p.className = 'reviews-empty'; p.textContent = t; list.appendChild(p); };
+  const empty = (t) => { list.innerHTML = ''; const p = document.createElement('p'); p.className = 'reviews-empty'; p.textContent = t; list.appendChild(p); };
 
   let rating = 0;
   if (starWrap) {
@@ -1503,17 +1503,13 @@ setTimeout(() => {
         .eq('approved', true).order('created_at', { ascending: false }).limit(60);
       if (error) throw error;
       if (!data || !data.length) { empty('No stories here yet. Be the first to share yours!'); return; }
-      const INITIAL = 6;
-      list.innerHTML = ''; list.classList.remove('show-all');
-      data.forEach((r, i) => { const card = renderCard(r); if (i >= INITIAL) card.classList.add('extra'); list.appendChild(card); });
-      const moreBtn = document.getElementById('reviews-more');
-      if (moreBtn) {
-        if (data.length > INITIAL) {
-          moreBtn.hidden = false;
-          moreBtn.textContent = 'See all ' + data.length + ' stories';
-          moreBtn.onclick = () => { const open = list.classList.toggle('show-all'); moreBtn.textContent = open ? 'Show fewer' : ('See all ' + data.length + ' stories'); };
-        } else { moreBtn.hidden = true; }
-      }
+      list.innerHTML = ''; data.forEach((r) => list.appendChild(renderCard(r)));
+      list.querySelectorAll('.review-card').forEach((card) => {
+        const st = card.querySelector('.review-story'); const mr = card.querySelector('.review-more-link');
+        if (!st || !mr) return;
+        if (st.scrollHeight - st.clientHeight < 4) { mr.remove(); }
+        else { mr.addEventListener('click', () => { const ex = card.classList.toggle('expanded'); mr.textContent = ex ? 'Read less' : 'Read more'; }); }
+      });
     } catch (e) { empty('Be the first to share your story.'); }
   }
 
