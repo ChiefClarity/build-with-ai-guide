@@ -136,6 +136,17 @@
   .tag-free { background: rgba(82,187,142,0.16); color: #2c8460; }
   .tag-builtin { background: rgba(56,42,29,0.08); color: var(--tan); }
   .tag-optional { background: rgba(79,166,206,0.16); color: #366f8c; }
+  .tool-note { font-size: 0.72rem; color: var(--tan); margin-top: 0.35rem; }
+  .tool-note .tt { font-weight: 600; }
+
+  /* ─── GLOSSARY ─── */
+  .glossary-grid { display: grid; grid-template-columns: 1fr; gap: 0.55rem; margin-top: 1.25rem; }
+  .gloss-card { background: var(--white); border: 1px solid rgba(56,42,29,0.06); border-radius: 12px; padding: 0.7rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease; }
+  .gloss-card:hover { transform: translateY(-2px); border-color: rgba(56,42,29,0.14); }
+  .gloss-icon { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+  .line-icon { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .gloss-card strong { font-size: 0.9rem; display: block; }
+  .gloss-def { font-size: 0.78rem; color: var(--tan); margin-top: 0.1rem; line-height: 1.35; }
   .cost-note {
     margin-top: 1.5rem; background: linear-gradient(135deg, rgba(195,204,75,0.12), rgba(82,187,142,0.08));
     border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.9rem;
@@ -278,7 +289,9 @@
     cursor: pointer; transition: transform 0.2s;
   }
   .stack-card:hover { transform: translateY(-2px); }
-  .stack-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .stack-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; background: rgba(255,255,255,0.7); border: 1px solid rgba(56,42,29,0.07); }
+  .brand-logo { width: 20px; height: 20px; fill: currentColor; }
+  .logo-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
   .stack-card strong { font-size: 0.9rem; display: block; }
   .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
 
@@ -314,6 +327,8 @@
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  @media (min-width: 600px) { .glossary-grid { grid-template-columns: 1fr 1fr; } }
+
   /* ─── RESPONSIVE ─── */
   /* Tablet */
   @media (min-width: 600px) {
@@ -344,6 +359,18 @@
 </style>
 </head>
 <body>
+
+<!-- Brand logo sprite: defined once, used guide-wide -->
+<svg class="logo-sprite" aria-hidden="true" focusable="false">
+  <symbol id="logo-claude" viewBox="0 0 24 24"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol>
+  <symbol id="logo-supabase" viewBox="0 0 24 24"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"/></symbol>
+  <symbol id="logo-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="logo-vercel" viewBox="0 0 24 24"><path d="m12 1.608 12 20.784H0Z"/></symbol>
+  <symbol id="logo-nextjs" viewBox="0 0 24 24"><path d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></symbol>
+  <symbol id="logo-tailwind" viewBox="0 0 24 24"><path d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"/></symbol>
+  <symbol id="logo-resend" viewBox="0 0 24 24"><path d="M14.679 0c4.648 0 7.413 2.765 7.413 6.434s-2.765 6.434-7.413 6.434H12.33L24 24h-8.245l-8.88-8.44c-.636-.588-.93-1.273-.93-1.86 0-.831.587-1.565 1.713-1.883l4.574-1.224c1.737-.465 2.936-1.81 2.936-3.572 0-2.153-1.761-3.4-3.939-3.4H0V0z"/></symbol>
+  <symbol id="logo-removebg" viewBox="0 0 24 24"><path d="m23.729 13.55-1.903-.995-9.134 4.776a1.497 1.497 0 0 1-1.383.002l-9.137-4.778-1.903.995a.5.5 0 0 0 0 .888l11.499 6.011a.495.495 0 0 0 .462 0l11.499-6.011a.5.5 0 0 0 0-.888zM.269 10.447l11.499 6.013a.495.495 0 0 0 .462 0l11.499-6.013a.5.5 0 0 0 0-.887l-11.5-6.012a.505.505 0 0 0-.462 0L.268 9.559a.5.5 0 0 0 .001.887z"/></symbol>
+</svg>
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
@@ -503,19 +530,19 @@
     <p class="band-label">You'll set these up<span>A few free accounts, plus one paid (Claude Code)</span></p>
     <div class="stack-grid">
       <div class="stack-card" onclick="showTech('claude-code')">
-        <div class="stack-icon" style="background: rgba(229,80,122,0.1);">&#x2728;</div>
+        <div class="stack-icon" style="color:#d97757;"><svg class="brand-logo"><use href="#logo-claude"/></svg></div>
         <div><div class="tool-head"><strong>Claude Code</strong><span class="tool-tag tag-paid">~$20/mo</span></div><div class="stack-analogy">Your AI builder, it writes the code for you</div></div>
       </div>
       <div class="stack-card" onclick="showTech('supabase')">
-        <div class="stack-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;&#xFE0F;</div>
+        <div class="stack-icon" style="color:#3fcf8e;"><svg class="brand-logo"><use href="#logo-supabase"/></svg></div>
         <div><div class="tool-head"><strong>Supabase</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">A smart spreadsheet on the internet</div></div>
       </div>
       <div class="stack-card" onclick="showTech('github')">
-        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
+        <div class="stack-icon" style="color:#382a1d;"><svg class="brand-logo"><use href="#logo-github"/></svg></div>
         <div><div class="tool-head"><strong>GitHub</strong><span class="tool-tag tag-free">Free</span></div><div class="stack-analogy">Automatic backups with full version history</div></div>
       </div>
       <div class="stack-card" onclick="showTech('vercel')">
-        <div class="stack-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
+        <div class="stack-icon" style="color:#382a1d;"><svg class="brand-logo"><use href="#logo-vercel"/></svg></div>
         <div><div class="tool-head"><strong>Vercel</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">Puts your site on the actual internet</div></div>
       </div>
     </div>
@@ -523,26 +550,78 @@
     <p class="band-label" style="margin-top: 1.75rem;">Running under the hood<span>Claude Code sets these up and handles them for you</span></p>
     <div class="stack-grid">
       <div class="stack-card" onclick="showTech('nextjs')">
-        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x25B2;</div>
+        <div class="stack-icon" style="color:#382a1d;"><svg class="brand-logo"><use href="#logo-nextjs"/></svg></div>
         <div><div class="tool-head"><strong>Next.js</strong><span class="tool-tag tag-builtin">Built in</span></div><div class="stack-analogy">The blueprint pro sites are built on</div></div>
       </div>
       <div class="stack-card" onclick="showTech('tailwind')">
-        <div class="stack-icon" style="background: rgba(82,187,142,0.1);">&#x1F3A8;</div>
+        <div class="stack-icon" style="color:#06b6d4;"><svg class="brand-logo"><use href="#logo-tailwind"/></svg></div>
         <div><div class="tool-head"><strong>Tailwind CSS</strong><span class="tool-tag tag-builtin">Built in</span></div><div class="stack-analogy">Design LEGO bricks Claude snaps together</div></div>
       </div>
       <div class="stack-card" onclick="showTech('resend')">
-        <div class="stack-icon" style="background: rgba(242,133,60,0.1);">&#x2709;&#xFE0F;</div>
-        <div><div class="tool-head"><strong>Resend</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">A digital post office for your order emails</div></div>
+        <div class="stack-icon" style="color:#382a1d;"><svg class="brand-logo"><use href="#logo-resend"/></svg></div>
+        <div><div class="tool-head"><strong>Resend</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">A digital post office for your order emails</div><div class="tool-note">Needs a free <span class="tt" onclick="event.stopPropagation();showTech('api-key')">API key</span></div></div>
       </div>
       <div class="stack-card" onclick="showTech('removebg')">
-        <div class="stack-icon" style="background: rgba(245,184,43,0.1);">&#x1F5BC;&#xFE0F;</div>
-        <div><div class="tool-head"><strong>remove.bg</strong><span class="tool-tag tag-optional">Optional</span></div><div class="stack-analogy">Automatic Photoshop for product photos</div></div>
+        <div class="stack-icon" style="color:#382a1d;"><svg class="brand-logo"><use href="#logo-removebg"/></svg></div>
+        <div><div class="tool-head"><strong>remove.bg</strong><span class="tool-tag tag-optional">Optional</span></div><div class="stack-analogy">Automatic Photoshop for product photos</div><div class="tool-note">Needs an <span class="tt" onclick="event.stopPropagation();showTech('api-key')">API key</span></div></div>
       </div>
     </div>
 
     <div class="cost-note">
       <span style="font-size: 1.2rem;">&#x1F4B0;</span>
       <div><strong>Total cost: about $20/month</strong> for a Claude Pro plan, the minimum needed to use Claude Code. Supabase, GitHub, Vercel, and the email service all have generous free tiers. A fun domain name (like goldenstems.shop) costs about $3&ndash;$10/year. Everything else is free.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GLOSSARY ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">Good to Know</div>
+    <h2>Words You'll Come Across</h2>
+    <div class="divider"></div>
+    <p class="section-intro">As you build, a few technical words will pop up. None of them are as complicated as they sound. Here's a plain-English cheat sheet, and you can tap any one for the full story. You'll also spot these same words <span class="tt" onclick="showTech('what-are-terms')">highlighted</span> throughout the guide.</p>
+    <div class="glossary-grid">
+      <div class="gloss-card" onclick="showTech('api')">
+        <div class="gloss-icon" style="color:#e5507a;background:rgba(229,80,122,0.12);"><svg class="line-icon" viewBox="0 0 24 24"><path d="m16 3 4 4-4 4"/><path d="M20 7H4"/><path d="m8 21-4-4 4-4"/><path d="M4 17h16"/></svg></div>
+        <div><strong>API</strong><div class="gloss-def">How two apps talk to each other</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('api-key')">
+        <div class="gloss-icon" style="color:#d99a1e;background:rgba(245,184,43,0.16);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></div>
+        <div><strong>API Key</strong><div class="gloss-def">A secret password to use a service</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('database')">
+        <div class="gloss-icon" style="color:#36ae9e;background:rgba(54,174,158,0.13);"><svg class="line-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
+        <div><strong>Database</strong><div class="gloss-def">Where your orders and products live</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('frontend-backend')">
+        <div class="gloss-icon" style="color:#4fa6ce;background:rgba(79,166,206,0.12);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg></div>
+        <div><strong>Front &amp; Back End</strong><div class="gloss-def">What customers see vs. the engine</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('deploy')">
+        <div class="gloss-icon" style="color:#f2853c;background:rgba(242,133,60,0.12);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg></div>
+        <div><strong>Deploy</strong><div class="gloss-def">Publishing your site to the live web</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('repository')">
+        <div class="gloss-icon" style="color:#382a1d;background:rgba(56,42,29,0.06);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M18 19a5 5 0 0 1-5-5v8"/><path d="M9 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v5"/><circle cx="13" cy="12" r="2"/><circle cx="20" cy="19" r="2"/></svg></div>
+        <div><strong>Repository</strong><div class="gloss-def">Your project folder, with full history</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('auth')">
+        <div class="gloss-icon" style="color:#52bb8e;background:rgba(82,187,142,0.14);"><svg class="line-icon" viewBox="0 0 24 24"><circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/></svg></div>
+        <div><strong>Authentication</strong><div class="gloss-def">Logging in, the lock on your door</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('responsive')">
+        <div class="gloss-icon" style="color:#f2a52e;background:rgba(242,165,46,0.14);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></svg></div>
+        <div><strong>Responsive</strong><div class="gloss-def">Looks great on phone and desktop</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('components')">
+        <div class="gloss-icon" style="color:#9aa233;background:rgba(195,204,75,0.18);"><svg class="line-icon" viewBox="0 0 24 24"><path d="M10 22V7a1 1 0 0 0-1-1H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a1 1 0 0 0-1-1H2"/><rect x="14" y="2" width="8" height="8" rx="1"/></svg></div>
+        <div><strong>Components</strong><div class="gloss-def">Reusable building blocks for pages</div></div>
+      </div>
+      <div class="gloss-card" onclick="showTech('dns')">
+        <div class="gloss-icon" style="color:#4fa6ce;background:rgba(79,166,206,0.12);"><svg class="line-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+        <div><strong>Domain &amp; DNS</strong><div class="gloss-def">Your site's address, like a .shop</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1086,6 +1165,26 @@ function copyPrompt(btn) {
 
 /* ─── TECH TERMS ─── */
 const terms = {
+  'api-key': {
+    name: 'API Key',
+    analogy: 'A secret password that unlocks a service.',
+    body: 'An API key is a unique string of letters and numbers that proves your app is allowed to use another company\'s service. When you sign up for something like Resend (for emails) or remove.bg (for photos), they hand you a key. You paste it into your project once, and from then on those services know the requests are really coming from you. Treat keys like passwords and keep them private. Claude Code shows you exactly where they go, and they live in a safe file that never gets shared publicly.'
+  },
+  'deploy': {
+    name: 'Deploy',
+    analogy: 'Publishing your site for the whole world to see.',
+    body: 'Deploying means taking the website you built on your computer and putting it live on the internet so anyone can visit it. Before you deploy, only you can see your site. After you deploy (Vercel handles this for you), it has a real web address you can text to friends or print on a flyer. The best part: every time you make a change and save it, your site quietly re-deploys itself within seconds.'
+  },
+  'frontend-backend': {
+    name: 'Front End and Back End',
+    analogy: 'The dining room versus the kitchen of your website.',
+    body: 'The front end is everything your customers see and touch: the storefront, the product photos, the buttons, the checkout. The back end is the behind-the-scenes engine: the database that stores orders, the logic that sends confirmation emails, and the dashboard your kids log into to run things. Customers only ever see the front end, but the back end is what makes it a real business instead of just a pretty page. Your project has both, working together.'
+  },
+  'repository': {
+    name: 'Repository (Repo)',
+    analogy: 'Your project folder, with a time machine built in.',
+    body: 'A repository, or repo, is the folder that holds all of your project\'s files. What makes it special is that it remembers every version of every file over time, which is exactly what GitHub provides. If something breaks, you can look back at what changed, or even rewind to a version that worked. It is also how your project safely lives in the cloud instead of only on your laptop, and how Vercel knows what to publish.'
+  },
   'claude-code': {
     name: 'Claude Code',
     analogy: 'Like a skilled programmer who speaks English.',
