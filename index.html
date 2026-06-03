@@ -127,15 +127,15 @@
   .tech-analogy { color: var(--pink); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
   .tech-body { color: var(--tan); font-size: 0.95rem; line-height: 1.6; }
 
-  /* ─── WHAT YOU NEED ─── */
-  .needs-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .needs-list li {
-    background: var(--white); border-radius: 12px; padding: 1rem 1.25rem;
-    border: 1px solid rgba(56,42,29,0.06); display: flex; align-items: flex-start; gap: 1rem; font-size: 0.95rem;
-  }
-  .needs-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-  .needs-list strong { display: block; margin-bottom: 0.15rem; }
-  .needs-list .subtext { color: var(--tan); font-size: 0.85rem; }
+  /* ─── TOOLKIT ─── */
+  .band-label { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; color: var(--cocoa); margin: 0 0 0.85rem; }
+  .band-label span { display: block; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.8rem; color: var(--tan); margin-top: 0.15rem; }
+  .tool-head { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+  .tool-tag { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 0.13rem 0.4rem; border-radius: 4px; white-space: nowrap; }
+  .tag-paid { background: rgba(245,184,43,0.2); color: #9a6a0a; }
+  .tag-free { background: rgba(82,187,142,0.16); color: #2c8460; }
+  .tag-builtin { background: rgba(56,42,29,0.08); color: var(--tan); }
+  .tag-optional { background: rgba(79,166,206,0.16); color: #366f8c; }
   .cost-note {
     margin-top: 1.5rem; background: linear-gradient(135deg, rgba(195,204,75,0.12), rgba(82,187,142,0.08));
     border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.9rem;
@@ -280,7 +280,6 @@
   .stack-card:hover { transform: translateY(-2px); }
   .stack-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
   .stack-card strong { font-size: 0.9rem; display: block; }
-  .stack-card .stack-role { font-size: 0.8rem; color: var(--tan); }
   .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
 
 
@@ -493,62 +492,57 @@
   </div>
 </section>
 
-<!-- ═══════════ WHAT YOU'LL NEED ═══════════ -->
+<!-- ═══════════ MEET YOUR TOOLKIT ═══════════ -->
 <section class="section">
   <div class="fade-in">
     <div class="section-label">Before You Start</div>
-    <h2>What You'll Need</h2>
+    <h2>Meet Your Toolkit</h2>
     <div class="divider"></div>
-    <p class="section-intro">No coding experience required. Seriously. <strong>Claude Code does the technical work for you</strong>, and any time you need to do something yourself, it walks you through it step by step, in plain English. Here's your toolkit. Tap the <span class="tt" onclick="showTech('claude-code')" style="font-size: 0.9rem;">highlighted terms</span> to learn what each one does:</p>
-    <ul class="needs-list">
-      <li>
-        <div class="needs-icon" style="background: rgba(229,80,122,0.1);">&#x1F4BB;</div>
-        <div>
-          <strong>A computer (Mac or PC)</strong>
-          <span class="subtext">That's the only hardware you need. Everything happens inside <span class="tt" onclick="showTech('claude-code')">Claude Code</span>, which you talk to in plain English, like texting a friend who happens to be an expert builder.</span>
-        </div>
-      </li>
-      <li>
-        <div class="needs-icon" style="background: rgba(242,133,60,0.1);">&#x2728;</div>
-        <div>
-          <strong>Claude Code (by Anthropic)</strong>
-          <span class="subtext">The AI that builds everything for you. You describe what you want in plain words, and it writes the code, creates the files, and handles the technical setup. It's a desktop app you download and sign into, no terminal or command line. Whenever something needs your input, it tells you exactly what to do. <strong>One thing to know: using Claude Code requires at least a Claude Pro plan ($20/month).</strong></span>
-        </div>
-      </li>
-      <li>
-        <div class="needs-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;</div>
-        <div>
-          <strong><span class="tt" onclick="showTech('supabase')">Supabase</span> (free tier)</strong>
-          <span class="subtext">Your database, where products, orders, customer info, and financial records are stored. Think of it as your business's filing cabinet, but one that your website can automatically read from and write to.</span>
-        </div>
-      </li>
-      <li>
-        <div class="needs-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
-        <div>
-          <strong><span class="tt" onclick="showTech('github')">GitHub</span> (free)</strong>
-          <span class="subtext">A free account where your project is safely saved online. Claude Code saves a new version every time you make a change, so nothing ever gets lost, and Vercel reads from it to keep your live site updated. You don't have to learn it, Claude Code does the saving for you.</span>
-        </div>
-      </li>
-      <li>
-        <div class="needs-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
-        <div>
-          <strong><span class="tt" onclick="showTech('vercel')">Vercel</span> (free tier)</strong>
-          <span class="subtext">This is what puts your site on the actual internet. You build it on your computer; Vercel makes it so anyone with the link can visit it, like uploading a video to YouTube, but for websites.</span>
-        </div>
-      </li>
-      <li>
-        <div class="needs-icon" style="background: rgba(245,184,43,0.1);">&#x1F4F8;</div>
-        <div>
-          <strong>Photos of your kid's product</strong>
-          <span class="subtext">Snap some photos on your phone and use them as they are. If you want a more polished look later, there's an optional (paid) tool that removes the backgrounds for you. Let your kid arrange the products, it's their first product photography shoot.</span>
-        </div>
-      </li>
-    </ul>
+    <p class="section-intro">No coding experience required. <strong>Claude Code does the technical work for you.</strong> Here's the small set of tools your project uses, and what each one actually is. You don't need to master any of them. Tap any card to learn more, and over time these names will start to feel familiar. (You'll also need a computer, Mac or PC, and a few photos of whatever your kid is selling.)</p>
+
+    <p class="band-label">You'll set these up<span>A few free accounts, plus one paid (Claude Code)</span></p>
+    <div class="stack-grid">
+      <div class="stack-card" onclick="showTech('claude-code')">
+        <div class="stack-icon" style="background: rgba(229,80,122,0.1);">&#x2728;</div>
+        <div><div class="tool-head"><strong>Claude Code</strong><span class="tool-tag tag-paid">~$20/mo</span></div><div class="stack-analogy">Your AI builder, it writes the code for you</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('supabase')">
+        <div class="stack-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;&#xFE0F;</div>
+        <div><div class="tool-head"><strong>Supabase</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">A smart spreadsheet on the internet</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('github')">
+        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
+        <div><div class="tool-head"><strong>GitHub</strong><span class="tool-tag tag-free">Free</span></div><div class="stack-analogy">Automatic backups with full version history</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('vercel')">
+        <div class="stack-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
+        <div><div class="tool-head"><strong>Vercel</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">Puts your site on the actual internet</div></div>
+      </div>
+    </div>
+
+    <p class="band-label" style="margin-top: 1.75rem;">Running under the hood<span>Claude Code sets these up and handles them for you</span></p>
+    <div class="stack-grid">
+      <div class="stack-card" onclick="showTech('nextjs')">
+        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x25B2;</div>
+        <div><div class="tool-head"><strong>Next.js</strong><span class="tool-tag tag-builtin">Built in</span></div><div class="stack-analogy">The blueprint pro sites are built on</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('tailwind')">
+        <div class="stack-icon" style="background: rgba(82,187,142,0.1);">&#x1F3A8;</div>
+        <div><div class="tool-head"><strong>Tailwind CSS</strong><span class="tool-tag tag-builtin">Built in</span></div><div class="stack-analogy">Design LEGO bricks Claude snaps together</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('resend')">
+        <div class="stack-icon" style="background: rgba(242,133,60,0.1);">&#x2709;&#xFE0F;</div>
+        <div><div class="tool-head"><strong>Resend</strong><span class="tool-tag tag-free">Free tier</span></div><div class="stack-analogy">A digital post office for your order emails</div></div>
+      </div>
+      <div class="stack-card" onclick="showTech('removebg')">
+        <div class="stack-icon" style="background: rgba(245,184,43,0.1);">&#x1F5BC;&#xFE0F;</div>
+        <div><div class="tool-head"><strong>remove.bg</strong><span class="tool-tag tag-optional">Optional</span></div><div class="stack-analogy">Automatic Photoshop for product photos</div></div>
+      </div>
+    </div>
+
     <div class="cost-note">
       <span style="font-size: 1.2rem;">&#x1F4B0;</span>
-      <div>
-        <strong>Total cost: about $20/month</strong> for a Claude Pro plan, the minimum needed to use Claude Code (the AI that does the building). Supabase, GitHub, Vercel, and the email service all have generous free tiers. A fun domain name (like goldenstems.shop) costs about $3&ndash;$10/year. Everything else is free.
-      </div>
+      <div><strong>Total cost: about $20/month</strong> for a Claude Pro plan, the minimum needed to use Claude Code. Supabase, GitHub, Vercel, and the email service all have generous free tiers. A fun domain name (like goldenstems.shop) costs about $3&ndash;$10/year. Everything else is free.</div>
     </div>
   </div>
 </section>
@@ -1034,50 +1028,6 @@ Product photos must upload and display fine on their own, with their original ba
             </div>
           </div></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ TECH STACK ═══════════ -->
-<section class="section">
-  <div class="fade-in">
-    <div class="section-label">Under the Hood</div>
-    <h2>The Tools That Power It</h2>
-    <div class="divider"></div>
-    <p class="section-intro">You don't need to master these, Claude Code handles all of it. But understanding what they are will make you more confident in every project after this one. Tap any card to learn more.</p>
-    <div class="stack-grid">
-      <div class="stack-card" onclick="showTech('claude-code')">
-        <div class="stack-icon" style="background: rgba(229,80,122,0.1);">&#x2728;</div>
-        <div><strong>Claude Code</strong><div class="stack-role">Your AI programmer</div><div class="stack-analogy">Like a translator between your ideas and code</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('nextjs')">
-        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x25B2;</div>
-        <div><strong>Next.js</strong><div class="stack-role">Website framework</div><div class="stack-analogy">The blueprint system for your site</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('supabase')">
-        <div class="stack-icon" style="background: rgba(54,174,158,0.1);">&#x1F5C4;</div>
-        <div><strong>Supabase</strong><div class="stack-role">Database, auth &amp; storage</div><div class="stack-analogy">A smart spreadsheet on the internet</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('vercel')">
-        <div class="stack-icon" style="background: rgba(79,166,206,0.1);">&#x1F680;</div>
-        <div><strong>Vercel</strong><div class="stack-role">Hosting &amp; deployment</div><div class="stack-analogy">Your website's address on the internet</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('resend')">
-        <div class="stack-icon" style="background: rgba(242,133,60,0.1);">&#x2709;</div>
-        <div><strong>Resend</strong><div class="stack-role">Email delivery service</div><div class="stack-analogy">A digital post office that delivers your emails</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('removebg')">
-        <div class="stack-icon" style="background: rgba(245,184,43,0.1);">&#x1F5BC;</div>
-        <div><strong>remove.bg</strong><div class="stack-role">Optional photo cleanup</div><div class="stack-analogy">Automatic Photoshop for product photos</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('tailwind')">
-        <div class="stack-icon" style="background: rgba(82,187,142,0.1);">&#x1F3A8;</div>
-        <div><strong>Tailwind CSS</strong><div class="stack-role">Design &amp; styling</div><div class="stack-analogy">Design LEGO bricks Claude snaps together</div></div>
-      </div>
-      <div class="stack-card" onclick="showTech('github')">
-        <div class="stack-icon" style="background: rgba(56,42,29,0.08);">&#x1F4BE;</div>
-        <div><strong>GitHub</strong><div class="stack-role">Code storage &amp; version history</div><div class="stack-analogy">Google Docs "version history" for your project</div></div>
       </div>
     </div>
   </div>
