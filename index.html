@@ -332,6 +332,39 @@
 
   @media (min-width: 600px) { .glossary-grid { grid-template-columns: 1fr 1fr; } }
 
+  /* ─── REVIEWS ─── */
+  .reviews-list { display: grid; grid-template-columns: 1fr; gap: 0.9rem; margin-top: 1.25rem; }
+  .review-card { background: var(--white); border: 1px solid rgba(56,42,29,0.07); border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .review-stars { display: flex; gap: 2px; color: var(--gold); }
+  .review-story { font-size: 0.95rem; line-height: 1.55; color: var(--cocoa); margin: 0; }
+  .review-meta { font-size: 0.84rem; color: var(--tan); margin-top: auto; }
+  .review-meta strong { color: var(--cocoa); font-weight: 700; }
+  .review-sub { font-size: 0.78rem; color: var(--tan); margin-top: 0.15rem; }
+  .reviews-empty { grid-column: 1 / -1; text-align: center; color: var(--tan); padding: 1.75rem 1rem; font-size: 0.95rem; margin: 0; }
+  .review-cta { margin-top: 1.25rem; background: var(--white); border: 1px solid rgba(56,42,29,0.16); color: var(--cocoa); font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.92rem; padding: 0.65rem 1.4rem; border-radius: 100px; cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease; }
+  .review-cta:hover { border-color: var(--pink); color: var(--pink); }
+  .review-form { margin-top: 1.1rem; background: var(--cream); border: 1px solid rgba(56,42,29,0.08); border-radius: 14px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .review-form > label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-weight: 600; color: var(--cocoa); }
+  .rf-row { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
+  .rf-row label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.82rem; font-weight: 600; color: var(--cocoa); }
+  .review-form input[type="text"], .review-form textarea { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 400; color: var(--cocoa); background: var(--white); border: 1px solid rgba(56,42,29,0.15); border-radius: 9px; padding: 0.6rem 0.75rem; width: 100%; box-sizing: border-box; }
+  .review-form input[type="text"]:focus, .review-form textarea:focus { outline: none; border-color: var(--pink); box-shadow: 0 0 0 3px rgba(242,133,60,0.12); }
+  .review-form textarea { resize: vertical; min-height: 92px; }
+  .rf-hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+  .rf-stars { display: flex; gap: 5px; }
+  .rf-star { background: none; border: none; cursor: pointer; padding: 0; line-height: 0; color: rgba(56,42,29,0.18); transition: color 0.1s ease; }
+  .rf-star svg { width: 28px; height: 28px; fill: currentColor; display: block; }
+  .rf-star:hover, .rf-star.on { color: var(--gold); }
+  .rf-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .review-submit { background: linear-gradient(135deg, var(--pink), var(--grape)); color: #fff; border: none; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 0.7rem 1.6rem; border-radius: 100px; cursor: pointer; }
+  .review-submit:disabled { opacity: 0.6; cursor: default; }
+  .rf-msg { font-size: 0.85rem; font-weight: 600; }
+  .rf-msg.ok { color: var(--green); }
+  .rf-msg.err { color: var(--grape); }
+  .rf-note { font-size: 0.74rem; color: var(--tan); margin: 0; }
+  @media (min-width: 700px) { .reviews-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 560px) { .rf-row { grid-template-columns: 1fr 1fr; } }
+
   /* ─── RESPONSIVE ─── */
   /* Tablet */
   @media (min-width: 600px) {
@@ -1125,6 +1158,43 @@ Product photos must upload and display fine on their own, with their original ba
   </div>
 </section>
 
+<!-- ═══════════ REVIEWS ═══════════ -->
+<section class="section">
+  <div class="fade-in">
+    <div class="section-label">From Other Families</div>
+    <h2>What Families Are Saying</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Did you build something with your kid? Tell the next family about it. These are real stories from real parents, proof of what happens when you sit down and make something together.</p>
+
+    <div id="reviews-list" class="reviews-list">
+      <p class="reviews-empty">Loading stories...</p>
+    </div>
+
+    <button type="button" id="review-toggle" class="review-cta">Share your story</button>
+
+    <form id="review-form" class="review-form" hidden>
+      <input type="text" name="website" id="rf-website" class="rf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="rf-row">
+        <label>Your first name<input type="text" id="rf-name" maxlength="40" required></label>
+        <label>Where you're from<input type="text" id="rf-loc" maxlength="60" placeholder="Austin, TX"></label>
+      </div>
+      <div class="rf-row">
+        <label>Kid(s) and age(s)<input type="text" id="rf-kids" maxlength="80" placeholder="Amelia, 8 and Jack, 6"></label>
+        <label>What you built<input type="text" id="rf-built" maxlength="80" placeholder="A sticker shop"></label>
+      </div>
+      <label>How was it? (tap the stars)
+        <div class="rf-stars" id="rf-stars" role="radiogroup" aria-label="Rating"></div>
+      </label>
+      <label>Your story<textarea id="rf-story" maxlength="1000" rows="4" required placeholder="What was it like building something with your kid? What surprised you? What did they learn?"></textarea></label>
+      <div class="rf-actions">
+        <button type="submit" class="review-submit">Submit review</button>
+        <span id="rf-msg" class="rf-msg"></span>
+      </div>
+      <p class="rf-note">Reviews are read and approved before they appear, just to keep things friendly and safe.</p>
+    </form>
+  </div>
+</section>
+
 <!-- ═══════════ CTA ═══════════ -->
 <section class="cta-section">
   <div class="fade-in">
@@ -1348,5 +1418,106 @@ setTimeout(() => {
 </script>
 <!-- Vercel Web Analytics -->
 <script defer src="/_vercel/insights/script.js"></script>
+<script type="module">
+(async () => {
+  // ════════════════════════════════════════════════════════════════════
+  //  PASTE YOUR SUPABASE KEYS HERE  (Supabase dashboard: Settings -> API)
+  const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+  const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+  // ════════════════════════════════════════════════════════════════════
+  const TABLE = 'guide_reviews';
+  const STAR = 'M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01z';
+  const ready = /^https:\/\/[a-z0-9-]+\.supabase\.co/i.test(SUPABASE_URL) && SUPABASE_ANON_KEY.length > 30;
+
+  const list = document.getElementById('reviews-list');
+  if (!list) return;
+  const form = document.getElementById('review-form');
+  const toggle = document.getElementById('review-toggle');
+  const msg = document.getElementById('rf-msg');
+  const starWrap = document.getElementById('rf-stars');
+
+  function renderCard(r) {
+    const c = document.createElement('div'); c.className = 'review-card';
+    if (r.rating) {
+      const s = document.createElement('div'); s.className = 'review-stars';
+      let h = '';
+      for (let i = 1; i <= 5; i++) h += '<svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor;opacity:' + (i <= r.rating ? 1 : 0.22) + '"><path d="' + STAR + '"/></svg>';
+      s.innerHTML = h; c.appendChild(s);
+    }
+    const story = document.createElement('p'); story.className = 'review-story';
+    story.textContent = '“' + (r.story || '') + '”'; c.appendChild(story);
+    const meta = document.createElement('div'); meta.className = 'review-meta';
+    const nm = document.createElement('strong'); nm.textContent = r.first_name || 'A parent'; meta.appendChild(nm);
+    if (r.location) meta.appendChild(document.createTextNode(' · ' + r.location));
+    const extra = [r.kids, r.built ? 'built ' + r.built : null].filter(Boolean).join(' · ');
+    if (extra) { const sub = document.createElement('div'); sub.className = 'review-sub'; sub.textContent = extra; meta.appendChild(sub); }
+    c.appendChild(meta);
+    return c;
+  }
+  const empty = (t) => { list.innerHTML = ''; const p = document.createElement('p'); p.className = 'reviews-empty'; p.textContent = t; list.appendChild(p); };
+
+  let rating = 0;
+  if (starWrap) {
+    for (let i = 1; i <= 5; i++) {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'rf-star';
+      b.setAttribute('aria-label', i + (i > 1 ? ' stars' : ' star'));
+      b.innerHTML = '<svg viewBox="0 0 24 24"><path d="' + STAR + '"/></svg>';
+      b.addEventListener('click', () => { rating = i; [...starWrap.children].forEach((el, idx) => el.classList.toggle('on', idx < i)); });
+      starWrap.appendChild(b);
+    }
+  }
+  if (toggle && form) toggle.addEventListener('click', () => {
+    const show = form.hidden; form.hidden = !show; toggle.textContent = show ? 'Close' : 'Share your story';
+    if (show) { const n = document.getElementById('rf-name'); if (n) n.focus(); }
+  });
+
+  let supa = null;
+  if (ready) {
+    try { const m = await import('https://esm.sh/@supabase/supabase-js@2'); supa = m.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }
+    catch (e) { supa = null; }
+  }
+
+  async function load() {
+    if (!supa) { empty('Be the first to share your story.'); return; }
+    try {
+      const { data, error } = await supa.from(TABLE)
+        .select('first_name,location,kids,built,rating,story,created_at')
+        .eq('approved', true).order('created_at', { ascending: false }).limit(60);
+      if (error) throw error;
+      if (!data || !data.length) { empty('No stories here yet. Be the first to share yours!'); return; }
+      list.innerHTML = ''; data.forEach((r) => list.appendChild(renderCard(r)));
+    } catch (e) { empty('Be the first to share your story.'); }
+  }
+
+  if (form) form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (document.getElementById('rf-website').value) return; // honeypot
+    const val = (id) => (document.getElementById(id) ? document.getElementById(id).value : '').trim();
+    const payload = {
+      first_name: val('rf-name').slice(0, 40),
+      location: val('rf-loc').slice(0, 60) || null,
+      kids: val('rf-kids').slice(0, 80) || null,
+      built: val('rf-built').slice(0, 80) || null,
+      rating: rating || null,
+      story: val('rf-story').slice(0, 1000),
+    };
+    if (!payload.first_name) { msg.textContent = 'Please add your first name.'; msg.className = 'rf-msg err'; return; }
+    if (payload.story.length < 10) { msg.textContent = 'Tell us a little more about your story.'; msg.className = 'rf-msg err'; return; }
+    if (!supa) { msg.textContent = 'The review wall is opening soon, check back!'; msg.className = 'rf-msg err'; return; }
+    const btn = form.querySelector('.review-submit'); if (btn) btn.disabled = true;
+    msg.textContent = 'Sending...'; msg.className = 'rf-msg';
+    try {
+      const { error } = await supa.from(TABLE).insert(payload);
+      if (error) throw error;
+      form.reset(); rating = 0; if (starWrap) [...starWrap.children].forEach((el) => el.classList.remove('on'));
+      msg.textContent = 'Thank you! Your story will appear here once it is approved.'; msg.className = 'rf-msg ok';
+    } catch (e) {
+      msg.textContent = 'Hmm, that did not go through. Please try again in a bit.'; msg.className = 'rf-msg err';
+    } finally { if (btn) btn.disabled = false; }
+  });
+
+  load();
+})();
+</script>
 </body>
 </html>
