@@ -101,18 +101,6 @@
   .signature-note a { color: var(--grape); text-decoration: none; border-bottom: 1px solid rgba(229,80,122,0.3); font-weight: 600; }
   .signature-note a:hover { border-bottom-color: var(--grape); }
 
-  /* ─── CARDS ─── */
-  .card-grid { display: grid; gap: 1rem; }
-  .card {
-    background: var(--white); border-radius: var(--radius); padding: 1.5rem;
-    border: 1px solid rgba(56,42,29,0.06); box-shadow: 0 2px 12px rgba(56,42,29,0.04);
-    transition: transform 0.2s;
-  }
-  .card:hover { transform: translateY(-2px); }
-  .card-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .card h3 { font-size: 1.1rem; margin-bottom: 0.35rem; }
-  .card p, .card .sub { font-size: 0.95rem; color: var(--tan); }
-  .card .sub { font-size: 0.85rem; margin-top: 0.5rem; font-style: italic; }
 
   /* ─── TECH TERMS ─── */
   .tt { cursor: pointer; color: var(--grape); font-weight: 600; border-bottom: 2px dotted rgba(229,80,122,0.4); transition: background 0.15s; }
@@ -330,7 +318,6 @@
   /* ─── RESPONSIVE ─── */
   /* Tablet */
   @media (min-width: 600px) {
-    .card-grid { grid-template-columns: 1fr 1fr; }
     .showcase-grid { grid-template-columns: 1fr 1fr; }
     .stack-grid { grid-template-columns: 1fr 1fr; }
     .journey::before { left: 28px; }
@@ -344,7 +331,6 @@
     .prompt-box { font-size: 0.92rem; padding: 1.25rem 1.5rem; }
     .step-content { padding: 0 2rem; }
     .step-header { padding: 1.5rem 2rem; }
-    .card-grid { gap: 1.25rem; }
     .skills-grid { grid-template-columns: repeat(4, 1fr); }
     .product-grid { grid-template-columns: repeat(5, 1fr); }
     .stack-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -402,42 +388,46 @@
     <div class="divider"></div>
     <p class="section-intro">AI has created an environment where it has never been easier to build things. But these are skills our kids won't get in school, at least not anytime soon, and someone has to teach them. Because by the time they graduate, the way people work is going to look vastly different than it does today.</p>
     <p class="section-intro">I believe we'll each land in one of two camps: <strong>hyper consumers</strong>, who let technology happen to them, or <strong>hyper creators</strong>, who use it to build the things other people need and want. I want my kids to be creators. A project like this is where it starts. Here's what it teaches them:</p>
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon" style="background: rgba(242,133,60,0.1);">&#x1F4B0;</div>
-        <h3>Business &amp; Finance</h3>
-        <p>Pricing, profit margins, expenses, supply costs, revenue tracking. Not hypothetical, with real money and real customers.</p>
-        <div class="sub">Your kid learns: "We made $45 but supplies cost $8, so profit is $37."</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4B0;</div>
+        <h4>Financial Literacy</h4>
+        <p>Revenue, expenses, profit margins, pricing strategy, paying employees</p>
       </div>
-      <div class="card">
-        <div class="card-icon" style="background: rgba(229,80,122,0.1);">&#x1F916;</div>
-        <h3>AI Fluency</h3>
-        <p>How to communicate with AI, write effective prompts, iterate on results, and know when to push back. This is the #1 skill of the next decade.</p>
-        <div class="sub">Your kid learns: "If I describe it better, AI builds it better."</div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F916;</div>
+        <h4>AI Prompting</h4>
+        <p>Communicating with AI, iterating, knowing when to push back on results</p>
       </div>
-      <div class="card">
-        <div class="card-icon" style="background: rgba(54,174,158,0.1);">&#x1F3A8;</div>
-        <h3>Design &amp; Branding</h3>
-        <p>Color theory, typography, logo design, user experience. Your kid picks the colors. They own the aesthetic. That's real design thinking.</p>
-        <div class="sub">Your kid learns: Why brands look the way they do.</div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F3A8;</div>
+        <h4>Design Thinking</h4>
+        <p>Branding, color, typography, user experience, visual feedback</p>
       </div>
-      <div class="card">
-        <div class="card-icon" style="background: rgba(245,184,43,0.1);">&#x1F4BB;</div>
-        <h3>Technology &amp; the Web</h3>
-        <p>How websites actually work, what a <span class="tt" onclick="showTech('database')">database</span> is, what an <span class="tt" onclick="showTech('api')">API</span> does. Demystified through building, not studying.</p>
-        <div class="sub">Your kid learns: "Our website reads from a database!"</div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4BB;</div>
+        <h4>Tech Fluency</h4>
+        <p>Databases, APIs, websites, deployment, demystified</p>
       </div>
-      <div class="card">
-        <div class="card-icon" style="background: rgba(82,187,142,0.1);">&#x1F4E6;</div>
-        <h3>Operations &amp; Logistics</h3>
-        <p>Inventory management, order fulfillment, shipping, customer communication. Running a business end-to-end.</p>
-        <div class="sub">Your kid learns: The full journey from "order placed" to "package delivered."</div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4E6;</div>
+        <h4>Operations</h4>
+        <p>Inventory, order fulfillment, shipping, customer communication</p>
       </div>
-      <div class="card">
-        <div class="card-icon" style="background: rgba(79,166,206,0.1);">&#x1F91D;</div>
-        <h3>Confidence &amp; Ownership</h3>
-        <p>This isn't a school assignment someone grades. They own the product, the brand, and the decisions. When it works, <em>they</em> did that.</p>
-        <div class="sub">Your kid learns: "I built this and people want to buy it."</div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4AC;</div>
+        <h4>Communication</h4>
+        <p>Customer emails, product descriptions, presenting their work</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F4AA;</div>
+        <h4>Confidence</h4>
+        <p>"I built this and people want to buy it." No substitute.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-emoji">&#x1F9E9;</div>
+        <h4>Problem Solving</h4>
+        <p>Debugging, troubleshooting, figuring it out together</p>
       </div>
     </div>
   </div>
@@ -1039,58 +1029,6 @@ Product photos must upload and display fine on their own, with their original ba
             </div>
           </div></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ SKILLS ═══════════ -->
-<section class="section">
-  <div class="fade-in">
-    <div class="section-label">The Bigger Picture</div>
-    <h2>Skills You'll Build Together</h2>
-    <div class="divider"></div>
-    <p class="section-intro">This isn't just a summer project. These are real skills that compound, and you're both learning them at the same time.</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F4B0;</div>
-        <h4>Financial Literacy</h4>
-        <p>Revenue, expenses, profit margins, pricing strategy, paying employees</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F916;</div>
-        <h4>AI Prompting</h4>
-        <p>Communicating with AI, iterating, knowing when to push back on results</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F3A8;</div>
-        <h4>Design Thinking</h4>
-        <p>Branding, color, typography, user experience, visual feedback</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F4BB;</div>
-        <h4>Tech Fluency</h4>
-        <p>Databases, APIs, websites, deployment, demystified</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F4E6;</div>
-        <h4>Operations</h4>
-        <p>Inventory, order fulfillment, shipping, customer communication</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F4AC;</div>
-        <h4>Communication</h4>
-        <p>Customer emails, product descriptions, presenting their work</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F4AA;</div>
-        <h4>Confidence</h4>
-        <p>"I built this and people want to buy it." No substitute.</p>
-      </div>
-      <div class="skill-card">
-        <div class="skill-emoji">&#x1F9E9;</div>
-        <h4>Problem Solving</h4>
-        <p>Debugging, troubleshooting, figuring it out together</p>
       </div>
     </div>
   </div>
