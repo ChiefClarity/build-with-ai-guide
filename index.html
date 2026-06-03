@@ -293,7 +293,7 @@
   .brand-logo { width: 20px; height: 20px; fill: currentColor; }
   .inline-logo { width: 1.05em; height: 1.05em; fill: currentColor; vertical-align: -0.16em; margin-right: 0.15em; }
   .title-icon { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -0.14em; margin-right: 0.4em; }
-  .badge-icon { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  .badge-icon { width: 1.35em; height: 1.35em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
   .logo-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
   .stack-card strong { font-size: 0.9rem; display: block; }
   .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
@@ -390,7 +390,7 @@
     <div class="section-label">The Story</div>
     <h2>It Started With Pipe Cleaners</h2>
     <div class="divider"></div>
-    <p class="section-intro">My daughter Amilia (9) and her cousins Siena (10) and Ella (7) started making pumpkins out of pipe cleaners. One day I found them making little signs and trying to sell those pumpkins out of the front window of our house as people walked by. The opportunity just hit me: let's teach them to build something with AI to market and manage their little business the modern way. So we sat down together and built them a real business, website, dashboard, and all.</p>
+    <p class="section-intro">My daughter Amilia (9) and her cousins Siena (10) and Ella (7) started making pumpkins out of pipe cleaners. One day I found them making little signs and trying to sell those pumpkins out of the front window of our house as people walked by. The opportunity just hit me: let's teach them to build something with AI to market and manage their little business the modern way. So we sat down together and built them a real business, website, dashboard, and all. They named it <strong>Golden Stems</strong>, after the golden pipe cleaners they used to make their very first pumpkins.</p>
 
     <p class="section-intro">But let me back up. A few years ago I left the corporate world and bought a small Main Street business. To modernize it, I spent the next two and a half years learning everything I possibly could about AI, and that obsession eventually became <strong>Clarity</strong>, an AI-native startup I founded for the home services industry. I'm not an engineer. I'm just a dad who refused to let this technology pass him by.</p>
 
@@ -667,9 +667,14 @@
           <div class="step-body"><div class="step-content">
             <p>Before we build anything, let's get your tools ready. The good news: Claude Code does almost all of this for you, and walks you through anything it can't. <strong>You only do this once.</strong></p>
 
-            <p><strong>1. Download <svg class="inline-logo" style="color:#d97757;"><use href="#logo-claude"/></svg>Claude Code</strong>: Go to <strong>claude.com/claude-code</strong> and download the desktop app. Install it like any other app and sign in with your account. No terminal, no command line, just an app you talk to. (Using Claude Code requires at least a Claude Pro plan, about $20/month.)<br><br>
-            <strong>2. Create a <svg class="inline-logo" style="color:#382a1d;"><use href="#logo-github"/></svg>GitHub account</strong>: Go to <strong>github.com</strong> and sign up (free). This is where your project is saved online. From the very start, Claude Code saves a new version here every time you make a change, like an automatic backup with a full history you can always rewind to. You don't have to learn it, Claude Code does the saving for you.<br><br>
-            <strong>3. Sign up for <svg class="inline-logo" style="color:#3fcf8e;"><use href="#logo-supabase"/></svg>Supabase</strong>: Go to <strong>supabase.com</strong>, create a free account, and click "New Project." Give it your business name. Once it's ready, open Settings &rarr; API and copy three things: your <strong>Project URL</strong>, your <strong>anon/public key</strong>, and your <strong>service_role key</strong> (keep that last one private, it has full access). Don't worry about what they are, you're just copying and pasting.<br><br>
+            <div class="prompt-note" style="background: linear-gradient(135deg, rgba(79,166,206,0.1), rgba(54,174,158,0.06)); border-color: rgba(79,166,206,0.22);">
+              <span style="font-size: 1.2rem; flex-shrink:0;"><svg class="line-icon" style="color:#4fa6ce" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span>
+              <div><strong>Save yourself a thousand clicks.</strong> By default, Claude Code asks for your permission before each change it makes. You can let it just work instead. In Claude Code, press <strong>Shift+Tab</strong> to switch its permission mode until it stops asking you to confirm every step (you're looking for the "auto-accept" or "bypass permissions" mode). For total beginners, we recommend this: you wouldn't know what to approve anyway, and it keeps everything moving. Since this is your own project on your own computer, it's perfectly safe.</div>
+            </div>
+
+            <p><strong>1. Download <svg class="inline-logo" style="color:#d97757;"><use href="#logo-claude"/></svg>Claude Code</strong>: Go to <a href="https://claude.com/claude-code" target="_blank" rel="noopener" style="color: var(--grape); font-weight: 600;">claude.com/claude-code</a> and download the desktop app. Install it like any other app and sign in with your account. No terminal, no command line, just an app you talk to. (Using Claude Code requires at least a Claude Pro plan, about $20/month.)<br><br>
+            <strong>2. Create a <svg class="inline-logo" style="color:#382a1d;"><use href="#logo-github"/></svg>GitHub account</strong>: Go to <a href="https://github.com" target="_blank" rel="noopener" style="color: var(--grape); font-weight: 600;">github.com</a> and sign up (free). This is where your project is saved online. From the very start, Claude Code saves a new version here every time you make a change, like an automatic backup with a full history you can always rewind to. You don't have to learn it, Claude Code does the saving for you. <strong>Bonus:</strong> that same GitHub login works on tons of developer sites, including Supabase and Vercel (the next two you'll set up). When you sign up for those, just click "Continue with GitHub" instead of creating another account.<br><br>
+            <strong>3. Sign up for <svg class="inline-logo" style="color:#3fcf8e;"><use href="#logo-supabase"/></svg>Supabase</strong>: Go to <a href="https://supabase.com" target="_blank" rel="noopener" style="color: var(--grape); font-weight: 600;">supabase.com</a> and create a free account (remember, you can just click "Continue with GitHub"), then click "New Project." Give it your business name. Once it's ready, open Settings &rarr; API and copy three things: your <strong>Project URL</strong>, your <strong>anon/public key</strong>, and your <strong>service_role key</strong> (keep that last one private, it has full access). Don't worry about what they are, you're just copying and pasting.<br><br>
             <strong>4. Create your project</strong>: In Claude Code, start a new project for your business, then give it the prompt below. Claude Code builds the entire foundation, installs everything it needs, creates all the files, and connects your project to GitHub so every change is saved automatically. If your computer is missing a free tool it needs (like Node.js, the engine that runs your site), Claude Code will tell you and walk you through installing it.</p>
 
             <div class="prompt-box">
@@ -722,6 +727,7 @@ Finally, set up version control: initialize git, add a .gitignore so my secrets 
 - Make it reliable: handle loading and error states everywhere, and make outside services (email, image processing) non-blocking, so if one of them fails it never breaks a customer's order.
 - Make it accessible and mobile-first: semantic HTML, alt text on images, keyboard navigation, and strong color contrast.
 - After each step, run the TypeScript type checker and the linter, and fix any errors before we move on.
+- Remember that I'm a non-technical beginner doing this with my kid. Any time a step needs me to do something myself outside of Claude Code (like running SQL in the Supabase SQL Editor, or changing a setting on a website), walk me through it with exact, click-by-click instructions, explain any unfamiliar terms in plain English, and assume I have never done it before.
 
 Acknowledge these standards, then apply them to everything we build from here.</span>
             </div>
@@ -797,8 +803,9 @@ Create a complete brand kit including:
 - Brand voice guidelines, 3 adjectives that capture the feeling
 - A standalone product icon as an SVG I can use as a favicon
 
-Build everything as an interactive HTML page I can preview in my browser, show the color swatches with hex codes, font samples at different sizes, the logo at different sizes, and example usage. She wants it to feel [fun/colorful/cozy/bold]. Her favorite colors are [colors].</span>
+Build everything as an interactive HTML page I can preview in my browser, show the color swatches with hex codes, font samples at different sizes, the logo at different sizes, and example usage. They want it to feel [fun/colorful/cozy/bold]. Their favorite colors are [colors].</span>
             </div>
+            <p><strong>Don't settle for the first try.</strong> This is the perfect place to practice giving feedback. If the logo isn't quite right, or a color feels off, just tell Claude Code: "make the logo rounder," "try warmer colors," "that font feels too serious." It will keep revising. Go back and forth with your kid until they light up, that iterating is the real skill they are learning.</p>
             <div class="what-happens">
               <ul>
                 <li>A custom illustrated SVG logo (not just a text logo, an actual icon)</li>
@@ -858,6 +865,7 @@ Requirements:
 
 Generate the complete SQL setup file I can paste into the Supabase SQL Editor. Include clear comments so I can understand what each section does. Add helpful indexes for the queries we'll run most (filtering products by status, finding expired reservations, listing orders by date). Once I've run the SQL, generate TypeScript types from the database schema and wire them into our Supabase clients, so the whole app is type-safe end to end.</span>
             </div>
+            <p><strong>If you hit an unfamiliar step, relax.</strong> This prompt has Claude Code generate a file and then tell you exactly what to do with it (you will paste it into a page inside Supabase called the SQL Editor and click Run). You do not need to understand any of the code. If you ever see a button you don't recognize, just tell Claude Code what is on your screen and it will walk you through it.</p>
             <div class="what-happens">
               <ul>
                 <li>Complete database with 8+ tables, all properly connected</li>
@@ -889,7 +897,7 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
-            <p>This is the fun part, building the website customers will see. You describe each page, and Claude Code builds it using the brand kit and database we already set up. <strong>Have your kid sit with you for this one.</strong> When the homepage appears with their logo and colors, the look on their face is priceless. Siena literally said "wait, that's OUR website?!"</p>
+            <p>This is the fun part, building the website customers will see. You describe each page, and Claude Code builds it using the brand kit and database we already set up. When the homepage appears with their logo and colors, the look on their face is priceless. Siena literally said "wait, that's OUR website?!"</p>
 
             <p><strong>How you actually get paid:</strong> Every order comes in marked "awaiting payment." So customers can pay, the checkout page and the confirmation email both show a <strong>Pay Now</strong> button that points to a payment link you choose. We created a <strong><a href="https://greenlight.com" target="_blank" rel="noopener" style="color: var(--grape); text-decoration: none; border-bottom: 1px solid rgba(229,80,122,0.4);">Greenlight</a></strong> account for the girls (the kids' debit card and family-banking app) and used its payment link, so the money landed straight in their own account, which made earning it feel real to them. Any payment link works though, Greenlight, Venmo, PayPal, Cash App, whatever you already use. Since kids can't hold these accounts, a parent sets it up and pastes the link into the dashboard. When the money arrives, you tap one button to mark the order "Paid." (This keeps things simple and fee-free; you can always add automatic card checkout later as you grow.)</p>
             <div class="prompt-box">
@@ -1030,9 +1038,10 @@ All emails should send non-blocking (if the email fails, the order still goes th
 2. Optional photo background removal using remove.bg:
 Product photos must upload and display fine on their own, with their original background and no API needed. As an optional enhancement, add background removal through the remove.bg API, and make it a setting I can turn on or off (since it costs credits). When it's on and a photo is uploaded (single or batch), send it to remove.bg, auto-crop the transparent pixels with a small padding so the product is centered, and store both the original AND the cleaned version in Supabase Storage. Let me choose which one shows on the storefront. If the setting is off, or remove.bg is down, out of credits, or the key isn't configured, just keep the original photo and never block an upload. Track remaining remove.bg credits in the supply stock table.</span>
             </div>
+            <p><strong>Make the words your own.</strong> Claude Code writes solid but generic email copy to get you started. The fun part is rewriting it in your kid's voice. Tell Claude Code something like "rewrite the confirmation email to sound warm and excited, like a kid thanking a customer for believing in their little business," then keep tweaking the subject lines and sign-offs until they sound like your kid. Those small touches are what make customers smile.</p>
             <div class="what-happens">
               <ul>
-                <li>5 different branded email templates, confirmation, shipped, pickup, waitlist, back-in-stock</li>
+                <li>5 different branded email templates; order confirmation, order shipped, ready for pickup, joined waitlist, back-in-stock</li>
                 <li>Emails send automatically at the right moment, zero manual work</li>
                 <li>Emails come from your own domain (orders@yoursite.shop)</li>
                 <li>Non-blocking, if email fails, the order still works</li>
@@ -1063,9 +1072,10 @@ Product photos must upload and display fine on their own, with their original ba
           <div class="step-body"><div class="step-content">
             <p>Time to put it on the internet. <strong>This is THE moment.</strong> The second your kid sends that link to family and someone actually places an order? Core memory. Our very first, order GS-001, came from Amilia's godfather, Nino.</p>
 
-            <p><strong>One free account first:</strong><br>
-            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-vercel"/></svg><span class="tt" onclick="showTech('vercel')">Vercel</span>:</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account you created back in Step 0. Vercel reads your code from GitHub and publishes it to the internet, and because your project has been saved to GitHub all along, it's ready to go.<br>
-            That's all you do by hand. Claude Code connects everything and walks you through every click from there.</p>
+            <p><strong>Two things to line up first:</strong><br>
+            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-vercel"/></svg><span class="tt" onclick="showTech('vercel')">Vercel</span> (free):</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account from Step 0 (just click "Continue with GitHub"). Vercel reads your code from GitHub and publishes it to the internet.<br>
+            &bull; <strong>A domain name (your web address):</strong> This is the one piece with a small cost. A name like yourbusiness.shop runs about $3 to $15 a year from a registrar like Namecheap, Cloudflare, or GoDaddy. Pick one your kid loves and grab it. Want to wait? You can launch on the free web address Vercel gives you and add a custom domain later, no problem at all.<br>
+            Going live is a handful of real steps: connecting Vercel, adding your keys, pointing your domain, and creating your admin login. Here is the honest part, you won't know how to do most of it, and you don't need to. The prompt below has Claude Code walk you through every click, in order, and stop to help the second you are unsure.</p>
 
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
@@ -1122,7 +1132,6 @@ Product photos must upload and display fine on their own, with their original ba
     <p>The tools are mostly free. The AI does the hard part. All you need is a kid with an idea and a weekend.</p>
     <div class="cta-buttons">
       <a href="https://claude.ai/download" target="_blank" rel="noopener" class="cta-primary">Get Claude Code &rarr;</a>
-      <a href="https://goldenstems.shop" target="_blank" rel="noopener" class="cta-secondary">See the live example: goldenstems.shop</a>
     </div>
   </div>
 </section>
