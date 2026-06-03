@@ -144,7 +144,7 @@
   .gloss-card { background: var(--white); border: 1px solid rgba(56,42,29,0.06); border-radius: 12px; padding: 0.7rem 0.9rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; transition: transform 0.15s ease, border-color 0.15s ease; }
   .gloss-card:hover { transform: translateY(-2px); border-color: rgba(56,42,29,0.14); }
   .gloss-icon { width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .line-icon { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .line-icon { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: block; }
   .gloss-card strong { font-size: 0.9rem; display: block; }
   .gloss-def { font-size: 0.78rem; color: var(--tan); margin-top: 0.1rem; line-height: 1.35; }
   .cost-note {
@@ -292,6 +292,8 @@
   .stack-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; background: rgba(255,255,255,0.7); border: 1px solid rgba(56,42,29,0.07); }
   .brand-logo { width: 20px; height: 20px; fill: currentColor; }
   .inline-logo { width: 1.05em; height: 1.05em; fill: currentColor; vertical-align: -0.16em; margin-right: 0.15em; }
+  .title-icon { width: 1.05em; height: 1.05em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: -0.14em; margin-right: 0.4em; }
+  .badge-icon { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
   .logo-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
   .stack-card strong { font-size: 0.9rem; display: block; }
   .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
@@ -375,7 +377,7 @@
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero">
-  <div class="hero-badge">&#x1F34B; The Modern Day Lemonade Stand</div>
+  <div class="hero-badge"><svg class="badge-icon" style="color:#f5b82b" viewBox="0 0 24 24"><path d="M21.66 17.67a1.08 1.08 0 0 1-.04 1.6A12 12 0 0 1 4.73 2.38a1.1 1.1 0 0 1 1.61-.04z"/><path d="M19.65 15.66A8 8 0 0 1 8.35 4.34"/><path d="m14 10-5.5 5.5"/><path d="M14 17.85V10H6.15"/></svg>The Modern Day Lemonade Stand</div>
   <h1>Build Something Real, Together</h1>
   <p class="hero-sub">AI can feel intimidating, especially as a parent. It doesn't have to be. This is a fun project you build together with your kids, no experience needed, that turns AI from something scary into something your whole family can create with.</p>
   <a href="#story" class="hero-cta" onclick="var s=document.getElementById('story'); if(s) s.classList.add('open');">See How We Did It &darr;</a>
@@ -410,7 +412,7 @@
 <!-- ═══════════ WHAT YOU'LL LEARN TOGETHER ═══════════ -->
 <section class="section">
   <div class="fade-in">
-    <div class="section-label">Why This Matters</div>
+    <div class="section-label">The Bigger Picture</div>
     <h2>A Whole Education in One Project</h2>
     <div class="divider"></div>
     <p class="section-intro">AI has created an environment where it has never been easier to build things. But these are skills our kids won't get in school, at least not anytime soon, and someone has to teach them. Because by the time they graduate, the way people work is going to look vastly different than it does today.</p>
@@ -463,8 +465,8 @@
 <!-- ═══════════ WHAT CAN YOUR KID SELL? ═══════════ -->
 <section class="section">
   <div class="fade-in">
-    <div class="section-label">It's Not Just Pumpkins</div>
-    <h2>Your Kid Can Sell Anything</h2>
+    <div class="section-label">A Little Inspiration</div>
+    <h2>What Will Your Kid Sell?</h2>
     <div class="divider"></div>
     <p class="section-intro">We built Golden Stems for pipe cleaner pumpkins, but this guide works for whatever your kid makes or creates. Here are some ideas:</p>
     <div class="product-grid">
@@ -486,13 +488,13 @@
 <!-- ═══════════ SEE IT IN ACTION ═══════════ -->
 <section class="section" id="showcase">
   <div class="fade-in">
-    <div class="section-label">The Real Thing</div>
-    <h2>See What We Built</h2>
+    <div class="section-label">See It Live</div>
+    <h2>Golden Stems</h2>
     <div class="divider"></div>
-    <p class="section-intro">Golden Stems is live and taking orders. The girls were part of every decision. Browse the storefront, and check out a preview of the dashboard the girls use to run their business.</p>
+    <p class="section-intro">The real pipe cleaner pumpkin business Amilia, Siena, and Ella run, live and taking orders. The girls were part of every decision, from the logo to the prices. Browse their storefront below, then take a peek at the dashboard they use to run the whole thing.</p>
     <div class="showcase-grid">
       <div class="showcase-card">
-        <h3>&#x1F6CD; The Storefront</h3>
+        <h3><svg class="title-icon" style="color:#f2853c" viewBox="0 0 24 24"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg>The Storefront</h3>
         <p class="showcase-sub">The customer-facing website, browse, shop, and order</p>
         <ul class="showcase-features">
           <li>Custom brand with logo the girls helped design</li>
@@ -504,7 +506,7 @@
         <a href="https://goldenstems.shop" target="_blank" rel="noopener" class="showcase-link" style="color: var(--pink);">Visit goldenstems.shop &rarr;</a>
       </div>
       <div class="showcase-card">
-        <h3>&#x1F4CA; The Dashboard (Demo)</h3>
+        <h3><svg class="title-icon" style="color:#4fa6ce" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>The Dashboard (Demo)</h3>
         <p class="showcase-sub">A preview of the command center your kids use to run their business, with you alongside them</p>
         <ul class="showcase-features">
           <li>Revenue charts and key business metrics</li>
@@ -569,7 +571,7 @@
     </div>
 
     <div class="cost-note">
-      <span style="font-size: 1.2rem;">&#x1F4B0;</span>
+      <span style="font-size: 1.2rem; flex-shrink:0;"><svg class="line-icon" style="color:#3a9d70" viewBox="0 0 24 24"><path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"/><path d="M16 10h.01"/><path d="M2 8v1a2 2 0 0 0 2 2h1"/></svg></span>
       <div><strong>Total cost: about $20/month</strong> for a Claude Pro plan, the minimum needed to use Claude Code. Supabase, GitHub, Vercel, and the email service all have generous free tiers. A fun domain name (like goldenstems.shop) costs about $3&ndash;$10/year. Everything else is free.</div>
     </div>
   </div>
@@ -643,12 +645,12 @@
     </div>
 
     <div class="prompt-note">
-      <span style="font-size: 1.2rem; flex-shrink:0;">&#x1F4A1;</span>
+      <span style="font-size: 1.2rem; flex-shrink:0;"><svg class="line-icon" style="color:#e5507a" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></span>
       <div><strong>A note about these prompts:</strong> They include some technical terms you might not understand yet, that's totally fine. <span class="tt" onclick="showTech('claude-code')">Claude Code</span> understands them, and they're there to make sure you get a professionally built result. Tap any <span class="tt" onclick="showTech('what-are-terms')" style="font-size:0.85rem;">highlighted term</span> to learn what it means. Over time, these words will start to click.</div>
     </div>
 
     <div class="prompt-note" style="background: linear-gradient(135deg, rgba(245,184,43,0.12), rgba(242,133,60,0.06)); border-color: rgba(245,184,43,0.25);">
-      <span style="font-size: 1.2rem; flex-shrink:0;">&#x1F6E0;&#xFE0F;</span>
+      <span style="font-size: 1.2rem; flex-shrink:0;"><svg class="line-icon" style="color:#d99a1e" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/></svg></span>
       <div><strong>Two things to keep in mind as you build.</strong> First, Claude Code is brilliant, but like any builder it gets something wrong now and then, and that is completely normal. Test as you go: after each step, click around and make sure everything works. If you hit a bug, don't panic, debug it! Just tell Claude Code what looks off ("the cart total isn't updating") and let it fix it. This is part of the fun, solving problems together, and a perfect chance for your kid to start prompting Claude Code themselves.<br><br>Second, get creative. These prompts are a starting point, not a rulebook. If you or your kid dream up a feature that would make the site or dashboard cooler, a spin-the-wheel discount, a "featured product of the week," a little confetti burst when an order comes in, go for it. Just describe it to Claude Code and watch it appear. The more confidence you gain, the more fun this gets.</div>
     </div>
 
