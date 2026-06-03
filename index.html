@@ -1159,7 +1159,7 @@ Product photos must upload and display fine on their own, with their original ba
 </section>
 
 <!-- ═══════════ REVIEWS ═══════════ -->
-<section class="section">
+<section class="section" id="reviews">
   <div class="fade-in">
     <div class="section-label">From Other Families</div>
     <h2>What Families Are Saying</h2>
@@ -1401,6 +1401,7 @@ document.querySelectorAll('section.section').forEach(sec => {
   sec.appendChild(head);
   sec.appendChild(body);
   head.addEventListener('click', () => sec.classList.toggle('open'));
+  if (sec.id === 'reviews') sec.classList.add('open');
   // all sections start collapsed so visitors see the full menu on arrival
 });
 
