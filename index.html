@@ -291,6 +291,7 @@
   .stack-card:hover { transform: translateY(-2px); }
   .stack-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; background: rgba(255,255,255,0.7); border: 1px solid rgba(56,42,29,0.07); }
   .brand-logo { width: 20px; height: 20px; fill: currentColor; }
+  .inline-logo { width: 1.05em; height: 1.05em; fill: currentColor; vertical-align: -0.16em; margin-right: 0.15em; }
   .logo-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
   .stack-card strong { font-size: 0.9rem; display: block; }
   .stack-card .stack-analogy { font-size: 0.8rem; color: var(--grape); font-weight: 600; margin-top: 0.15rem; }
@@ -413,7 +414,7 @@
     <h2>A Whole Education in One Project</h2>
     <div class="divider"></div>
     <p class="section-intro">AI has created an environment where it has never been easier to build things. But these are skills our kids won't get in school, at least not anytime soon, and someone has to teach them. Because by the time they graduate, the way people work is going to look vastly different than it does today.</p>
-    <p class="section-intro">I believe we'll each land in one of two camps: <strong>hyper consumers</strong>, who let technology happen to them, or <strong>hyper creators</strong>, who use it to build the things other people need and want. I want my kids to be creators. A project like this is where it starts. Here's what it teaches them:</p>
+    <p class="section-intro">I believe we'll each land in one of two camps: <strong>hyper consumers</strong>, who let technology happen to them, or <strong>hyper creators</strong>, who use it to build the things other people need and want. I want my kids to be creators. A project like this is where it starts. Here's what it teaches them (and maybe you too &#x1F609;):</p>
     <div class="skills-grid">
       <div class="skill-card">
         <div class="skill-emoji">&#x1F4B0;</div>
@@ -664,9 +665,9 @@
           <div class="step-body"><div class="step-content">
             <p>Before we build anything, let's get your tools ready. The good news: Claude Code does almost all of this for you, and walks you through anything it can't. <strong>You only do this once.</strong></p>
 
-            <p><strong>1. Download Claude Code</strong>: Go to <strong>claude.com/claude-code</strong> and download the desktop app. Install it like any other app and sign in with your account. No terminal, no command line, just an app you talk to. (Using Claude Code requires at least a Claude Pro plan, about $20/month.)<br><br>
-            <strong>2. Create a GitHub account</strong>: Go to <strong>github.com</strong> and sign up (free). This is where your project is saved online. From the very start, Claude Code saves a new version here every time you make a change, like an automatic backup with a full history you can always rewind to. You don't have to learn it, Claude Code does the saving for you.<br><br>
-            <strong>3. Sign up for Supabase</strong>: Go to <strong>supabase.com</strong>, create a free account, and click "New Project." Give it your business name. Once it's ready, open Settings &rarr; API and copy three things: your <strong>Project URL</strong>, your <strong>anon/public key</strong>, and your <strong>service_role key</strong> (keep that last one private, it has full access). Don't worry about what they are, you're just copying and pasting.<br><br>
+            <p><strong>1. Download <svg class="inline-logo" style="color:#d97757;"><use href="#logo-claude"/></svg>Claude Code</strong>: Go to <strong>claude.com/claude-code</strong> and download the desktop app. Install it like any other app and sign in with your account. No terminal, no command line, just an app you talk to. (Using Claude Code requires at least a Claude Pro plan, about $20/month.)<br><br>
+            <strong>2. Create a <svg class="inline-logo" style="color:#382a1d;"><use href="#logo-github"/></svg>GitHub account</strong>: Go to <strong>github.com</strong> and sign up (free). This is where your project is saved online. From the very start, Claude Code saves a new version here every time you make a change, like an automatic backup with a full history you can always rewind to. You don't have to learn it, Claude Code does the saving for you.<br><br>
+            <strong>3. Sign up for <svg class="inline-logo" style="color:#3fcf8e;"><use href="#logo-supabase"/></svg>Supabase</strong>: Go to <strong>supabase.com</strong>, create a free account, and click "New Project." Give it your business name. Once it's ready, open Settings &rarr; API and copy three things: your <strong>Project URL</strong>, your <strong>anon/public key</strong>, and your <strong>service_role key</strong> (keep that last one private, it has full access). Don't worry about what they are, you're just copying and pasting.<br><br>
             <strong>4. Create your project</strong>: In Claude Code, start a new project for your business, then give it the prompt below. Claude Code builds the entire foundation, installs everything it needs, creates all the files, and connects your project to GitHub so every change is saved automatically. If your computer is missing a free tool it needs (like Node.js, the engine that runs your site), Claude Code will tell you and walk you through installing it.</p>
 
             <div class="prompt-box">
@@ -1004,8 +1005,8 @@ Technical:
             <p><strong>A quick note on the photos:</strong> your product photos upload and display perfectly fine on their own, with whatever background they were shot on. Removing the background just makes them look a little more polished. It's a nice-to-have, not a requirement, and it's the one piece here that costs a bit of money, so it's your call.</p>
 
             <p><strong>Get your API keys:</strong><br>
-            &bull; <strong>Resend (free):</strong> Go to resend.com, sign up, and copy your API key. You'll also verify your domain so emails come from orders@yourdomain.shop instead of a generic address.<br>
-            &bull; <strong>remove.bg (optional, has a cost):</strong> Only if you want auto background removal. Its free tier is limited (around 50 low-resolution previews a month; full-resolution product photos use paid credits), so plan for a small cost if you turn it on. You can skip it now and add it anytime later.<br>
+            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-resend"/></svg>Resend (free):</strong> Go to resend.com, sign up, and copy your API key. You'll also verify your domain so emails come from orders@yourdomain.shop instead of a generic address.<br>
+            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-removebg"/></svg>remove.bg (optional, has a cost):</strong> Only if you want auto background removal. Its free tier is limited (around 50 low-resolution previews a month; full-resolution product photos use paid credits), so plan for a small cost if you turn it on. You can skip it now and add it anytime later.<br>
             Then just hand the keys to Claude Code, and it will put them in the right place for you.</p>
 
             <div class="prompt-box">
@@ -1061,7 +1062,7 @@ Product photos must upload and display fine on their own, with their original ba
             <p>Time to put it on the internet. <strong>This is THE moment.</strong> The second your kid sends that link to family and someone actually places an order? Core memory. Our very first, order GS-001, came from Amilia's godfather, Nino.</p>
 
             <p><strong>One free account first:</strong><br>
-            &bull; <strong><span class="tt" onclick="showTech('vercel')">Vercel</span>:</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account you created back in Step 0. Vercel reads your code from GitHub and publishes it to the internet, and because your project has been saved to GitHub all along, it's ready to go.<br>
+            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-vercel"/></svg><span class="tt" onclick="showTech('vercel')">Vercel</span>:</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account you created back in Step 0. Vercel reads your code from GitHub and publishes it to the internet, and because your project has been saved to GitHub all along, it's ready to go.<br>
             That's all you do by hand. Claude Code connects everything and walks you through every click from there.</p>
 
             <div class="prompt-box">
