@@ -1515,7 +1515,6 @@ setTimeout(() => {
 
   if (form) form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (document.getElementById('rf-website').value) return; // honeypot
     const val = (id) => (document.getElementById(id) ? document.getElementById(id).value : '').trim();
     const payload = {
       first_name: val('rf-name').slice(0, 40),
@@ -1524,17 +1523,25 @@ setTimeout(() => {
       built: val('rf-built').slice(0, 80) || null,
       rating: rating || null,
       story: val('rf-story').slice(0, 1000),
+      website: val('rf-website'),
     };
     if (!payload.first_name) { msg.textContent = 'Please add your first name.'; msg.className = 'rf-msg err'; return; }
     if (payload.story.length < 10) { msg.textContent = 'Tell us a little more about your story.'; msg.className = 'rf-msg err'; return; }
-    if (!supa) { msg.textContent = 'The review wall is opening soon, check back!'; msg.className = 'rf-msg err'; return; }
     const btn = form.querySelector('.review-submit'); if (btn) btn.disabled = true;
     msg.textContent = 'Sending...'; msg.className = 'rf-msg';
     try {
-      const { error } = await supa.from(TABLE).insert(payload);
-      if (error) throw error;
+      const res = await fetch(SUPABASE_URL + '/functions/v1/submit-review', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) throw new Error('failed');
       form.reset(); rating = 0; if (starWrap) [...starWrap.children].forEach((el) => el.classList.remove('on'));
-      msg.textContent = 'Thank you! Your story will appear here once it is approved.'; msg.className = 'rf-msg ok';
+      if (out.approved) {
+        msg.textContent = 'Thank you! Your story is live. Scroll the wall to find it.'; msg.className = 'rf-msg ok';
+        load();
+      } else {
+        msg.textContent = 'Thank you for sharing your story!'; msg.className = 'rf-msg ok';
+      }
     } catch (e) {
       msg.textContent = 'Hmm, that did not go through. Please try again in a bit.'; msg.className = 'rf-msg err';
     } finally { if (btn) btn.disabled = false; }

@@ -1,0 +1,4 @@
+project_id = "tixonappthkredirmkvw"
+
+[functions.submit-review]
+verify_jwt = false
