@@ -678,7 +678,7 @@
     <div class="section-label">The Build</div>
     <h2>8 Steps From Idea to Live Website</h2>
     <div class="divider"></div>
-    <p class="section-intro">Each step took us about 1&ndash;2 hours. You talk to Claude Code in plain English. Below are the actual prompts we used, enhanced so the AI builds you something production-quality. Step 0 gets your workspace ready, then Steps 1&ndash;7 build everything.</p>
+    <p class="section-intro">Each step took us about 1&ndash;2 hours. You talk to Claude Code in plain English. Below are the actual prompts we used, enhanced so the AI builds you something production-quality. Step 1 gets your workspace ready, then Steps 2&ndash;8 build everything.</p>
     <p class="section-intro"><strong>Go at your own pace.</strong> You do not have to do this in one sitting, and honestly, you shouldn't. Do a step, then come back for the next one tomorrow, or next weekend, or whenever life allows. Kids do their best in short, excited bursts, not marathons, so spreading it out actually makes it better. The only rule is to keep coming back until it's done. Make the time. What you build together is worth every bit of it, and if you're anything like me, you are quietly hoping it becomes one of those core memories they carry for the rest of their lives.</p>
 
     <div class="timeline-grid" style="margin-bottom: 1.5rem;">
@@ -699,9 +699,9 @@
     </div>
 
     <div class="journey">
-      <!-- ──── STEP 0 ──── -->
+      <!-- ──── STEP 1 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--cocoa);">0</div>
+        <div class="step-number" style="background: var(--cocoa);">1</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Set Up Your Workspace</h3>
@@ -798,9 +798,9 @@ Acknowledge these standards, then apply them to everything we build from here.</
         </div>
       </div>
 
-      <!-- ──── STEP 1 ──── -->
+      <!-- ──── STEP 2 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--pink);">1</div>
+        <div class="step-number" style="background: var(--pink);">2</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Start With Your Kid's Idea</h3>
@@ -825,9 +825,9 @@ Acknowledge these standards, then apply them to everything we build from here.</
         </div>
       </div>
 
-      <!-- ──── STEP 2 ──── -->
+      <!-- ──── STEP 3 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--orange);">2</div>
+        <div class="step-number" style="background: var(--orange);">3</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Create Your Brand Kit</h3>
@@ -871,9 +871,9 @@ Build everything as an interactive HTML page I can preview in my browser, show t
         </div>
       </div>
 
-      <!-- ──── STEP 3 ──── -->
+      <!-- ──── STEP 4 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--gold);">3</div>
+        <div class="step-number" style="background: var(--gold);">4</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Set Up Your Database</h3>
@@ -881,7 +881,7 @@ Build everything as an interactive HTML page I can preview in my browser, show t
             <div class="step-toggle">&darr;</div>
           </div>
           <div class="step-body"><div class="step-content">
-            <p>Every real business needs a way to keep track of things. <span class="tt" onclick="showTech('supabase')">Supabase</span> is your free <span class="tt" onclick="showTech('database')">database</span>, it stores your products, orders, customer info, and finances. We already created our Supabase project in Step 0. Now we'll tell Claude to build the entire database structure inside it:</p>
+            <p>Every real business needs a way to keep track of things. <span class="tt" onclick="showTech('supabase')">Supabase</span> is your free <span class="tt" onclick="showTech('database')">database</span>, it stores your products, orders, customer info, and finances. We already created our Supabase project in Step 1. Now we'll tell Claude to build the entire database structure inside it:</p>
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
               <span class="prompt-text">In our existing project, set up a production-ready Supabase database for [Business Name]. I need proper relational database design with:
@@ -931,9 +931,9 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
         </div>
       </div>
 
-      <!-- ──── STEP 4 ──── -->
+      <!-- ──── STEP 5 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--green);">4</div>
+        <div class="step-number" style="background: var(--green);">5</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Build the Storefront</h3>
@@ -946,7 +946,7 @@ Generate the complete SQL setup file I can paste into the Supabase SQL Editor. I
             <p><strong>How you actually get paid:</strong> Every order comes in marked "awaiting payment." So customers can pay, the checkout page and the confirmation email both show a <strong>Pay Now</strong> button that points to a payment link you choose. We created a <strong><a href="https://greenlight.com" target="_blank" rel="noopener" style="color: var(--grape); text-decoration: none; border-bottom: 1px solid rgba(229,80,122,0.4);">Greenlight</a></strong> account for the girls (the kids' debit card and family-banking app) and used its payment link, so the money landed straight in their own account, which made earning it feel real to them. Any payment link works though, Greenlight, Venmo, PayPal, Cash App, whatever you already use. Since kids can't hold these accounts, a parent sets it up and pastes the link into the dashboard. When the money arrives, you tap one button to mark the order "Paid." (This keeps things simple and fee-free; you can always add automatic card checkout later as you grow.)</p>
             <div class="prompt-box">
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
-              <span class="prompt-text">In our existing Next.js project, build the customer-facing storefront for [Business Name]. Use the brand kit we created in Step 2 (exact hex colors, Google Fonts, and SVG logo) and read all data from the Supabase database we set up in Step 3.
+              <span class="prompt-text">In our existing Next.js project, build the customer-facing storefront for [Business Name]. Use the brand kit we created in Step 3 (exact hex colors, Google Fonts, and SVG logo) and read all data from the Supabase database we set up in Step 4.
 
 Pages needed:
 - Homepage: hero section with our SVG logo and a catchy tagline, a grid of featured product photos pulled from our database, an "About the Founders" section with the kids' names and ages, and a prominent "Shop Now" button
@@ -986,9 +986,9 @@ Technical requirements:
         </div>
       </div>
 
-      <!-- ──── STEP 5 ──── -->
+      <!-- ──── STEP 6 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--teal);">5</div>
+        <div class="step-number" style="background: var(--teal);">6</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Build the Business Dashboard</h3>
@@ -1044,9 +1044,9 @@ Technical:
         </div>
       </div>
 
-      <!-- ──── STEP 6 ──── -->
+      <!-- ──── STEP 7 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--blue);">6</div>
+        <div class="step-number" style="background: var(--blue);">7</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Connect Email &amp; Upload Photos</h3>
@@ -1071,7 +1071,7 @@ Technical:
 Build a complete email service with multiple branded HTML templates using React Email components. Every email should match our brand kit, use our colors, include our logo, and have a signature like "Made with love by [kids' names]."
 
 Email types to build:
-- Order confirmation: sent automatically when an order is created (wire this into the order creation action from Step 4). Include order number, order type, bundle size, total price, donation amount, items with thumbnail photos, shipping/pickup details, and a prominent "Pay for your order" button linking to our payment link (from settings) so the customer can pay right from the email.
+- Order confirmation: sent automatically when an order is created (wire this into the order creation action from Step 5). Include order number, order type, bundle size, total price, donation amount, items with thumbnail photos, shipping/pickup details, and a prominent "Pay for your order" button linking to our payment link (from settings) so the customer can pay right from the email.
 - Order shipped: sent when admin updates status to "shipped." Include tracking number and product photos.
 - Ready for pickup: sent when admin updates status to "ready_for_pickup." Include pickup address and product photos.
 - Waitlist welcome: sent when a customer joins the waitlist.
@@ -1104,9 +1104,9 @@ Product photos must upload and display fine on their own, with their original ba
         </div>
       </div>
 
-      <!-- ──── STEP 7 ──── -->
+      <!-- ──── STEP 8 ──── -->
       <div class="step">
-        <div class="step-number" style="background: var(--grape);">7</div>
+        <div class="step-number" style="background: var(--grape);">8</div>
         <div class="step-card">
           <div class="step-header" onclick="toggleStep(this)">
             <h3>Go Live!</h3>
@@ -1117,7 +1117,7 @@ Product photos must upload and display fine on their own, with their original ba
             <p>Time to put it on the internet. <strong>This is THE moment.</strong> The second your kid sends that link to family and someone actually places an order? Core memory. Our very first, order GS-001, came from Amilia's godfather, Nino.</p>
 
             <p><strong>Two things to line up first:</strong><br>
-            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-vercel"/></svg><span class="tt" onclick="showTech('vercel')">Vercel</span> (free):</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account from Step 0 (just click "Continue with GitHub"). Vercel reads your code from GitHub and publishes it to the internet.<br>
+            &bull; <strong><svg class="inline-logo" style="color:#382a1d;"><use href="#logo-vercel"/></svg><span class="tt" onclick="showTech('vercel')">Vercel</span> (free):</strong> Go to vercel.com and sign up with the <span class="tt" onclick="showTech('github')">GitHub</span> account from Step 1 (just click "Continue with GitHub"). Vercel reads your code from GitHub and publishes it to the internet.<br>
             &bull; <strong>A domain name (your web address):</strong> This is the one piece with a small cost. A name like yourbusiness.shop runs about $3 to $15 a year from a registrar like Namecheap, Cloudflare, or GoDaddy. Pick one your kid loves and grab it. Want to wait? You can launch on the free web address Vercel gives you and add a custom domain later, no problem at all.<br>
             Going live is a handful of real steps: connecting Vercel, adding your keys, pointing your domain, and creating your admin login. Here is the honest part, you won't know how to do most of it, and you don't need to. The prompt below has Claude Code walk you through every click, in order, and stop to help the second you are unsure.</p>
 
@@ -1125,7 +1125,7 @@ Product photos must upload and display fine on their own, with their original ba
               <div class="prompt-label">What you tell Claude <button class="copy-btn" onclick="copyPrompt(this)">Copy</button></div>
               <span class="prompt-text">Help me deploy [Business Name] to production. First, a quick pre-flight check: run the TypeScript type checker and the linter and fix any errors so we ship clean, and confirm no secret keys are exposed to the browser (only NEXT_PUBLIC_ variables should be public). Then walk me through each step:
 
-1. Make sure all our latest code is committed and pushed to the GitHub repository we set up in Step 0.
+1. Make sure all our latest code is committed and pushed to the GitHub repository we set up in Step 1.
 2. Connect to Vercel for automatic deployments:
    - Import the GitHub repo into Vercel
    - Set up ALL environment variables on Vercel (every key from our .env.local: Supabase URL, anon key, service role key, Resend API key, remove.bg key). Set NEXT_PUBLIC_SITE_URL to our production domain.
